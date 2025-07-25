@@ -44,6 +44,7 @@ export function AddResourceForm({ onAdd, onCancel, editingResource }: AddResourc
       url: url.trim() || undefined,
       type,
       status: editingResource?.status || 'not-started',
+      priority: editingResource?.priority || 'medium',
       tags,
       notes: notes.trim() || undefined,
     })
