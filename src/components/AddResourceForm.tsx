@@ -25,7 +25,7 @@ export function AddResourceForm({ onAdd, onCancel, editingResource, groups = [],
   const [notes, setNotes] = useState(editingResource?.notes || '')
   const [tagInput, setTagInput] = useState('')
   const [tags, setTags] = useState<string[]>(editingResource?.tags || [])
-  const [groupId, setGroupId] = useState(editingResource?.groupId || defaultGroupId || '')
+  const [groupId, setGroupId] = useState(editingResource?.groupId || defaultGroupId || 'no-group')
 
   const handleAddTag = () => {
     if (tagInput.trim() && !tags.includes(tagInput.trim())) {
@@ -51,7 +51,7 @@ export function AddResourceForm({ onAdd, onCancel, editingResource, groups = [],
       priority: editingResource?.priority || 'medium',
       tags,
       notes: notes.trim() || undefined,
-      groupId: groupId || undefined,
+      groupId: groupId === 'no-group' ? undefined : groupId,
     })
   }
 
@@ -113,7 +113,7 @@ export function AddResourceForm({ onAdd, onCancel, editingResource, groups = [],
                   <SelectValue placeholder="Select a subject group" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">No Group</SelectItem>
+                  <SelectItem value="no-group">No Group</SelectItem>
                   {groups.map((group) => (
                     <SelectItem key={group.id} value={group.id}>
                       {group.name}
