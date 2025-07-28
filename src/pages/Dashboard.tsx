@@ -92,6 +92,7 @@ export function Dashboard({
             setEditingResource(undefined)
           }}
           editingResource={editingResource}
+          groups={groups}
         />
       </div>
     )

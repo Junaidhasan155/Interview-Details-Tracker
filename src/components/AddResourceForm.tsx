@@ -6,15 +6,18 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Resource, ResourceType } from "@/types/resource"
+import { Group } from "@/types/group"
 import { X } from "lucide-react"
 
 interface AddResourceFormProps {
   onAdd: (resource: Omit<Resource, 'id' | 'createdAt' | 'updatedAt'>) => void
   onCancel: () => void
   editingResource?: Resource
+  groups?: Group[]
+  defaultGroupId?: string
 }
 
-export function AddResourceForm({ onAdd, onCancel, editingResource }: AddResourceFormProps) {
+export function AddResourceForm({ onAdd, onCancel, editingResource, groups = [], defaultGroupId }: AddResourceFormProps) {
   const [title, setTitle] = useState(editingResource?.title || '')
   const [description, setDescription] = useState(editingResource?.description || '')
   const [url, setUrl] = useState(editingResource?.url || '')
@@ -22,6 +25,7 @@ export function AddResourceForm({ onAdd, onCancel, editingResource }: AddResourc
   const [notes, setNotes] = useState(editingResource?.notes || '')
   const [tagInput, setTagInput] = useState('')
   const [tags, setTags] = useState<string[]>(editingResource?.tags || [])
+  const [groupId, setGroupId] = useState(editingResource?.groupId || defaultGroupId || '')
 
   const handleAddTag = () => {
     if (tagInput.trim() && !tags.includes(tagInput.trim())) {
@@ -47,6 +51,7 @@ export function AddResourceForm({ onAdd, onCancel, editingResource }: AddResourc
       priority: editingResource?.priority || 'medium',
       tags,
       notes: notes.trim() || undefined,
+      groupId: groupId || undefined,
     })
   }
 
@@ -82,6 +87,9 @@ export function AddResourceForm({ onAdd, onCancel, editingResource }: AddResourc
                   <SelectItem value="github">GitHub Repo</SelectItem>
                   <SelectItem value="notes">Notes</SelectItem>
                   <SelectItem value="practice">Practice Problems</SelectItem>
+                  <SelectItem value="video">Video</SelectItem>
+                  <SelectItem value="book">Book</SelectItem>
+                  <SelectItem value="course">Course</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -96,6 +104,25 @@ export function AddResourceForm({ onAdd, onCancel, editingResource }: AddResourc
               placeholder="Brief description of the resource"
             />
           </div>
+
+          {groups.length > 0 && (
+            <div className="space-y-2">
+              <Label htmlFor="group">Subject Group</Label>
+              <Select value={groupId} onValueChange={setGroupId}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a subject group" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">No Group</SelectItem>
+                  {groups.map((group) => (
+                    <SelectItem key={group.id} value={group.id}>
+                      {group.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
 
           <div className="space-y-2">
             <Label htmlFor="url">URL</Label>

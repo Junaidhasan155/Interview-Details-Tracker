@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Layout } from "@/components/Layout"
 import { Dashboard } from "@/pages/Dashboard" 
 import { Groups } from "@/pages/Groups"
 import { Analytics } from "@/pages/Analytics"
+import { SubjectView } from "@/pages/SubjectView"
 import { Resource } from "@/types/resource"
 import { Group } from "@/types/group"
 import { useLocation } from "react-router-dom"
+import { storage } from "@/lib/storage"
 
 // Enhanced mock data
 const mockResources: Resource[] = [
@@ -128,11 +130,32 @@ const mockGroups: Group[] = [
 ]
 
 export function MainApp() {
-  const [resources, setResources] = useState<Resource[]>(mockResources)
-  const [groups, setGroups] = useState<Group[]>(mockGroups)
+  const [resources, setResources] = useState<Resource[]>([])
+  const [groups, setGroups] = useState<Group[]>([])
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingResource, setEditingResource] = useState<Resource | undefined>()
   const location = useLocation()
+
+  // Load data from localStorage on mount
+  useEffect(() => {
+    const storedResources = storage.getResources()
+    const storedGroups = storage.getGroups()
+    setResources(storedResources)
+    setGroups(storedGroups)
+  }, [])
+
+  // Save to localStorage whenever data changes
+  useEffect(() => {
+    if (resources.length > 0 || groups.length > 0) {
+      storage.setResources(resources)
+    }
+  }, [resources])
+
+  useEffect(() => {
+    if (groups.length > 0) {
+      storage.setGroups(groups)
+    }
+  }, [groups])
 
   const handleAddResource = (newResource: Omit<Resource, 'id' | 'createdAt' | 'updatedAt'>) => {
     const resource: Resource = {
@@ -181,11 +204,25 @@ export function MainApp() {
   }
 
   const handleViewGroup = (group: Group) => {
-    // Navigate to groups page with filter applied
-    console.log('Viewing group:', group.name)
+    // Navigate to subject view
+    window.location.href = `/subject/${group.id}`
   }
 
   const renderCurrentPage = () => {
+    // Check if it's a subject view route
+    if (location.pathname.startsWith('/subject/')) {
+      return (
+        <SubjectView
+          groups={groups}
+          resources={resources}
+          onAddResource={handleAddResource}
+          onEditResource={handleEditResource}
+          onDeleteResource={handleDeleteResource}
+          onStatusChange={handleStatusChange}
+        />
+      )
+    }
+
     switch (location.pathname) {
       case '/groups':
         return (

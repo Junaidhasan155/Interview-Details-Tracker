@@ -15,6 +15,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/subject/:groupId" element={<MainApp />} />
           <Route path="/*" element={<MainApp />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="/404" element={<NotFound />} />
