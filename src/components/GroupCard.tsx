@@ -4,7 +4,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress"
 import { Group } from "@/types/group"
 import { Resource } from "@/types/resource"
-import { Edit, Trash2, Calendar, Users, Target, Clock } from "lucide-react"
+import { 
+  Edit, 
+  Trash2, 
+  Calendar, 
+  Users, 
+  Target, 
+  Clock 
+} from "lucide-react"
 import { format } from "date-fns"
 
 interface GroupCardProps {

@@ -2,7 +2,14 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Resource } from "@/types/resource"
-import { ExternalLink, Github, FileText, Target, Edit, Trash2 } from "lucide-react"
+import { 
+  ExternalLink, 
+  Github, 
+  FileText, 
+  Target, 
+  Edit, 
+  Trash2 
+} from "lucide-react"
 
 interface ResourceCardProps {
   resource: Resource
