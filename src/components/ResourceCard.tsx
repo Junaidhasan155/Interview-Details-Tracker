@@ -1,3 +1,4 @@
+
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,7 +9,10 @@ import {
   FileText, 
   Target, 
   Edit, 
-  Trash2 
+  Trash2,
+  Video,
+  Book,
+  GraduationCap
 } from "lucide-react"
 
 interface ResourceCardProps {
@@ -23,6 +27,9 @@ const typeIcons = {
   github: Github,
   notes: FileText,
   practice: Target,
+  video: Video,
+  book: Book,
+  course: GraduationCap,
 }
 
 const statusColors = {
@@ -38,7 +45,7 @@ const statusLabels = {
 }
 
 export function ResourceCard({ resource, onEdit, onDelete, onStatusChange }: ResourceCardProps) {
-  const Icon = typeIcons[resource.type]
+  const Icon = typeIcons[resource.type] || FileText
 
   const getNextStatus = (current: Resource['status']): Resource['status'] => {
     switch (current) {
