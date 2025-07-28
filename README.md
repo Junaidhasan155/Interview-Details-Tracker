@@ -1,73 +1,92 @@
-# Welcome to your Lovable project
+# Study Resource Manager
 
-## Project info
+A modern web application for organizing and tracking your study resources across different subjects.
 
-**URL**: https://lovable.dev/projects/cf3d0efc-4faa-413d-9964-382eadd0ff60
+## Features
 
-## How can I edit this code?
+- **Subject-Based Organization**: Group resources by topics (React, System Design, etc.)
+- **Resource Management**: Add websites, GitHub repos, notes, videos, books, and courses
+- **Progress Tracking**: Monitor completion status and time spent
+- **Search & Filter**: Find resources quickly with advanced filtering
+- **Local Storage**: All data persists automatically in your browser
+- **Toast Notifications**: Get feedback on all actions using React Toastify
+- **Responsive Design**: Works perfectly on desktop and mobile
 
-There are several ways of editing your application.
+## How to Use
 
-**Use Lovable**
+### Creating Subjects
+1. Go to the "Groups" page
+2. Click "Create Group"
+3. Add a name, description, priority, and choose colors/icons
+4. Save your subject
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/cf3d0efc-4faa-413d-9964-382eadd0ff60) and start prompting.
+### Adding Resources
+1. Click on any subject card to open it
+2. Click "Add Resource" 
+3. Fill in the details and select the resource type
+4. Resources are automatically saved to the subject
 
-Changes made via Lovable will be committed automatically to this repo.
+### Managing Resources
+- **Click subject cards** to view all resources for that topic
+- **Use "Open All Links"** to open all URLs from a subject in new tabs
+- **Track progress** by updating status (not started → in progress → completed)
+- **Search and filter** to find specific resources quickly
 
-**Use your preferred IDE**
+## Project URL
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**Lovable Project**: https://lovable.dev/projects/cf3d0efc-4faa-413d-9964-382eadd0ff60
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Technology Stack
 
-Follow these steps:
+- React 18 with TypeScript
+- Tailwind CSS for styling
+- React Router for navigation
+- React Toastify for notifications
+- Local Storage for data persistence
+- Shadcn/ui components
+- Lucide React icons
+- Vite for development
+
+## Publishing Your App
+
+To publish this app and get a live link:
+
+1. **In Lovable**: Click the "Publish" button in the top-right corner of the Lovable interface
+2. **Deploy**: Lovable will automatically build and deploy your app
+3. **Get your link**: You'll receive a live URL like `your-project-name.lovable.app`
+
+### Custom Domain (Optional)
+If you want a custom domain:
+1. Go to Project Settings → Domains in Lovable
+2. Click "Connect Domain" and enter your domain name
+3. Configure DNS settings as instructed (A record pointing to 185.158.133.1)
+4. Wait for DNS propagation and SSL certificate provisioning (up to 48 hours)
+
+## Local Development
+
+If you want to work locally using your own IDE:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Step 2: Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Data Storage
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+All your data is stored locally in your browser using localStorage. Your subjects and resources will persist between sessions, but remember to export/backup important data if needed.
 
-**Use GitHub Codespaces**
+## Support
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/cf3d0efc-4faa-413d-9964-382eadd0ff60) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+For issues or questions:
+- Check the Lovable project interface for editing
+- Use the browser console for debugging
+- Refer to [Lovable Documentation](https://docs.lovable.dev)

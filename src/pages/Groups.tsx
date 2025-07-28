@@ -7,7 +7,7 @@ import { AddGroupForm } from "@/components/AddGroupForm"
 import { Group } from "@/types/group"
 import { Resource } from "@/types/resource"
 import { Search, Plus, Filter, Archive } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import { toast } from 'react-toastify'
 
 interface GroupsProps {
   groups: Group[]
@@ -24,7 +24,6 @@ export function Groups({ groups, resources, onAddGroup, onEditGroup, onDeleteGro
   const [searchQuery, setSearchQuery] = useState('')
   const [filterPriority, setFilterPriority] = useState<string>('all')
   const [showArchived, setShowArchived] = useState(false)
-  const { toast } = useToast()
 
   const filteredGroups = groups.filter(group => {
     const matchesSearch = group.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -37,16 +36,10 @@ export function Groups({ groups, resources, onAddGroup, onEditGroup, onDeleteGro
   const handleAddGroup = (newGroup: Omit<Group, 'id' | 'createdAt' | 'updatedAt'>) => {
     if (editingGroup) {
       onEditGroup(editingGroup.id, newGroup)
-      toast({
-        title: "Group Updated",
-        description: "Your group has been successfully updated.",
-      })
+      toast.success("Group updated successfully!")
     } else {
       onAddGroup(newGroup)
-      toast({
-        title: "Group Created",
-        description: "Your new group has been created successfully.",
-      })
+      toast.success("Group created successfully!")
     }
     setShowAddForm(false)
     setEditingGroup(undefined)
@@ -62,19 +55,12 @@ export function Groups({ groups, resources, onAddGroup, onEditGroup, onDeleteGro
     const groupResources = resources.filter(r => r.groupId === id)
     
     if (groupResources.length > 0) {
-      toast({
-        title: "Cannot Delete Group",
-        description: `This group contains ${groupResources.length} resource(s). Please move or delete them first.`,
-        variant: "destructive"
-      })
+      toast.error(`Cannot delete group. It contains ${groupResources.length} resource(s). Please move or delete them first.`)
       return
     }
 
     onDeleteGroup(id)
-    toast({
-      title: "Group Deleted",
-      description: `"${group?.name}" has been removed.`,
-    })
+    toast.success(`"${group?.name}" has been removed.`)
   }
 
   if (showAddForm) {

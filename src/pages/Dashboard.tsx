@@ -7,7 +7,7 @@ import { AddResourceForm } from "@/components/AddResourceForm"
 import { Resource, ResourceType } from "@/types/resource"
 import { Group } from "@/types/group"
 import { Search, Grid, List, Plus, Clock, Target, TrendingUp } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import { toast } from 'react-toastify'
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 
@@ -39,7 +39,6 @@ export function Dashboard({
   const [selectedType, setSelectedType] = useState<ResourceType | 'all'>('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
-  const { toast } = useToast()
 
   const filteredResources = resources.filter(resource => {
     const matchesType = selectedType === 'all' || resource.type === selectedType
@@ -52,16 +51,10 @@ export function Dashboard({
   const handleAddResource = (newResource: Omit<Resource, 'id' | 'createdAt' | 'updatedAt'>) => {
     if (editingResource) {
       onEditResource(editingResource.id, newResource)
-      toast({
-        title: "Resource Updated",
-        description: "Your resource has been successfully updated.",
-      })
+      toast.success("Resource updated successfully!")
     } else {
       onAddResource(newResource)
-      toast({
-        title: "Resource Added",
-        description: "Your new resource has been added successfully.",
-      })
+      toast.success("Resource added successfully!")
     }
     setShowAddForm(false)
     setEditingResource(undefined)

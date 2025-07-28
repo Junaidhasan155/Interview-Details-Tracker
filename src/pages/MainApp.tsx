@@ -260,7 +260,7 @@ export function MainApp() {
       resources={resources}
       groups={groups}
       onAddResource={() => setShowAddForm(true)}
-      onCreateGroup={() => {/* TODO: Implement create group */}}
+      onCreateGroup={() => window.location.href = '/groups'}
     >
       {renderCurrentPage()}
     </Layout>

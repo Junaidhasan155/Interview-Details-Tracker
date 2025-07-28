@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Resource } from "@/types/resource"
 import { Group } from "@/types/group"
 import { ArrowLeft, Plus, ExternalLink, Search, Grid, List } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import { toast } from 'react-toastify'
 
 interface SubjectViewProps {
   groups: Group[]
@@ -29,7 +29,6 @@ export function SubjectView({
 }: SubjectViewProps) {
   const { groupId } = useParams()
   const navigate = useNavigate()
-  const { toast } = useToast()
   
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingResource, setEditingResource] = useState<Resource | undefined>()
@@ -62,17 +61,11 @@ export function SubjectView({
   const handleAddResource = (newResource: Omit<Resource, 'id' | 'createdAt' | 'updatedAt'>) => {
     if (editingResource) {
       onEditResource(editingResource.id, { ...newResource, groupId })
-      toast({
-        title: "Resource Updated",
-        description: "Your resource has been successfully updated.",
-      })
+      toast.success("Resource updated successfully!")
       setEditingResource(undefined)
     } else {
       onAddResource({ ...newResource, groupId })
-      toast({
-        title: "Resource Added",
-        description: `Resource added to "${group.name}" successfully.`,
-      })
+      toast.success(`Resource added to "${group.name}" successfully!`)
     }
     setShowAddForm(false)
   }
@@ -85,29 +78,19 @@ export function SubjectView({
   const handleDeleteResource = (id: string) => {
     const resource = resources.find(r => r.id === id)
     onDeleteResource(id)
-    toast({
-      title: "Resource Removed",
-      description: `"${resource?.title}" has been removed from "${group.name}".`,
-    })
+    toast.success(`"${resource?.title}" has been removed from "${group.name}".`)
   }
 
   const handleStatusChange = (id: string, status: Resource['status']) => {
     onStatusChange(id, status)
     const resource = resources.find(r => r.id === id)
-    toast({
-      title: "Status Updated",
-      description: `"${resource?.title}" marked as ${status.replace('-', ' ')}.`,
-    })
+    toast.success(`"${resource?.title}" marked as ${status.replace('-', ' ')}.`)
   }
 
   const openAllLinks = () => {
     const resourcesWithUrls = groupResources.filter(r => r.url)
     if (resourcesWithUrls.length === 0) {
-      toast({
-        title: "No Links Found",
-        description: "This subject doesn't have any resources with URLs.",
-        variant: "destructive"
-      })
+      toast.error("This subject doesn't have any resources with URLs.")
       return
     }
 
@@ -117,10 +100,7 @@ export function SubjectView({
       }
     })
 
-    toast({
-      title: "Links Opened",
-      description: `Opened ${resourcesWithUrls.length} link(s) in new tabs.`,
-    })
+    toast.success(`Opened ${resourcesWithUrls.length} link(s) in new tabs.`)
   }
 
   if (showAddForm) {
