@@ -17,7 +17,7 @@ export function Layout({ children, resources, groups, onAddResource, onCreateGro
   const completedResources = resources.filter(r => r.status === 'completed').length
 
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full">
         <AppSidebar 
           onAddResource={onAddResource}
@@ -27,8 +27,9 @@ export function Layout({ children, resources, groups, onAddResource, onCreateGro
         />
         
         <div className="flex-1 flex flex-col">
-          <header className="h-12 flex items-center border-b bg-background">
-            <SidebarTrigger className="ml-2" />
+          <header className="h-12 flex items-center border-b bg-background px-4">
+            <SidebarTrigger className="mr-4" />
+            <h1 className="text-lg font-semibold">Interview Tracker</h1>
           </header>
           
           <main className="flex-1">
