@@ -28,6 +28,7 @@ import { Badge } from "@/components/ui/badge"
 const mainItems = [
   { title: "Dashboard", url: "/", icon: Home },
   { title: "Groups", url: "/groups", icon: FolderOpen },
+  { title: "AI Hub", url: "/ai", icon: TrendingUp },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
   { title: "Settings", url: "/settings", icon: Settings },
 ]

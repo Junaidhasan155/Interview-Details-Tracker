@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Layout } from "@/components/Layout"
 import { Dashboard } from "@/pages/Dashboard" 
 import { Groups } from "@/pages/Groups"
+import { AIDashboard } from "@/pages/AIDashboard"
 import { Analytics } from "@/pages/Analytics"
 import { SubjectView } from "@/pages/SubjectView"
 import { Resource } from "@/types/resource"
@@ -234,6 +235,14 @@ export function MainApp() {
             onEditGroup={handleEditGroup}
             onDeleteGroup={handleDeleteGroup}
             onViewGroup={handleViewGroup}
+          />
+        )
+      case '/ai':
+        return (
+          <AIDashboard
+            resources={resources}
+            groups={groups}
+            onEditResource={handleEditResource}
           />
         )
       case '/analytics':
