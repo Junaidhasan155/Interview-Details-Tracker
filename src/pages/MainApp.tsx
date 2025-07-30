@@ -6,7 +6,7 @@ import { Analytics } from "@/pages/Analytics"
 import { SubjectView } from "@/pages/SubjectView"
 import { Resource } from "@/types/resource"
 import { Group } from "@/types/group"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { storage } from "@/lib/storage"
 
 // Enhanced mock data
@@ -135,6 +135,7 @@ export function MainApp() {
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingResource, setEditingResource] = useState<Resource | undefined>()
   const location = useLocation()
+  const navigate = useNavigate()
 
   // Load data from localStorage on mount
   useEffect(() => {
@@ -205,7 +206,7 @@ export function MainApp() {
 
   const handleViewGroup = (group: Group) => {
     // Navigate to subject view
-    window.location.href = `/subject/${group.id}`
+    navigate(`/subject/${group.id}`)
   }
 
   const renderCurrentPage = () => {
@@ -260,7 +261,7 @@ export function MainApp() {
       resources={resources}
       groups={groups}
       onAddResource={() => setShowAddForm(true)}
-      onCreateGroup={() => window.location.href = '/groups'}
+      onCreateGroup={() => navigate('/groups')}
     >
       {renderCurrentPage()}
     </Layout>
