@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
+import { ThemeToggle } from "@/components/ThemeToggle"
+import { OfflineIndicator } from "@/components/OfflineIndicator"
 import { Resource } from "@/types/resource"
 import { Group } from "@/types/group"
 
@@ -27,9 +29,15 @@ export function Layout({ children, resources, groups, onAddResource, onCreateGro
         />
         
         <div className="flex-1 flex flex-col">
-          <header className="h-12 flex items-center border-b bg-background px-4">
-            <SidebarTrigger className="mr-4" />
-            <h1 className="text-lg font-semibold">Interview Tracker</h1>
+          <header className="h-12 flex items-center justify-between border-b bg-background px-4">
+            <div className="flex items-center gap-2">
+              <SidebarTrigger className="mr-2" />
+              <h1 className="text-lg font-semibold">Study Assistant</h1>
+            </div>
+            <div className="flex items-center gap-2">
+              <OfflineIndicator />
+              <ThemeToggle />
+            </div>
           </header>
           
           <main className="flex-1 bg-background">

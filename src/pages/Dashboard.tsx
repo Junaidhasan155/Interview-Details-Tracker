@@ -1,15 +1,18 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ResourceCard } from "@/components/ResourceCard"
 import { AddResourceForm } from "@/components/AddResourceForm"
+import { AdvancedFilters } from "@/components/AdvancedFilters"
+import { ExportImport } from "@/components/ExportImport"
 import { Resource, ResourceType } from "@/types/resource"
 import { Group } from "@/types/group"
 import { Search, Grid, List, Plus, Clock, Target, TrendingUp } from "lucide-react"
 import { toast } from 'react-toastify'
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
+import { useOfflineSync } from "@/hooks/useOfflineSync"
 
 interface DashboardProps {
   resources: Resource[]
@@ -39,14 +42,25 @@ export function Dashboard({
   const [selectedType, setSelectedType] = useState<ResourceType | 'all'>('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [filteredResources, setFilteredResources] = useState<Resource[]>(resources)
+  const { autoSave } = useOfflineSync()
 
-  const filteredResources = resources.filter(resource => {
-    const matchesType = selectedType === 'all' || resource.type === selectedType
-    const matchesSearch = resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         resource.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         resource.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-    return matchesType && matchesSearch
-  })
+  // Auto-save on changes (for offline mode)
+  useEffect(() => {
+    autoSave(resources, groups)
+  }, [resources, groups, autoSave])
+
+  // Update filtered resources when base resources change
+  useEffect(() => {
+    const filtered = resources.filter(resource => {
+      const matchesType = selectedType === 'all' || resource.type === selectedType
+      const matchesSearch = resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           resource.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           resource.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+      return matchesType && matchesSearch
+    })
+    setFilteredResources(filtered)
+  }, [resources, selectedType, searchQuery])
 
   const handleAddResource = (newResource: Omit<Resource, 'id' | 'createdAt' | 'updatedAt'>) => {
     if (editingResource) {
@@ -63,6 +77,11 @@ export function Dashboard({
   const handleEditResource = (resource: Resource) => {
     setEditingResource(resource)
     setShowAddForm(true)
+  }
+
+  const handleImportResources = (importedResources: Resource[]) => {
+    importedResources.forEach(resource => onAddResource(resource))
+    toast.success(`Imported ${importedResources.length} resources successfully!`)
   }
 
   // Quick stats
@@ -101,10 +120,17 @@ export function Dashboard({
             Track your interview preparation progress
           </p>
         </div>
-        <Button onClick={() => setShowAddForm(true)} className="bg-gradient-primary">
-          <Plus className="h-4 w-4 mr-2" />
-          Add Resource
-        </Button>
+        <div className="flex gap-2">
+          <ExportImport 
+            resources={resources}
+            groups={groups}
+            onImportResources={handleImportResources}
+          />
+          <Button onClick={() => setShowAddForm(true)} className="bg-gradient-primary">
+            <Plus className="h-4 w-4 mr-2" />
+            Add Resource
+          </Button>
+        </div>
       </div>
 
       {/* Quick Stats */}
@@ -160,33 +186,31 @@ export function Dashboard({
         </Card>
       </div>
 
-      {/* Filters and Search */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search resources..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
-          />
-        </div>
-        <div className="flex items-center gap-2">
-          <Button
-            variant={viewMode === 'grid' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setViewMode('grid')}
-          >
-            <Grid className="h-4 w-4" />
-          </Button>
-          <Button
-            variant={viewMode === 'list' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setViewMode('list')}
-          >
-            <List className="h-4 w-4" />
-          </Button>
-        </div>
+      {/* Advanced Filters */}
+      <div className="mb-6">
+        <AdvancedFilters
+          resources={resources}
+          groups={groups}
+          onFilteredResults={setFilteredResources}
+        />
+      </div>
+
+      {/* View Controls */}
+      <div className="flex justify-end gap-2 mb-4">
+        <Button
+          variant={viewMode === 'grid' ? 'default' : 'outline'}
+          size="sm"
+          onClick={() => setViewMode('grid')}
+        >
+          <Grid className="h-4 w-4" />
+        </Button>
+        <Button
+          variant={viewMode === 'list' ? 'default' : 'outline'}
+          size="sm"
+          onClick={() => setViewMode('list')}
+        >
+          <List className="h-4 w-4" />
+        </Button>
       </div>
 
       {/* Type Filter Buttons */}

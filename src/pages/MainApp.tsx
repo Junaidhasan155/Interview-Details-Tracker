@@ -149,7 +149,7 @@ export function MainApp() {
 
   // Save to localStorage whenever data changes
   useEffect(() => {
-    if (resources.length > 0 || groups.length > 0) {
+    if (resources.length > 0) {
       storage.setResources(resources)
     }
   }, [resources])
