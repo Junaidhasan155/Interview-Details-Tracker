@@ -7,7 +7,8 @@ import {
   Plus,
   Target,
   BookOpen,
-  TrendingUp
+  TrendingUp,
+  Mic
 } from "lucide-react"
 
 import {
@@ -29,6 +30,7 @@ const mainItems = [
   { title: "Dashboard", url: "/", icon: Home },
   { title: "Groups", url: "/groups", icon: FolderOpen },
   { title: "AI Hub", url: "/ai", icon: TrendingUp },
+  { title: "Interview Sim", url: "/interview", icon: Mic },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
   { title: "Settings", url: "/settings", icon: Settings },
 ]

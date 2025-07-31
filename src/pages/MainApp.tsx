@@ -5,6 +5,7 @@ import { Groups } from "@/pages/Groups"
 import { AIDashboard } from "@/pages/AIDashboard"
 import { Analytics } from "@/pages/Analytics"
 import { SubjectView } from "@/pages/SubjectView"
+import { InterviewSimulator } from "@/components/InterviewSimulator"
 import { Resource } from "@/types/resource"
 import { Group } from "@/types/group"
 import { useLocation, useNavigate } from "react-router-dom"
@@ -245,6 +246,8 @@ export function MainApp() {
             onEditResource={handleEditResource}
           />
         )
+      case '/interview':
+        return <InterviewSimulator />
       case '/analytics':
         return <Analytics resources={resources} groups={groups} />
       default:
