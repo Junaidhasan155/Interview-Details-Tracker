@@ -32,7 +32,7 @@ export function Layout({ children, resources, groups, onAddResource, onCreateGro
             <h1 className="text-lg font-semibold">Interview Tracker</h1>
           </header>
           
-          <main className="flex-1">
+          <main className="flex-1 bg-background">
             {children}
           </main>
         </div>

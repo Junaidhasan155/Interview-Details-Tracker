@@ -53,7 +53,7 @@ export function AppSidebar({ onAddResource, onCreateGroup, totalResources, compl
   const isCollapsed = state === "collapsed"
 
   return (
-    <Sidebar className={isCollapsed ? "w-14" : "w-64"}>
+    <Sidebar className={isCollapsed ? "w-14" : "w-64"} collapsible="icon">
       <SidebarHeader className="border-b border-sidebar-border p-4">
         {!isCollapsed ? (
           <div className="space-y-2">
