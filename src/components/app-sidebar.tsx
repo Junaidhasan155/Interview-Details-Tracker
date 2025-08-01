@@ -49,7 +49,7 @@ export function AppSidebar({ onAddResource, onCreateGroup, totalResources, compl
 
   const isActive = (path: string) => currentPath === path
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "bg-primary text-primary-foreground font-medium" : "hover:bg-accent"
+    isActive ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium" : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
 
   const completionRate = totalResources > 0 ? Math.round((completedResources / totalResources) * 100) : 0
   const isCollapsed = state === "collapsed"
@@ -112,13 +112,13 @@ export function AppSidebar({ onAddResource, onCreateGroup, totalResources, compl
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton onClick={onAddResource} className="hover:bg-accent">
+                <SidebarMenuButton onClick={onAddResource} className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                   <Plus className="mr-2 h-4 w-4" />
                   {!isCollapsed && <span>Add Resource</span>}
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton onClick={onCreateGroup} className="hover:bg-accent">
+                <SidebarMenuButton onClick={onCreateGroup} className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                   <Target className="mr-2 h-4 w-4" />
                   {!isCollapsed && <span>Create Group</span>}
                 </SidebarMenuButton>
