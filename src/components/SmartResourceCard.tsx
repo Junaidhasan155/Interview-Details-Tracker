@@ -157,7 +157,7 @@ export function SmartResourceCard({ resource, onUpdate }: SmartResourceCardProps
   };
 
   return (
-    <Card className="relative overflow-hidden transition-all duration-200 hover:shadow-lg">
+    <Card className="relative overflow-hidden transition-all duration-200 hover:shadow-lg bg-gradient-to-br from-card to-card/80 border-border/50">
       {/* AI Feature Indicator */}
       <div className="absolute top-2 right-2">
         <Badge variant="outline" className="text-xs bg-gradient-primary text-white border-none">
@@ -278,7 +278,7 @@ export function SmartResourceCard({ resource, onUpdate }: SmartResourceCardProps
         )}
 
         {/* Progress and Time Info */}
-        <div className="grid grid-cols-2 gap-4 text-xs text-muted-foreground">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-xs text-muted-foreground">
           {resource.timeSpent && (
             <div>
               <span className="font-medium">Time Spent:</span> {Math.round(resource.timeSpent / 60)}h

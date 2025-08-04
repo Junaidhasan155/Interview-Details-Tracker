@@ -111,22 +111,22 @@ export function Dashboard({
   }
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <div className="container mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold">Dashboard</h1>
           <p className="text-muted-foreground">
             Track your interview preparation progress
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <ExportImport 
             resources={resources}
             groups={groups}
             onImportResources={handleImportResources}
           />
-          <Button onClick={() => setShowAddForm(true)} className="bg-gradient-primary">
+          <Button onClick={() => setShowAddForm(true)} className="bg-gradient-primary w-full sm:w-auto">
             <Plus className="h-4 w-4 mr-2" />
             Add Resource
           </Button>
@@ -134,8 +134,8 @@ export function Dashboard({
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="shadow-card">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Card className="shadow-card bg-gradient-to-br from-card to-card/80 border-border/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Resources</CardTitle>
             <Target className="h-4 w-4 text-muted-foreground" />
@@ -148,7 +148,7 @@ export function Dashboard({
           </CardContent>
         </Card>
 
-        <Card className="shadow-card">
+        <Card className="shadow-card bg-gradient-to-br from-card to-card/80 border-border/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Completion Rate</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -159,7 +159,7 @@ export function Dashboard({
           </CardContent>
         </Card>
 
-        <Card className="shadow-card">
+        <Card className="shadow-card bg-gradient-to-br from-card to-card/80 border-border/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">In Progress</CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
@@ -172,7 +172,7 @@ export function Dashboard({
           </CardContent>
         </Card>
 
-        <Card className="shadow-card">
+        <Card className="shadow-card bg-gradient-to-br from-card to-card/80 border-border/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">High Priority</CardTitle>
             <Target className="h-4 w-4 text-destructive" />
@@ -245,7 +245,7 @@ export function Dashboard({
         </div>
       ) : (
         <div className={viewMode === 'grid' ? 
-          'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 
+          'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6' : 
           'space-y-4'
         }>
           {filteredResources.map((resource) => (

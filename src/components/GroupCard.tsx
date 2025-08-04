@@ -48,7 +48,7 @@ export function GroupCard({ group, resources, onEdit, onDelete, onViewGroup }: G
 
   return (
     <Card 
-      className={`bg-gradient-card shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 cursor-pointer ${
+      className={`bg-gradient-to-br from-card to-card/80 shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 cursor-pointer border-border/50 ${
         isOverdue ? 'border-destructive/50' : ''
       }`}
       onClick={() => onViewGroup(group)}
@@ -120,7 +120,7 @@ export function GroupCard({ group, resources, onEdit, onDelete, onViewGroup }: G
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-sm">
             {group.dueDate && (
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4 text-muted-foreground" />

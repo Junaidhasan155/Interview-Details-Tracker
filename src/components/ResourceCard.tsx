@@ -56,7 +56,7 @@ export function ResourceCard({ resource, onEdit, onDelete, onStatusChange }: Res
   }
 
   return (
-    <Card className="bg-gradient-card shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1">
+    <Card className="bg-gradient-to-br from-card to-card/80 shadow-card hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 border-border/50">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">
