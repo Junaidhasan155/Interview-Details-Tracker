@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { supabase } from '@/lib/supabase';
 import { User, Session } from '@supabase/supabase-js';
-import { toast } from 'react-toastify';
+import { toast } from 'sonner';
 
 interface AuthContextType {
   user: User | null;
@@ -64,28 +64,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email,
         password,
         options: {
-          data: userData
+          data: userData,
+          emailRedirectTo: `${window.location.origin}/`
         }
       });
 
       if (error) throw error;
-
-      // Create user profile
-      if (data.user) {
-        const { error: profileError } = await supabase
-          .from('profiles')
-          .insert([
-            {
-              id: data.user.id,
-              email: data.user.email,
-              ...userData,
-              created_at: new Date().toISOString(),
-              updated_at: new Date().toISOString()
-            }
-          ]);
-
-        if (profileError) throw profileError;
-      }
 
       toast.success('Account created successfully! Please check your email to verify your account.');
     } catch (error: any) {
