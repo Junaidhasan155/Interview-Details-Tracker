@@ -64,6 +64,7 @@ interface StudySession {
 
 export function PersonalDashboard() {
   const { user, signOut } = useAuth();
+  const navigate = useNavigate();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editForm, setEditForm] = useState({
@@ -73,6 +74,22 @@ export function PersonalDashboard() {
     school: ''
   });
   const [loading, setLoading] = useState(true);
+  const [goals, setGoals] = useState<StudyGoal[]>([]);
+  const [recentSessions, setRecentSessions] = useState<StudySession[]>([]);
+  const [showNewGoal, setShowNewGoal] = useState(false);
+  const [showNewSession, setShowNewSession] = useState(false);
+  const [newGoal, setNewGoal] = useState({
+    title: '',
+    description: '',
+    target_hours: 10,
+    deadline: ''
+  });
+  const [newSession, setNewSession] = useState({
+    title: '',
+    subject: '',
+    duration: 60,
+    notes: ''
+  });
 
   useEffect(() => {
     if (user) {
