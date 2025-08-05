@@ -429,32 +429,32 @@ export function PersonalDashboard() {
                   <div className="flex items-center space-x-2">
                     <Target className="h-8 w-8 text-primary" />
                     <div>
-                      <p className="text-2xl font-bold">0</p>
+                      <p className="text-2xl font-bold">{goals.filter(g => g.status === 'active').length}</p>
                       <p className="text-sm text-muted-foreground">Active Goals</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card className="bg-gradient-to-br from-card to-card/80 border-border/50">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-2">
-                    <BookOpen className="h-8 w-8 text-primary" />
+                    <Clock className="h-8 w-8 text-primary" />
                     <div>
-                      <p className="text-2xl font-bold">0</p>
-                      <p className="text-sm text-muted-foreground">Study Sessions</p>
+                      <p className="text-2xl font-bold">{totalStudyHours.toFixed(1)}h</p>
+                      <p className="text-sm text-muted-foreground">Study Hours</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-              
+
               <Card className="bg-gradient-to-br from-card to-card/80 border-border/50">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="h-8 w-8 text-primary" />
                     <div>
-                      <p className="text-2xl font-bold">0%</p>
-                      <p className="text-sm text-muted-foreground">Progress</p>
+                      <p className="text-2xl font-bold">{progressPercentage.toFixed(0)}%</p>
+                      <p className="text-sm text-muted-foreground">Goals Completed</p>
                     </div>
                   </div>
                 </CardContent>
