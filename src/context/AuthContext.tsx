@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signUp = async (email: string, password: string, userData: UserProfile) => {
     try {
       setLoading(true);
-      
+
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -72,7 +72,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (error) throw error;
 
-      toast.success('Account created successfully! Please check your email to verify your account.');
+      // Check if user needs email confirmation or was auto-confirmed
+      if (data.user && !data.session) {
+        toast.success('Account created successfully! Please check your email to verify your account before signing in.');
+      } else if (data.user && data.session) {
+        toast.success('Account created and signed in successfully!');
+      } else {
+        toast.success('Account created successfully!');
+      }
     } catch (error: any) {
       toast.error(error.message || 'Failed to create account');
       throw error;
