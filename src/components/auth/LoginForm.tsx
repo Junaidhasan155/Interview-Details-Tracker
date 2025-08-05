@@ -42,8 +42,15 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
       setLastAttemptCredentials({ email: data.email, password: data.password });
       await signIn(data.email, data.password);
     } catch (error: any) {
+      console.log('LoginForm caught error:', error.message);
+
       if (error.message === 'UNCONFIRMED_EMAIL') {
         // Show the confirmation modal instead of an error toast
+        console.log('Showing confirmation modal for unconfirmed email');
+        setShowConfirmationModal(true);
+      } else if (error.message.includes('Invalid email or password') && error.message.includes('email confirmation')) {
+        // Backup check for confirmation-related errors
+        console.log('Backup check: showing confirmation modal for credentials error');
         setShowConfirmationModal(true);
       }
       // Other errors are handled in AuthContext
