@@ -170,17 +170,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const resendVerification = async (email: string) => {
     try {
       setLoading(true);
+
+      console.log('Attempting to resend verification email to:', email);
+
       const { error } = await supabase.auth.resend({
         type: 'signup',
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/`
+          emailRedirectTo: `${window.location.origin}/auth/callback`
         }
       });
 
-      if (error) throw error;
-      toast.success('Verification email sent! Please check your inbox.');
+      console.log('Resend verification response:', { error });
+
+      if (error) {
+        console.error('Resend verification error:', error);
+        if (error.message.includes('rate limit')) {
+          throw new Error('Too many verification emails sent. Please wait a few minutes before trying again.');
+        }
+        throw error;
+      }
+
+      toast.success('Verification email sent! Please check your inbox and spam folder. The email may take a few minutes to arrive.');
     } catch (error: any) {
+      console.error('Resend verification failed:', error);
       toast.error(error.message || 'Failed to send verification email');
       throw error;
     } finally {
