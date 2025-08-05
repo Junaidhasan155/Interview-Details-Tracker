@@ -11,6 +11,7 @@ interface AuthContextType {
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
   updateProfile: (updates: Partial<UserProfile>) => Promise<void>;
+  forceConfirmUser: (email: string, password: string) => Promise<void>;
 }
 
 interface UserProfile {
