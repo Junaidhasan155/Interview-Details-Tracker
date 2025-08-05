@@ -55,22 +55,64 @@ export function PersonalDashboard() {
 
   const fetchProfile = async () => {
     try {
+      // First try to get from profiles table
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user?.id)
         .single();
 
-      if (error) throw error;
-      setProfile(data);
-      setEditForm({
-        full_name: data.full_name || '',
-        role: data.role || '',
-        class: data.class || '',
-        school: data.school || ''
-      });
+      if (data) {
+        setProfile(data);
+        setEditForm({
+          full_name: data.full_name || '',
+          role: data.role || '',
+          class: data.class || '',
+          school: data.school || ''
+        });
+      } else {
+        // If no profile exists, create one from user metadata
+        const userProfile = {
+          id: user?.id || '',
+          email: user?.email || '',
+          full_name: user?.user_metadata?.full_name || '',
+          role: user?.user_metadata?.current_position || '',
+          class: user?.user_metadata?.experience_years || '',
+          school: user?.user_metadata?.industry || '',
+          avatar_url: user?.user_metadata?.avatar_url || '',
+          created_at: user?.created_at || new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        };
+
+        setProfile(userProfile);
+        setEditForm({
+          full_name: userProfile.full_name,
+          role: userProfile.role,
+          class: userProfile.class,
+          school: userProfile.school
+        });
+      }
     } catch (error: any) {
-      toast.error('Failed to load profile');
+      // If profiles table doesn't exist, fall back to user metadata
+      const userProfile = {
+        id: user?.id || '',
+        email: user?.email || '',
+        full_name: user?.user_metadata?.full_name || '',
+        role: user?.user_metadata?.current_position || '',
+        class: user?.user_metadata?.experience_years || '',
+        school: user?.user_metadata?.industry || '',
+        avatar_url: user?.user_metadata?.avatar_url || '',
+        created_at: user?.created_at || new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      };
+
+      setProfile(userProfile);
+      setEditForm({
+        full_name: userProfile.full_name,
+        role: userProfile.role,
+        class: userProfile.class,
+        school: userProfile.school
+      });
     } finally {
       setLoading(false);
     }
