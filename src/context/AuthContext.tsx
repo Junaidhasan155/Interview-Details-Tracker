@@ -126,8 +126,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           console.log('Email not confirmed error detected');
           throw new Error('UNCONFIRMED_EMAIL');
         } else if (error.message.includes('Invalid login credentials')) {
-          console.log('Invalid credentials error - might be due to unconfirmed email');
-          throw new Error('Invalid email or password. If you just created this account, it may need email confirmation.');
+          console.log('Invalid credentials error - treating as unconfirmed email');
+          // Most "Invalid login credentials" errors for just-created accounts are due to unconfirmed email
+          throw new Error('UNCONFIRMED_EMAIL');
         } else if (error.message.includes('Too many requests')) {
           throw new Error('Too many login attempts. Please wait a moment before trying again.');
         } else {
