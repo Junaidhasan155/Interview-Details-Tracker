@@ -86,9 +86,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           metadata: data.user.user_metadata
         });
 
-        // If user has a session, sign them out so they need to login manually
+        // If user has a session, immediately clear auth state to prevent dashboard flash
         if (data.session) {
-          console.log('User auto-confirmed, but signing out to require manual login');
+          console.log('User auto-confirmed, clearing auth state to prevent dashboard flash');
+          // Immediately clear local auth state
+          setUser(null);
+          setSession(null);
+          // Then sign out from Supabase
           await supabase.auth.signOut();
           toast.success('Account created successfully! Please sign in with your credentials.');
         } else {
