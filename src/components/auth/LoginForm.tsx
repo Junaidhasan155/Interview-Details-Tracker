@@ -87,16 +87,7 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
     }
   };
 
-  const handleDemoLogin = async () => {
-    try {
-      setIsLoading(true);
-      await demoLogin();
-    } catch (error) {
-      // Error is handled in AuthContext
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
 
   return (
     <Card className="w-full max-w-md mx-auto bg-gradient-to-br from-card to-card/80 border-border/50">
