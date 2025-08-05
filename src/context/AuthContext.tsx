@@ -15,9 +15,10 @@ interface AuthContextType {
 
 interface UserProfile {
   full_name: string;
-  role?: string;
-  class?: string;
-  school?: string;
+  current_position?: string;
+  industry?: string;
+  experience_years?: string;
+  target_role?: string;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

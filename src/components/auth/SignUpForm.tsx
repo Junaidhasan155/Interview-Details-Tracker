@@ -15,9 +15,10 @@ const signUpSchema = z.object({
   password: z.string().min(6, 'Password must be at least 6 characters'),
   confirmPassword: z.string(),
   full_name: z.string().min(2, 'Full name must be at least 2 characters'),
-  role: z.string().optional(),
-  class: z.string().optional(),
-  school: z.string().optional()
+  current_position: z.string().optional(),
+  industry: z.string().optional(),
+  experience_years: z.string().optional(),
+  target_role: z.string().optional()
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
   path: ["confirmPassword"]
@@ -42,9 +43,10 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
       password: '',
       confirmPassword: '',
       full_name: '',
-      role: '',
-      class: '',
-      school: ''
+      current_position: '',
+      industry: '',
+      experience_years: '',
+      target_role: ''
     }
   });
 
@@ -54,9 +56,10 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
       const { confirmPassword, ...userData } = data;
       await signUp(data.email, data.password, {
         full_name: userData.full_name,
-        role: userData.role,
-        class: userData.class,
-        school: userData.school
+        current_position: userData.current_position,
+        industry: userData.industry,
+        experience_years: userData.experience_years,
+        target_role: userData.target_role
       });
     } catch (error) {
       // Error is handled in AuthContext
@@ -115,26 +118,21 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
               )}
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <FormField
                 control={form.control}
-                name="role"
+                name="current_position"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Role</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isLoading}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select role" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="student">Student</SelectItem>
-                        <SelectItem value="teacher">Teacher</SelectItem>
-                        <SelectItem value="professional">Professional</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <FormLabel>Current Position</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="e.g. Software Engineer, Product Manager"
+                        {...field}
+                        disabled={isLoading}
+                        className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
+                      />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -142,13 +140,13 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
 
               <FormField
                 control={form.control}
-                name="class"
+                name="industry"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Class/Grade</FormLabel>
+                    <FormLabel>Industry</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="12th Grade"
+                        placeholder="e.g. Technology, Healthcare, Finance"
                         {...field}
                         disabled={isLoading}
                         className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
@@ -160,24 +158,45 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
               />
             </div>
 
-            <FormField
-              control={form.control}
-              name="school"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>School/Institution</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Your school or institution"
-                      {...field}
-                      disabled={isLoading}
-                      className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="experience_years"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Years of Experience</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="e.g. 3-5 years"
+                        {...field}
+                        disabled={isLoading}
+                        className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="target_role"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Target Role</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="e.g. Senior Developer, Team Lead"
+                        {...field}
+                        disabled={isLoading}
+                        className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
 
             <FormField
               control={form.control}
