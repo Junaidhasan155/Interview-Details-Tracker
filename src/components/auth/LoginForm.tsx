@@ -41,10 +41,12 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
   const onSubmit = async (data: LoginFormData) => {
     try {
       setIsLoading(true);
+      setLastError(''); // Clear previous errors
       setLastAttemptCredentials({ email: data.email, password: data.password });
       await signIn(data.email, data.password);
     } catch (error: any) {
       console.log('LoginForm caught error:', error.message);
+      setLastError(error.message);
 
       if (error.message === 'UNCONFIRMED_EMAIL') {
         // Show the confirmation modal instead of an error toast
