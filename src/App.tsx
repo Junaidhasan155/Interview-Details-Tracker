@@ -84,6 +84,11 @@ const App = () => (
                   <MainApp />
                 </ProtectedRoute>
               } />
+              <Route path="/debug/email" element={
+                <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center p-4">
+                  <EmailDebug />
+                </div>
+              } />
               <Route path="/404" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
