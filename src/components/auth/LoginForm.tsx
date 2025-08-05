@@ -24,6 +24,8 @@ interface LoginFormProps {
 export function LoginForm({ onToggleMode }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [lastAttemptCredentials, setLastAttemptCredentials] = useState({ email: '', password: '' });
   const { signIn } = useAuth();
 
   const form = useForm<LoginFormData>({
