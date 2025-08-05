@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useAuth } from '@/context/AuthContext';
 import { EmailConfirmationModal } from '@/components/EmailConfirmationModal';
+import { QuickDebugInfo } from '@/components/QuickDebugInfo';
 import { Eye, EyeOff, LogIn, Loader } from 'lucide-react';
 
 const loginSchema = z.object({
