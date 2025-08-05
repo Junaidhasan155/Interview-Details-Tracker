@@ -199,39 +199,52 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       console.log('Attempting force confirmation for:', email);
 
-      // This is a workaround - we'll create a new signup with the same credentials
-      // but this time we'll try to auto-confirm using the admin API
+      // Strategy 1: Try to sign in again (sometimes works after a delay)
+      console.log('Strategy 1: Retry sign in...');
+      const { data: retryData, error: retryError } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
 
-      // First, try to sign up again (this might auto-confirm or give us user info)
-      const { data, error } = await supabase.auth.signUp({
+      if (retryData.session) {
+        console.log('Retry successful!');
+        toast.success('Successfully signed in! (Retry worked)');
+        return;
+      }
+
+      // Strategy 2: Create a new signup to trigger confirmation
+      console.log('Strategy 2: Re-signup to trigger confirmation...');
+      const { data: signupData, error: signupError } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: {
             full_name: 'Auto Confirmed User',
-            confirmed_at: new Date().toISOString()
+            confirmed_at: new Date().toISOString(),
+            force_confirm: true
           }
         }
       });
 
-      console.log('Force confirmation response:', { data, error });
+      console.log('Re-signup response:', { signupData, signupError });
 
-      if (error && !error.message.includes('already registered')) {
-        throw error;
-      }
-
-      // Now try to sign in again
-      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+      // Strategy 3: Try signing in one more time
+      console.log('Strategy 3: Final sign in attempt...');
+      const { data: finalData, error: finalError } = await supabase.auth.signInWithPassword({
         email,
         password
       });
 
-      if (signInError) {
-        throw new Error('Account exists but still requires manual confirmation in Supabase dashboard.');
+      if (finalData.session) {
+        console.log('Final attempt successful!');
+        toast.success('Successfully confirmed and signed in!');
+        return;
       }
 
-      if (signInData.session) {
-        toast.success('Successfully confirmed and signed in!');
+      // If all strategies fail, show helpful message
+      if (finalError) {
+        console.log('All strategies failed:', finalError.message);
+        throw new Error('Auto-confirmation failed. Please disable email confirmation in your Supabase dashboard: Authentication → Settings → "Enable email confirmations" = OFF');
       }
 
     } catch (error: any) {
