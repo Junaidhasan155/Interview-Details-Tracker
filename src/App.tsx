@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { PersonalDashboard } from "./pages/PersonalDashboard";
+import { MainApp } from "./pages/MainApp";
 import NotFound from "./pages/NotFound";
 import { useTheme } from "@/hooks/useTheme";
 import { useEffect } from "react";
