@@ -38,12 +38,8 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
     try {
       setIsLoading(true);
       await signIn(data.email, data.password);
-    } catch (error: any) {
-      // If it's an email verification error, offer to resend
-      if (error.message.includes('verify your email') || error.message.includes('Email not confirmed')) {
-        // Auto-fill the email for easier resend
-        setForgotEmail(data.email);
-      }
+    } catch (error) {
+      // Error is handled in AuthContext
     } finally {
       setIsLoading(false);
     }
