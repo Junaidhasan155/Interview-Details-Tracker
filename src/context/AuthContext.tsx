@@ -252,7 +252,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     signOut,
     updateProfile,
     resendVerification,
-    resetPassword
+    resetPassword,
+    demoLogin
   };
 
   return (
