@@ -20,6 +20,7 @@ interface LayoutProps {
 export function Layout({ children, resources, groups, onAddResource, onCreateGroup }: LayoutProps) {
   const totalResources = resources.length
   const completedResources = resources.filter(r => r.status === 'completed').length
+  const { signOut } = useAuth()
 
   return (
     <SidebarProvider defaultOpen={true}>
