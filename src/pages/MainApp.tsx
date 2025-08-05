@@ -144,8 +144,17 @@ export function MainApp() {
   useEffect(() => {
     const storedResources = storage.getResources()
     const storedGroups = storage.getGroups()
-    setResources(storedResources)
-    setGroups(storedGroups)
+
+    // If no stored data, initialize with sample data for new users
+    if (storedResources.length === 0 && storedGroups.length === 0) {
+      setResources(mockResources)
+      setGroups(mockGroups)
+      storage.setResources(mockResources)
+      storage.setGroups(mockGroups)
+    } else {
+      setResources(storedResources)
+      setGroups(storedGroups)
+    }
   }, [])
 
   // Save to localStorage whenever data changes
