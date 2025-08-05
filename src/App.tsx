@@ -9,6 +9,7 @@ import { PersonalDashboard } from "./pages/PersonalDashboard";
 import { MainApp } from "./pages/MainApp";
 import { AuthDebug } from "./components/AuthDebug";
 import { QuickAuthFix } from "./components/QuickAuthFix";
+import { AdminPanel } from "./components/AdminPanel";
 import NotFound from "./pages/NotFound";
 import { useTheme } from "@/hooks/useTheme";
 import { useEffect } from "react";
