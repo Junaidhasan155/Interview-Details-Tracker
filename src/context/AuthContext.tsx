@@ -63,26 +63,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setLoading(true);
 
+      console.log('Attempting to sign up with email:', email);
+
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: userData,
-          emailRedirectTo: `${window.location.origin}/`
+          emailRedirectTo: `${window.location.origin}/auth/callback`
         }
       });
 
-      if (error) throw error;
+      console.log('Signup response:', { data, error });
+
+      if (error) {
+        console.error('Signup error:', error);
+        throw error;
+      }
 
       // Check if user needs email confirmation or was auto-confirmed
       if (data.user && !data.session) {
-        toast.success('Account created successfully! Please check your email to verify your account before signing in.');
+        console.log('User created, email verification required');
+        toast.success('Account created! Please check your email (including spam folder) to verify your account. The verification email may take a few minutes to arrive.');
       } else if (data.user && data.session) {
+        console.log('User created and auto-signed in');
         toast.success('Account created and signed in successfully!');
       } else {
+        console.log('Unexpected signup result');
         toast.success('Account created successfully!');
       }
     } catch (error: any) {
+      console.error('Signup failed:', error);
       toast.error(error.message || 'Failed to create account');
       throw error;
     } finally {
