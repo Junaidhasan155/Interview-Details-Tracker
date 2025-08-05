@@ -61,6 +61,9 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
         experience_years: userData.experience_years,
         target_role: userData.target_role
       });
+
+      // Clear form on successful signup
+      form.reset();
     } catch (error) {
       // Error is handled in AuthContext
     } finally {
