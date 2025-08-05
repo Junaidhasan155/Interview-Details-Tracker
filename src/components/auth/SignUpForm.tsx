@@ -62,8 +62,9 @@ export function SignUpForm({ onToggleMode }: SignUpFormProps) {
         target_role: userData.target_role
       });
 
-      // Clear form on successful signup
+      // Clear form and switch to login mode on successful signup
       form.reset();
+      onToggleMode(); // Switch to login page
     } catch (error) {
       // Error is handled in AuthContext
     } finally {
