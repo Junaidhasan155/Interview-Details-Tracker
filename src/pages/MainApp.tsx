@@ -251,6 +251,8 @@ export function MainApp() {
         return <InterviewSimulator />
       case '/analytics':
         return <Analytics resources={resources} groups={groups} />
+      case '/settings':
+        return <Settings />
       default:
         return (
           <Dashboard
