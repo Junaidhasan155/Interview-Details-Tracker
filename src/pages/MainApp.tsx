@@ -271,11 +271,19 @@ export function MainApp() {
     }
   }
 
+  const handleAddResourceClick = () => {
+    // Navigate to dashboard and show add form
+    if (location.pathname !== '/') {
+      navigate('/');
+    }
+    setShowAddForm(true);
+  };
+
   return (
     <Layout
       resources={resources}
       groups={groups}
-      onAddResource={() => setShowAddForm(true)}
+      onAddResource={handleAddResourceClick}
       onCreateGroup={() => navigate('/groups')}
     >
       {renderCurrentPage()}
