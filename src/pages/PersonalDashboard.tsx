@@ -194,6 +194,70 @@ export function PersonalDashboard() {
     }
   };
 
+  const addGoal = () => {
+    if (!newGoal.title.trim()) return;
+
+    const goal: StudyGoal = {
+      id: Date.now().toString(),
+      title: newGoal.title,
+      description: newGoal.description,
+      target_hours: newGoal.target_hours,
+      current_hours: 0,
+      deadline: newGoal.deadline,
+      status: 'active',
+      created_at: new Date().toISOString()
+    };
+
+    setGoals(prev => [goal, ...prev]);
+    setNewGoal({ title: '', description: '', target_hours: 10, deadline: '' });
+    setShowNewGoal(false);
+    toast.success('Goal created successfully!');
+  };
+
+  const addStudySession = () => {
+    if (!newSession.title.trim() || !newSession.subject.trim()) return;
+
+    const session: StudySession = {
+      id: Date.now().toString(),
+      title: newSession.title,
+      subject: newSession.subject,
+      duration: newSession.duration,
+      notes: newSession.notes,
+      completed_at: new Date().toISOString()
+    };
+
+    setRecentSessions(prev => [session, ...prev.slice(0, 4)]);
+
+    // Update goal progress if there's a matching goal
+    setGoals(prev => prev.map(goal => {
+      if (goal.title.toLowerCase().includes(newSession.subject.toLowerCase()) ||
+          newSession.subject.toLowerCase().includes(goal.title.toLowerCase())) {
+        return {
+          ...goal,
+          current_hours: goal.current_hours + (newSession.duration / 60)
+        };
+      }
+      return goal;
+    }));
+
+    setNewSession({ title: '', subject: '', duration: 60, notes: '' });
+    setShowNewSession(false);
+    toast.success('Study session recorded!');
+  };
+
+  const deleteGoal = (id: string) => {
+    setGoals(prev => prev.filter(goal => goal.id !== id));
+    toast.success('Goal deleted!');
+  };
+
+  const toggleGoalStatus = (id: string) => {
+    setGoals(prev => prev.map(goal =>
+      goal.id === id
+        ? { ...goal, status: goal.status === 'completed' ? 'active' : 'completed' }
+        : goal
+    ));
+  };
+
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -202,6 +266,10 @@ export function PersonalDashboard() {
       .toUpperCase()
       .slice(0, 2);
   };
+
+  const totalStudyHours = recentSessions.reduce((total, session) => total + session.duration, 0) / 60;
+  const completedGoals = goals.filter(goal => goal.status === 'completed').length;
+  const progressPercentage = goals.length > 0 ? (completedGoals / goals.length) * 100 : 0;
 
   if (loading) {
     return (
