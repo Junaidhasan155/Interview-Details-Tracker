@@ -61,6 +61,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setLoading(true);
 
+      console.log('Starting signup with data:', { email, userData });
+
       // First create the account
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -70,25 +72,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       });
 
+      console.log('Signup response:', { data, error });
+
       if (error) throw error;
 
-      // If signup successful, immediately sign in
+      // Check if user was created
       if (data.user) {
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-          email,
-          password
+        console.log('User created:', {
+          id: data.user.id,
+          email: data.user.email,
+          emailConfirmed: data.user.email_confirmed_at,
+          metadata: data.user.user_metadata
         });
 
-        if (signInError) {
-          // If auto sign-in fails, show success message for manual sign-in
-          toast.success('Account created successfully! You can now sign in with your credentials.');
-        } else {
+        // If user has a session, they're auto-confirmed
+        if (data.session) {
+          console.log('User auto-confirmed with session');
           toast.success('Account created and signed in successfully!');
+        } else {
+          console.log('User created but no session - email confirmation required');
+          toast.success('Account created! If you have issues signing in, your Supabase project may require email confirmation. Check your Supabase settings.');
         }
       } else {
         toast.success('Account created successfully!');
       }
     } catch (error: any) {
+      console.error('Signup error:', error);
       toast.error(error.message || 'Failed to create account');
       throw error;
     } finally {
