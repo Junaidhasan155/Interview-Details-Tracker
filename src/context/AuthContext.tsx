@@ -199,42 +199,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setLoading(true);
 
-      // Try to sign in with demo credentials first
-      const { data, error } = await supabase.auth.signInWithPassword({
+      // Create a mock user object for demo purposes
+      const mockUser = {
+        id: 'demo-user-id',
         email: 'demo@example.com',
-        password: 'demo123456'
-      });
+        user_metadata: {
+          full_name: 'Demo User',
+          current_position: 'Student',
+          industry: 'Technology',
+          experience_years: '1-2 years',
+          target_role: 'Developer'
+        },
+        created_at: new Date().toISOString(),
+        app_metadata: {},
+        aud: 'authenticated'
+      } as User;
 
-      if (error && error.message.includes('Invalid login credentials')) {
-        // If demo user doesn't exist, create it
-        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-          email: 'demo@example.com',
-          password: 'demo123456',
-          options: {
-            data: {
-              full_name: 'Demo User',
-              current_position: 'Student',
-              industry: 'Technology',
-              experience_years: '1-2 years',
-              target_role: 'Developer'
-            }
-          }
-        });
+      const mockSession = {
+        access_token: 'mock-access-token',
+        refresh_token: 'mock-refresh-token',
+        expires_in: 3600,
+        expires_at: Date.now() + 3600000,
+        token_type: 'bearer',
+        user: mockUser
+      } as Session;
 
-        if (signUpError) throw signUpError;
+      // Set the mock user and session
+      setUser(mockUser);
+      setSession(mockSession);
 
-        // If signup requires verification, try to sign in anyway for demo
-        if (signUpData.user && !signUpData.session) {
-          // Create a fake session for demo purposes
-          toast.success('Demo account created! You can now explore the app.');
-        } else {
-          toast.success('Demo login successful!');
-        }
-      } else if (error) {
-        throw error;
-      } else {
-        toast.success('Demo login successful!');
-      }
+      toast.success('Demo login successful! Exploring with sample data.');
     } catch (error: any) {
       toast.error('Demo login failed. Please try manual registration.');
       throw error;
