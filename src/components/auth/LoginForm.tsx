@@ -27,6 +27,7 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [lastAttemptCredentials, setLastAttemptCredentials] = useState({ email: '', password: '' });
+  const [lastError, setLastError] = useState<string>('');
   const { signIn } = useAuth();
 
   const form = useForm<LoginFormData>({
