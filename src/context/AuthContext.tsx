@@ -106,11 +106,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
 
       if (error) {
-        // Provide more specific error messages
         if (error.message.includes('Invalid login credentials')) {
           throw new Error('Invalid email or password. Please check your credentials and try again.');
-        } else if (error.message.includes('Email not confirmed')) {
-          throw new Error('Please verify your email address before signing in. Check your inbox for a verification link.');
         } else if (error.message.includes('Too many requests')) {
           throw new Error('Too many login attempts. Please wait a moment before trying again.');
         } else {
