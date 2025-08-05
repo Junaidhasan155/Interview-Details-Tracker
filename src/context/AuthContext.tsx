@@ -13,7 +13,6 @@ interface AuthContextType {
   updateProfile: (updates: Partial<UserProfile>) => Promise<void>;
   resendVerification: (email: string) => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
-  demoLogin: () => Promise<void>;
 }
 
 interface UserProfile {
