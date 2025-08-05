@@ -52,114 +52,117 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
     }
   };
 
-
-
-
-
   return (
-    <Card className="w-full max-w-md mx-auto bg-gradient-to-br from-card to-card/80 border-border/50">
-      <CardHeader className="space-y-1 text-center">
-        <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
-        <CardDescription>
-          Sign in to your account to continue
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="your@email.com"
-                      {...field}
-                      disabled={isLoading}
-                      className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <div className="relative">
+    <>
+      <Card className="w-full max-w-md mx-auto bg-gradient-to-br from-card to-card/80 border-border/50">
+        <CardHeader className="space-y-1 text-center">
+          <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
+          <CardDescription>
+            Sign in to your account to continue
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
                       <Input
-                        type={showPassword ? 'text' : 'password'}
-                        placeholder="Enter your password"
+                        type="email"
+                        placeholder="your@email.com"
                         {...field}
                         disabled={isLoading}
-                        className="transition-all duration-200 focus:ring-2 focus:ring-primary/20 pr-10"
+                        className="transition-all duration-200 focus:ring-2 focus:ring-primary/20"
                       />
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                        onClick={() => setShowPassword(!showPassword)}
-                        disabled={isLoading}
-                      >
-                        {showPassword ? (
-                          <EyeOff className="h-4 w-4 text-muted-foreground" />
-                        ) : (
-                          <Eye className="h-4 w-4 text-muted-foreground" />
-                        )}
-                      </Button>
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <Button
-              type="submit"
-              className="w-full bg-gradient-primary hover:opacity-90 transition-all duration-200"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <>
-                  <Loader className="mr-2 h-4 w-4 animate-spin" />
-                  Signing in...
-                </>
-              ) : (
-                <>
-                  <LogIn className="mr-2 h-4 w-4" />
-                  Sign In
-                </>
-              )}
-            </Button>
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Input
+                          type={showPassword ? 'text' : 'password'}
+                          placeholder="Enter your password"
+                          {...field}
+                          disabled={isLoading}
+                          className="transition-all duration-200 focus:ring-2 focus:ring-primary/20 pr-10"
+                        />
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                          onClick={() => setShowPassword(!showPassword)}
+                          disabled={isLoading}
+                        >
+                          {showPassword ? (
+                            <EyeOff className="h-4 w-4 text-muted-foreground" />
+                          ) : (
+                            <Eye className="h-4 w-4 text-muted-foreground" />
+                          )}
+                        </Button>
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
+              <Button
+                type="submit"
+                className="w-full bg-gradient-primary hover:opacity-90 transition-all duration-200"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <Loader className="mr-2 h-4 w-4 animate-spin" />
+                    Signing in...
+                  </>
+                ) : (
+                  <>
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Sign In
+                  </>
+                )}
+              </Button>
 
+              <div className="text-center space-y-2">
+                <p className="text-sm text-muted-foreground">
+                  Don't have an account?{' '}
+                  <Button
+                    type="button"
+                    variant="link"
+                    className="p-0 h-auto font-semibold text-primary"
+                    onClick={onToggleMode}
+                    disabled={isLoading}
+                  >
+                    Sign up
+                  </Button>
+                </p>
+              </div>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
 
-            <div className="text-center space-y-2">
-              <p className="text-sm text-muted-foreground">
-                Don't have an account?{' '}
-                <Button
-                  type="button"
-                  variant="link"
-                  className="p-0 h-auto font-semibold text-primary"
-                  onClick={onToggleMode}
-                  disabled={isLoading}
-                >
-                  Sign up
-                </Button>
-              </p>
-            </div>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+      <EmailConfirmationModal
+        isOpen={showConfirmationModal}
+        onClose={() => setShowConfirmationModal(false)}
+        email={lastAttemptCredentials.email}
+        password={lastAttemptCredentials.password}
+      />
+    </>
   );
 }
