@@ -65,12 +65,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       console.log('Attempting to sign up with email:', email);
 
+      // In development, provide helpful debugging
+      const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
+      const redirectUrl = isDevelopment
+        ? `${window.location.origin}/auth/callback`
+        : `${window.location.origin}/auth/callback`;
+
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: userData,
-          emailRedirectTo: `${window.location.origin}/auth/callback`
+          emailRedirectTo: redirectUrl
         }
       });
 
