@@ -68,6 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signUp = async (email: string, password: string, userData: UserProfile) => {
     try {
       setLoading(true);
+      setIsSigningUp(true); // Prevent auth state changes during signup
 
       console.log('Starting signup with data:', { email, userData });
 
