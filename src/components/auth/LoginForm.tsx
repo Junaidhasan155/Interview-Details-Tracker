@@ -26,7 +26,7 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
-  const { signIn, resetPassword, resendVerification } = useAuth();
+  const { signIn, resetPassword, resendVerification, demoLogin } = useAuth();
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
