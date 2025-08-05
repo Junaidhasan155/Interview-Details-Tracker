@@ -39,9 +39,14 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
   const onSubmit = async (data: LoginFormData) => {
     try {
       setIsLoading(true);
+      setLastAttemptCredentials({ email: data.email, password: data.password });
       await signIn(data.email, data.password);
-    } catch (error) {
-      // Error is handled in AuthContext
+    } catch (error: any) {
+      if (error.message === 'UNCONFIRMED_EMAIL') {
+        // Show the confirmation modal instead of an error toast
+        setShowConfirmationModal(true);
+      }
+      // Other errors are handled in AuthContext
     } finally {
       setIsLoading(false);
     }
