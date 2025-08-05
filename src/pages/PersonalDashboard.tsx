@@ -461,30 +461,194 @@ export function PersonalDashboard() {
               </Card>
             </div>
 
-            {/* Recent Activity */}
+            {/* Study Goals */}
             <Card className="bg-gradient-to-br from-card to-card/80 border-border/50">
               <CardHeader>
-                <CardTitle>Recent Activity</CardTitle>
-                <CardDescription>Your latest learning activities</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center py-8">
-                  <User className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold mb-2">Welcome to Your Dashboard!</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Start your learning journey by creating your first study session or setting a goal.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <Button className="bg-gradient-primary hover:opacity-90">
-                      <Target className="mr-2 h-4 w-4" />
-                      Set a Goal
-                    </Button>
-                    <Button variant="outline">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Start Learning
-                    </Button>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <CardTitle>Study Goals</CardTitle>
+                    <CardDescription>Track your learning objectives</CardDescription>
                   </div>
+                  <Button onClick={() => setShowNewGoal(true)} size="sm" className="bg-gradient-primary">
+                    <Plus className="h-4 w-4 mr-2" />
+                    Add Goal
+                  </Button>
                 </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {showNewGoal && (
+                  <Card className="border-2 border-dashed border-primary/50">
+                    <CardContent className="p-4 space-y-3">
+                      <Input
+                        placeholder="Goal title..."
+                        value={newGoal.title}
+                        onChange={(e) => setNewGoal(prev => ({ ...prev, title: e.target.value }))}
+                      />
+                      <Input
+                        placeholder="Description..."
+                        value={newGoal.description}
+                        onChange={(e) => setNewGoal(prev => ({ ...prev, description: e.target.value }))}
+                      />
+                      <div className="grid grid-cols-2 gap-2">
+                        <div>
+                          <Label>Target Hours</Label>
+                          <Input
+                            type="number"
+                            value={newGoal.target_hours}
+                            onChange={(e) => setNewGoal(prev => ({ ...prev, target_hours: parseInt(e.target.value) || 0 }))}
+                          />
+                        </div>
+                        <div>
+                          <Label>Deadline</Label>
+                          <Input
+                            type="date"
+                            value={newGoal.deadline}
+                            onChange={(e) => setNewGoal(prev => ({ ...prev, deadline: e.target.value }))}
+                          />
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button onClick={addGoal} size="sm" className="bg-gradient-primary">
+                          Create Goal
+                        </Button>
+                        <Button onClick={() => setShowNewGoal(false)} variant="outline" size="sm">
+                          Cancel
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {goals.length === 0 ? (
+                  <div className="text-center py-6">
+                    <Target className="h-12 w-12 text-muted-foreground mx-auto mb-2" />
+                    <p className="text-muted-foreground">No goals set yet</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {goals.slice(0, 3).map((goal) => (
+                      <div key={goal.id} className="flex items-center space-x-3 p-3 border rounded-lg">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => toggleGoalStatus(goal.id)}
+                          className="p-1"
+                        >
+                          {goal.status === 'completed' ?
+                            <CheckCircle className="h-5 w-5 text-green-500" /> :
+                            <Circle className="h-5 w-5 text-muted-foreground" />
+                          }
+                        </Button>
+                        <div className="flex-1">
+                          <h4 className={`font-medium ${goal.status === 'completed' ? 'line-through text-muted-foreground' : ''}`}>
+                            {goal.title}
+                          </h4>
+                          <div className="flex items-center space-x-2 mt-1">
+                            <Progress
+                              value={Math.min((goal.current_hours / goal.target_hours) * 100, 100)}
+                              className="flex-1 h-2"
+                            />
+                            <span className="text-xs text-muted-foreground">
+                              {goal.current_hours.toFixed(1)}/{goal.target_hours}h
+                            </span>
+                          </div>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => deleteGoal(goal.id)}
+                          className="p-1 text-destructive hover:text-destructive"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Study Sessions */}
+            <Card className="bg-gradient-to-br from-card to-card/80 border-border/50">
+              <CardHeader>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <CardTitle>Recent Study Sessions</CardTitle>
+                    <CardDescription>Log your learning activities</CardDescription>
+                  </div>
+                  <Button onClick={() => setShowNewSession(true)} size="sm" className="bg-gradient-primary">
+                    <Plus className="h-4 w-4 mr-2" />
+                    Log Session
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {showNewSession && (
+                  <Card className="border-2 border-dashed border-primary/50">
+                    <CardContent className="p-4 space-y-3">
+                      <Input
+                        placeholder="Session title..."
+                        value={newSession.title}
+                        onChange={(e) => setNewSession(prev => ({ ...prev, title: e.target.value }))}
+                      />
+                      <div className="grid grid-cols-2 gap-2">
+                        <Input
+                          placeholder="Subject/Topic..."
+                          value={newSession.subject}
+                          onChange={(e) => setNewSession(prev => ({ ...prev, subject: e.target.value }))}
+                        />
+                        <div>
+                          <Label>Duration (minutes)</Label>
+                          <Input
+                            type="number"
+                            value={newSession.duration}
+                            onChange={(e) => setNewSession(prev => ({ ...prev, duration: parseInt(e.target.value) || 0 }))}
+                          />
+                        </div>
+                      </div>
+                      <Input
+                        placeholder="Notes (optional)..."
+                        value={newSession.notes}
+                        onChange={(e) => setNewSession(prev => ({ ...prev, notes: e.target.value }))}
+                      />
+                      <div className="flex gap-2">
+                        <Button onClick={addStudySession} size="sm" className="bg-gradient-primary">
+                          Log Session
+                        </Button>
+                        <Button onClick={() => setShowNewSession(false)} variant="outline" size="sm">
+                          Cancel
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {recentSessions.length === 0 ? (
+                  <div className="text-center py-6">
+                    <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-2" />
+                    <p className="text-muted-foreground">No study sessions logged yet</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {recentSessions.map((session) => (
+                      <div key={session.id} className="flex items-center space-x-3 p-3 border rounded-lg">
+                        <BookOpen className="h-5 w-5 text-primary" />
+                        <div className="flex-1">
+                          <h4 className="font-medium">{session.title}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {session.subject} • {session.duration} minutes
+                          </p>
+                          {session.notes && (
+                            <p className="text-xs text-muted-foreground mt-1">{session.notes}</p>
+                          )}
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          {new Date(session.completed_at).toLocaleDateString()}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>
