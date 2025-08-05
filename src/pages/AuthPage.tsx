@@ -16,15 +16,13 @@ export function AuthPage() {
           <AlertDescription className="text-sm">
             {isLogin ? (
               <>
-                <strong>Having trouble signing in?</strong> Use "Forgot password" if you need
-                email verification help or to reset your password. If emails aren't arriving,
-                check your spam folder and try again in a few minutes.
+                <strong>Welcome back!</strong> Sign in with your email and password to continue
+                your interview preparation journey.
               </>
             ) : (
               <>
-                <strong>Quick Start:</strong> After creating your account, you may need to verify
-                your email before signing in. Check your inbox and spam folder - emails may take
-                a few minutes to arrive.
+                <strong>Get Started:</strong> Create your account and start preparing for your
+                interviews right away. No email verification required!
               </>
             )}
           </AlertDescription>
