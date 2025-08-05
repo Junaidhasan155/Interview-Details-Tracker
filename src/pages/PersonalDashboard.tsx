@@ -651,6 +651,46 @@ export function PersonalDashboard() {
                 )}
               </CardContent>
             </Card>
+
+            {/* Quick Actions */}
+            <Card className="bg-gradient-to-br from-card to-card/80 border-border/50">
+              <CardHeader>
+                <CardTitle>Quick Actions</CardTitle>
+                <CardDescription>Access your learning tools</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <Button onClick={() => navigate('/resources')} variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+                    <BookOpen className="h-6 w-6" />
+                    <div className="text-center">
+                      <div className="font-medium">Learning Resources</div>
+                      <div className="text-xs text-muted-foreground">Manage your study materials</div>
+                    </div>
+                  </Button>
+                  <Button onClick={() => navigate('/groups')} variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+                    <User className="h-6 w-6" />
+                    <div className="text-center">
+                      <div className="font-medium">Study Groups</div>
+                      <div className="text-xs text-muted-foreground">Organize your subjects</div>
+                    </div>
+                  </Button>
+                  <Button onClick={() => navigate('/ai')} variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+                    <Target className="h-6 w-6" />
+                    <div className="text-center">
+                      <div className="font-medium">AI Assistant</div>
+                      <div className="text-xs text-muted-foreground">Get study help</div>
+                    </div>
+                  </Button>
+                  <Button onClick={() => navigate('/analytics')} variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+                    <TrendingUp className="h-6 w-6" />
+                    <div className="text-center">
+                      <div className="font-medium">Analytics</div>
+                      <div className="text-xs text-muted-foreground">Track your progress</div>
+                    </div>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
