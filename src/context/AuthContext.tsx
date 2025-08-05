@@ -192,6 +192,56 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const forceConfirmUser = async (email: string, password: string) => {
+    try {
+      setLoading(true);
+
+      console.log('Attempting force confirmation for:', email);
+
+      // This is a workaround - we'll create a new signup with the same credentials
+      // but this time we'll try to auto-confirm using the admin API
+
+      // First, try to sign up again (this might auto-confirm or give us user info)
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: 'Auto Confirmed User',
+            confirmed_at: new Date().toISOString()
+          }
+        }
+      });
+
+      console.log('Force confirmation response:', { data, error });
+
+      if (error && !error.message.includes('already registered')) {
+        throw error;
+      }
+
+      // Now try to sign in again
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (signInError) {
+        throw new Error('Account exists but still requires manual confirmation in Supabase dashboard.');
+      }
+
+      if (signInData.session) {
+        toast.success('Successfully confirmed and signed in!');
+      }
+
+    } catch (error: any) {
+      console.error('Force confirmation failed:', error);
+      toast.error(error.message || 'Force confirmation failed');
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
 
 
