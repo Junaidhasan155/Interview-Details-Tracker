@@ -17,12 +17,14 @@ export function AuthPage() {
             {isLogin ? (
               <>
                 <strong>Having trouble signing in?</strong> Use "Forgot password" if you need
-                email verification help or to reset your password.
+                email verification help or to reset your password. If emails aren't arriving,
+                check your spam folder and try again in a few minutes.
               </>
             ) : (
               <>
                 <strong>Quick Start:</strong> After creating your account, you may need to verify
-                your email before signing in. Check your inbox for a verification link.
+                your email before signing in. Check your inbox and spam folder - emails may take
+                a few minutes to arrive.
               </>
             )}
           </AlertDescription>
