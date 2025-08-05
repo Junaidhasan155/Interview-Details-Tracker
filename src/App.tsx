@@ -45,7 +45,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={
                 <ProtectedRoute>
-                  <PersonalDashboard />
+                  <MainApp />
                 </ProtectedRoute>
               } />
               <Route path="/resources" element={
