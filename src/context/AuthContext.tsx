@@ -122,10 +122,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (error) {
         console.error('Sign in error:', error);
 
-        if (error.message.includes('Invalid login credentials')) {
-          // This is the main error you're seeing
-          console.log('Invalid credentials error - likely due to email confirmation requirement');
-          throw new Error('Invalid email or password. If you just created an account, your Supabase project may require email confirmation. Check your Supabase Authentication settings.');
+        if (error.message.includes('Email not confirmed')) {
+          console.log('Email not confirmed error detected');
+          throw new Error('UNCONFIRMED_EMAIL');
+        } else if (error.message.includes('Invalid login credentials')) {
+          console.log('Invalid credentials error - might be due to unconfirmed email');
+          throw new Error('Invalid email or password. If you just created this account, it may need email confirmation.');
         } else if (error.message.includes('Too many requests')) {
           throw new Error('Too many login attempts. Please wait a moment before trying again.');
         } else {
@@ -144,8 +146,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     } catch (error: any) {
       console.error('Sign in failed:', error);
-      toast.error(error.message || 'Failed to sign in');
-      throw error;
+
+      if (error.message === 'UNCONFIRMED_EMAIL') {
+        // Don't show toast here, let the component handle it
+        throw error;
+      } else {
+        toast.error(error.message || 'Failed to sign in');
+        throw error;
+      }
     } finally {
       setLoading(false);
     }
