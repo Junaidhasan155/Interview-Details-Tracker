@@ -102,6 +102,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setSession(null);
           // Then sign out from Supabase
           await supabase.auth.signOut();
+          // Small delay to ensure clean state transition
+          await new Promise(resolve => setTimeout(resolve, 100));
           toast.success('Account created successfully! Please sign in with your credentials.');
         } else {
           console.log('User created but no session');
