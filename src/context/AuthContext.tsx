@@ -170,9 +170,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     signUp,
     signIn,
     signOut,
-    updateProfile,
-    resendVerification,
-    resetPassword
+    updateProfile
   };
 
   return (
