@@ -42,6 +42,26 @@ interface UserProfile {
   updated_at: string;
 }
 
+interface StudyGoal {
+  id: string;
+  title: string;
+  description: string;
+  target_hours: number;
+  current_hours: number;
+  deadline: string;
+  status: 'active' | 'completed' | 'paused';
+  created_at: string;
+}
+
+interface StudySession {
+  id: string;
+  title: string;
+  subject: string;
+  duration: number; // minutes
+  notes?: string;
+  completed_at: string;
+}
+
 export function PersonalDashboard() {
   const { user, signOut } = useAuth();
   const [profile, setProfile] = useState<UserProfile | null>(null);
