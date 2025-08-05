@@ -136,86 +136,20 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
 
 
 
-            {showForgotPassword ? (
-              <div className="space-y-4 border-t pt-4">
-                <div className="flex items-center space-x-2">
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setShowForgotPassword(false)}
-                    className="p-1"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                  </Button>
-                  <h3 className="text-sm font-medium">Need help signing in?</h3>
-                </div>
-                <div className="space-y-3">
-                  <div>
-                    <label className="text-sm font-medium">Email Address</label>
-                    <Input
-                      type="email"
-                      placeholder="Enter your email"
-                      value={forgotEmail}
-                      onChange={(e) => setForgotEmail(e.target.value)}
-                      className="mt-1"
-                      disabled={isLoading}
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 gap-2">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={handleResendVerification}
-                      disabled={isLoading || !forgotEmail.trim()}
-                      className="w-full"
-                    >
-                      <Mail className="mr-2 h-4 w-4" />
-                      Resend Verification Email
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={handleForgotPassword}
-                      disabled={isLoading || !forgotEmail.trim()}
-                      className="w-full"
-                    >
-                      <Mail className="mr-2 h-4 w-4" />
-                      Reset Password
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <>
-                <div className="text-center">
-                  <Button
-                    type="button"
-                    variant="link"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                    onClick={() => setShowForgotPassword(true)}
-                    disabled={isLoading}
-                  >
-                    Forgot password or need email verification?
-                  </Button>
-                </div>
-
-                <div className="text-center space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    Don't have an account?{' '}
-                    <Button
-                      type="button"
-                      variant="link"
-                      className="p-0 h-auto font-semibold text-primary"
-                      onClick={onToggleMode}
-                      disabled={isLoading}
-                    >
-                      Sign up
-                    </Button>
-                  </p>
-                </div>
-              </>
-            )}
+            <div className="text-center space-y-2">
+              <p className="text-sm text-muted-foreground">
+                Don't have an account?{' '}
+                <Button
+                  type="button"
+                  variant="link"
+                  className="p-0 h-auto font-semibold text-primary"
+                  onClick={onToggleMode}
+                  disabled={isLoading}
+                >
+                  Sign up
+                </Button>
+              </p>
+            </div>
           </form>
         </Form>
       </CardContent>
