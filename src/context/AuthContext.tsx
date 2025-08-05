@@ -86,16 +86,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           metadata: data.user.user_metadata
         });
 
-        // If user has a session, they're auto-confirmed
+        // If user has a session, sign them out so they need to login manually
         if (data.session) {
-          console.log('User auto-confirmed with session');
-          toast.success('Account created and signed in successfully!');
+          console.log('User auto-confirmed, but signing out to require manual login');
+          await supabase.auth.signOut();
+          toast.success('Account created successfully! Please sign in with your credentials.');
         } else {
-          console.log('User created but no session - email confirmation required');
-          toast.success('Account created! If you have issues signing in, your Supabase project may require email confirmation. Check your Supabase settings.');
+          console.log('User created but no session');
+          toast.success('Account created successfully! Please sign in with your credentials.');
         }
       } else {
-        toast.success('Account created successfully!');
+        toast.success('Account created successfully! Please sign in with your credentials.');
       }
     } catch (error: any) {
       console.error('Signup error:', error);
