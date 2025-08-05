@@ -78,6 +78,11 @@ const App = () => (
                   <MainApp />
                 </ProtectedRoute>
               } />
+              <Route path="/settings" element={
+                <ProtectedRoute>
+                  <MainApp />
+                </ProtectedRoute>
+              } />
               <Route path="/404" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
