@@ -45,41 +45,7 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
     }
   };
 
-  const handleForgotPassword = async () => {
-    if (!forgotEmail.trim()) {
-      toast.error('Please enter your email address');
-      return;
-    }
 
-    try {
-      setIsLoading(true);
-      await resetPassword(forgotEmail);
-      setShowForgotPassword(false);
-      setForgotEmail('');
-    } catch (error) {
-      // Error is handled in AuthContext
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleResendVerification = async () => {
-    if (!forgotEmail.trim()) {
-      toast.error('Please enter your email address');
-      return;
-    }
-
-    try {
-      setIsLoading(true);
-      await resendVerification(forgotEmail);
-      setShowForgotPassword(false);
-      setForgotEmail('');
-    } catch (error) {
-      // Error is handled in AuthContext
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
 
 
