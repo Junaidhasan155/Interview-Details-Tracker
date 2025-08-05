@@ -109,14 +109,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setLoading(true);
 
+      console.log('Attempting sign in for:', email);
+
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password
       });
 
+      console.log('Sign in response:', { data, error });
+
       if (error) {
+        console.error('Sign in error:', error);
+
         if (error.message.includes('Invalid login credentials')) {
-          throw new Error('Invalid email or password. Please check your credentials and try again.');
+          // This is the main error you're seeing
+          console.log('Invalid credentials error - likely due to email confirmation requirement');
+          throw new Error('Invalid email or password. If you just created an account, your Supabase project may require email confirmation. Check your Supabase Authentication settings.');
         } else if (error.message.includes('Too many requests')) {
           throw new Error('Too many login attempts. Please wait a moment before trying again.');
         } else {
@@ -127,7 +135,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (!data.session) {
         throw new Error('Sign in failed. Please try again.');
       }
+
+      console.log('Sign in successful:', {
+        userId: data.user?.id,
+        email: data.user?.email
+      });
+
     } catch (error: any) {
+      console.error('Sign in failed:', error);
       toast.error(error.message || 'Failed to sign in');
       throw error;
     } finally {
