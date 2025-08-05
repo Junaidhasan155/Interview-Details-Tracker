@@ -116,6 +116,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       throw error;
     } finally {
       setLoading(false);
+      setIsSigningUp(false); // Re-enable auth state changes
     }
   };
 
