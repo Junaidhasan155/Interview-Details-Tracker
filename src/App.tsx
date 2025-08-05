@@ -91,6 +91,7 @@ const App = () => (
                   <div className="container mx-auto space-y-8 py-8">
                     <QuickAuthFix />
                     <AuthDebug />
+                    <AdminPanel />
                   </div>
                 </div>
               } />
