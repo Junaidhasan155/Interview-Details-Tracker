@@ -162,11 +162,18 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
                     Sign up
                   </Button>
                 </p>
-              </div>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+            </div>
+          </form>
+        </Form>
+
+        {lastError && lastAttemptCredentials.email && (
+          <QuickDebugInfo
+            email={lastAttemptCredentials.email}
+            error={lastError}
+          />
+        )}
+      </CardContent>
+    </Card>
 
       <EmailConfirmationModal
         isOpen={showConfirmationModal}
