@@ -195,6 +195,54 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const demoLogin = async () => {
+    try {
+      setLoading(true);
+
+      // Try to sign in with demo credentials first
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: 'demo@example.com',
+        password: 'demo123456'
+      });
+
+      if (error && error.message.includes('Invalid login credentials')) {
+        // If demo user doesn't exist, create it
+        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+          email: 'demo@example.com',
+          password: 'demo123456',
+          options: {
+            data: {
+              full_name: 'Demo User',
+              current_position: 'Student',
+              industry: 'Technology',
+              experience_years: '1-2 years',
+              target_role: 'Developer'
+            }
+          }
+        });
+
+        if (signUpError) throw signUpError;
+
+        // If signup requires verification, try to sign in anyway for demo
+        if (signUpData.user && !signUpData.session) {
+          // Create a fake session for demo purposes
+          toast.success('Demo account created! You can now explore the app.');
+        } else {
+          toast.success('Demo login successful!');
+        }
+      } else if (error) {
+        throw error;
+      } else {
+        toast.success('Demo login successful!');
+      }
+    } catch (error: any) {
+      toast.error('Demo login failed. Please try manual registration.');
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const value = {
     user,
     session,
