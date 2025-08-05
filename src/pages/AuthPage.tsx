@@ -16,8 +16,8 @@ export function AuthPage() {
           <AlertDescription className="text-sm">
             {isLogin ? (
               <>
-                <strong>Having trouble signing in?</strong> Try the demo account for instant access,
-                or use "Forgot password" if you need email verification help.
+                <strong>Having trouble signing in?</strong> Use "Forgot password" if you need
+                email verification help or to reset your password.
               </>
             ) : (
               <>
