@@ -61,43 +61,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setLoading(true);
 
-      console.log('Attempting to sign up with email:', email);
-
-      // In development, provide helpful debugging
-      const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname.includes('127.0.0.1');
-      const redirectUrl = isDevelopment
-        ? `${window.location.origin}/auth/callback`
-        : `${window.location.origin}/auth/callback`;
-
+      // First create the account
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          data: userData,
-          emailRedirectTo: redirectUrl
+          data: userData
         }
       });
 
-      console.log('Signup response:', { data, error });
+      if (error) throw error;
 
-      if (error) {
-        console.error('Signup error:', error);
-        throw error;
-      }
+      // If signup successful, immediately sign in
+      if (data.user) {
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
 
-      // Check if user needs email confirmation or was auto-confirmed
-      if (data.user && !data.session) {
-        console.log('User created, email verification required');
-        toast.success('Account created! Please check your email (including spam folder) to verify your account. The verification email may take a few minutes to arrive.');
-      } else if (data.user && data.session) {
-        console.log('User created and auto-signed in');
-        toast.success('Account created and signed in successfully!');
+        if (signInError) {
+          // If auto sign-in fails, show success message for manual sign-in
+          toast.success('Account created successfully! You can now sign in with your credentials.');
+        } else {
+          toast.success('Account created and signed in successfully!');
+        }
       } else {
-        console.log('Unexpected signup result');
         toast.success('Account created successfully!');
       }
     } catch (error: any) {
-      console.error('Signup failed:', error);
       toast.error(error.message || 'Failed to create account');
       throw error;
     } finally {
