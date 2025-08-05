@@ -8,6 +8,7 @@ import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { PersonalDashboard } from "./pages/PersonalDashboard";
 import { MainApp } from "./pages/MainApp";
 import { AuthDebug } from "./components/AuthDebug";
+import { QuickAuthFix } from "./components/QuickAuthFix";
 import NotFound from "./pages/NotFound";
 import { useTheme } from "@/hooks/useTheme";
 import { useEffect } from "react";
