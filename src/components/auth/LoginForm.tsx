@@ -39,6 +39,46 @@ export function LoginForm({ onToggleMode }: LoginFormProps) {
     try {
       setIsLoading(true);
       await signIn(data.email, data.password);
+    } catch (error: any) {
+      // If it's an email verification error, offer to resend
+      if (error.message.includes('verify your email') || error.message.includes('Email not confirmed')) {
+        // Auto-fill the email for easier resend
+        setForgotEmail(data.email);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!forgotEmail.trim()) {
+      toast.error('Please enter your email address');
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      await resetPassword(forgotEmail);
+      setShowForgotPassword(false);
+      setForgotEmail('');
+    } catch (error) {
+      // Error is handled in AuthContext
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleResendVerification = async () => {
+    if (!forgotEmail.trim()) {
+      toast.error('Please enter your email address');
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      await resendVerification(forgotEmail);
+      setShowForgotPassword(false);
+      setForgotEmail('');
     } catch (error) {
       // Error is handled in AuthContext
     } finally {
