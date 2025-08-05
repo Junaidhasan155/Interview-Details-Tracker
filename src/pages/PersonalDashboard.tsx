@@ -9,19 +9,26 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Separator } from '@/components/ui/separator';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { 
-  User, 
-  Settings, 
-  BookOpen, 
-  Target, 
-  TrendingUp, 
+import { Progress } from '@/components/ui/progress';
+import {
+  User,
+  Settings,
+  BookOpen,
+  Target,
+  TrendingUp,
   Calendar,
   LogOut,
   Edit,
   Save,
-  X
+  X,
+  Plus,
+  Clock,
+  CheckCircle,
+  Circle,
+  Trash2
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 interface UserProfile {
   id: string;
