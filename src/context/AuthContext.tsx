@@ -44,6 +44,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        // Don't update auth state during signup to prevent dashboard flash
+        if (isSigningUp) {
+          console.log('Ignoring auth state change during signup:', event);
+          return;
+        }
+
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
