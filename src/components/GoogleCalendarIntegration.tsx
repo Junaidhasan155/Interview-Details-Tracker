@@ -299,7 +299,7 @@ export function GoogleCalendarIntegration() {
                 {isSyncing ? (
                   <RefreshCw className="h-4 w-4 animate-spin" />
                 ) : (
-                  <Sync className="h-4 w-4" />
+                  <RotateCcw className="h-4 w-4" />
                 )}
                 {isSyncing ? 'Syncing...' : 'Sync Now'}
               </Button>
