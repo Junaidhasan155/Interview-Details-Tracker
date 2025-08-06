@@ -12,6 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { toast } from 'sonner';
 import { Calendar, Plus, Clock, Target, BookOpen, Code, Users, Brain, CheckCircle, Circle, ArrowLeft, ArrowRight } from 'lucide-react';
+import { GoogleCalendarIntegration } from '@/components/GoogleCalendarIntegration';
 
 export interface StudySession {
   id: string;
