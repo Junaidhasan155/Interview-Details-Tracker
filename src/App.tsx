@@ -91,6 +91,16 @@ const App = () => (
                   <MainApp />
                 </ProtectedRoute>
               } />
+              <Route path="/flashcards" element={
+                <ProtectedRoute>
+                  <MainApp />
+                </ProtectedRoute>
+              } />
+              <Route path="/achievements" element={
+                <ProtectedRoute>
+                  <MainApp />
+                </ProtectedRoute>
+              } />
               <Route path="/settings" element={
                 <ProtectedRoute>
                   <MainApp />
