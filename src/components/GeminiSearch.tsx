@@ -246,13 +246,15 @@ export function GeminiSearch() {
     }
 
     setIsLoading(true);
-    
+    console.log('Starting search for:', searchQuery);
+
     try {
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
-      
+
       const response = generateMockResponse(searchQuery);
-      
+      console.log('Generated response:', response.substring(0, 100) + '...');
+
       // Determine category based on query
       let category: SearchResult['category'] = 'general';
       const queryLower = searchQuery.toLowerCase();
@@ -286,12 +288,14 @@ export function GeminiSearch() {
         followUpSuggestions
       };
 
+      console.log('Setting current result:', result.id);
       setCurrentResult(result);
       saveToHistory(result);
       setQuery('');
       toast.success('Search completed!');
-      
+
     } catch (error) {
+      console.error('Search error:', error);
       toast.error('Search failed. Please try again.');
     } finally {
       setIsLoading(false);
