@@ -81,6 +81,16 @@ const App = () => (
                   <MainApp />
                 </ProtectedRoute>
               } />
+              <Route path="/questions" element={
+                <ProtectedRoute>
+                  <MainApp />
+                </ProtectedRoute>
+              } />
+              <Route path="/calendar" element={
+                <ProtectedRoute>
+                  <MainApp />
+                </ProtectedRoute>
+              } />
               <Route path="/settings" element={
                 <ProtectedRoute>
                   <MainApp />
