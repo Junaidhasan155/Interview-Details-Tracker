@@ -1,14 +1,16 @@
 import { NavLink, useLocation } from "react-router-dom"
-import { 
-  Home, 
-  FolderOpen, 
-  BarChart3, 
-  Settings, 
+import {
+  Home,
+  FolderOpen,
+  BarChart3,
+  Settings,
   Plus,
   Target,
   BookOpen,
   TrendingUp,
-  Mic
+  Mic,
+  Brain,
+  Calendar
 } from "lucide-react"
 
 import {
