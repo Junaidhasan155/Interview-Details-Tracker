@@ -239,9 +239,13 @@ export function MainApp() {
     }
 
     switch (location.pathname) {
+      case '/questions':
+        return <QuestionBankPage />
+      case '/calendar':
+        return <StudyCalendarPage />
       case '/groups':
         return (
-          <Groups 
+          <Groups
             groups={groups}
             resources={resources}
             onAddGroup={handleAddGroup}
