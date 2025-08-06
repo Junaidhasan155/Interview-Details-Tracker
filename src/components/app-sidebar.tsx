@@ -12,7 +12,10 @@ import {
   Brain,
   Calendar,
   Trophy,
-  Layers
+  Layers,
+  Building2,
+  Video,
+  Code2
 } from "lucide-react"
 
 import {
