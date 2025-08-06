@@ -432,8 +432,11 @@ export function GeminiSearch() {
               className="flex-1"
               disabled={isLoading}
             />
-            <Button 
-              onClick={() => handleSearch()} 
+            <Button
+              onClick={() => {
+                console.log('Search button clicked, query:', query);
+                handleSearch();
+              }}
               disabled={isLoading || !query.trim()}
               className="bg-gradient-primary"
             >
