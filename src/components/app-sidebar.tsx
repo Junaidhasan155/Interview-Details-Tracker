@@ -38,6 +38,7 @@ import { Badge } from "@/components/ui/badge"
 
 const mainItems = [
   { title: "Dashboard", url: "/", icon: Home },
+  { title: "Gemini AI Search", url: "/gemini-search", icon: Sparkles },
   { title: "Question Bank", url: "/questions", icon: Brain },
   { title: "Study Calendar", url: "/calendar", icon: Calendar },
   { title: "Flashcards", url: "/flashcards", icon: Layers },
