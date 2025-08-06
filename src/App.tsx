@@ -111,6 +111,16 @@ const App = () => (
                   <MainApp />
                 </ProtectedRoute>
               } />
+              <Route path="/journal" element={
+                <ProtectedRoute>
+                  <MainApp />
+                </ProtectedRoute>
+              } />
+              <Route path="/advanced-analytics" element={
+                <ProtectedRoute>
+                  <MainApp />
+                </ProtectedRoute>
+              } />
               <Route path="/achievements" element={
                 <ProtectedRoute>
                   <MainApp />
