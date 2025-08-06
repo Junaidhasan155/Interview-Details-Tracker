@@ -234,9 +234,15 @@ export function GeminiSearch() {
 
   // Save search history to localStorage
   const saveToHistory = (result: SearchResult) => {
-    const updated = [result, ...searchHistory.slice(0, 19)]; // Keep last 20 searches
-    setSearchHistory(updated);
-    localStorage.setItem('gemini-search-history', JSON.stringify(updated));
+    try {
+      const updated = [result, ...searchHistory.slice(0, 19)]; // Keep last 20 searches
+      setSearchHistory(updated);
+      localStorage.setItem('gemini-search-history', JSON.stringify(updated));
+      console.log('Saved to history:', result.id);
+    } catch (error) {
+      console.error('Failed to save to history:', error);
+      toast.error('Failed to save search to history');
+    }
   };
 
   const handleSearch = async (searchQuery: string = query) => {
