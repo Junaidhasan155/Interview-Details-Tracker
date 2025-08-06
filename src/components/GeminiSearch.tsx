@@ -677,6 +677,22 @@ export function GeminiSearch() {
         </Card>
       )}
 
+      {/* Debug Information */}
+      {process.env.NODE_ENV === 'development' && (
+        <Card className="border-dashed">
+          <CardHeader>
+            <CardTitle className="text-sm">Debug Info</CardTitle>
+          </CardHeader>
+          <CardContent className="text-xs space-y-1">
+            <div>Query: "{query}"</div>
+            <div>Loading: {isLoading ? 'Yes' : 'No'}</div>
+            <div>Current Result: {currentResult ? 'Set' : 'None'}</div>
+            <div>Search History: {searchHistory.length} items</div>
+            <div>Show History: {showHistory ? 'Yes' : 'No'}</div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Loading State */}
       {isLoading && (
         <Card>
