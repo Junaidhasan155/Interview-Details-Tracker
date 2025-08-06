@@ -309,11 +309,13 @@ export function GeminiSearch() {
   };
 
   const handleQuickAction = (actionQuery: string) => {
+    console.log('Quick action clicked:', actionQuery);
     setQuery(actionQuery);
     handleSearch(actionQuery);
   };
 
   const handleSuggestionClick = (suggestion: string) => {
+    console.log('Suggestion clicked:', suggestion);
     setQuery(suggestion);
     handleSearch(suggestion);
   };
