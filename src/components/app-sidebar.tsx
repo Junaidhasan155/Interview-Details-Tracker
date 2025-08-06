@@ -17,7 +17,8 @@ import {
   Video,
   Code2,
   FileText,
-  Activity
+  Activity,
+  Sparkles
 } from "lucide-react"
 
 import {
