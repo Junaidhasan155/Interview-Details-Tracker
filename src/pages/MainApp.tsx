@@ -258,6 +258,10 @@ export function MainApp() {
         return <CompanyResearchPage />
       case '/mock-interview':
         return <MockInterviewPage />
+      case '/journal':
+        return <InterviewJournalPage />
+      case '/advanced-analytics':
+        return <AdvancedAnalyticsPage />
       case '/achievements':
         return <AchievementsPage />
       case '/groups':
