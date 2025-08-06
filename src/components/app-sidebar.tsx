@@ -10,7 +10,9 @@ import {
   TrendingUp,
   Mic,
   Brain,
-  Calendar
+  Calendar,
+  Trophy,
+  Layers
 } from "lucide-react"
 
 import {
