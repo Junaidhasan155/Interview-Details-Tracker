@@ -247,6 +247,8 @@ export function MainApp() {
     }
 
     switch (location.pathname) {
+      case '/gemini-search':
+        return <GeminiSearchPage />
       case '/questions':
         return <QuestionBankPage />
       case '/calendar':
