@@ -15,7 +15,9 @@ import {
   Layers,
   Building2,
   Video,
-  Code2
+  Code2,
+  FileText,
+  Activity
 } from "lucide-react"
 
 import {
