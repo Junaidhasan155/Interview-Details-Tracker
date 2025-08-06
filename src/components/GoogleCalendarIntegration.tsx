@@ -6,11 +6,11 @@ import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from 'sonner';
-import { 
-  Calendar, 
-  CheckCircle, 
-  Settings, 
-  Sync, 
+import {
+  Calendar,
+  CheckCircle,
+  Settings,
+  RotateCcw,
   ExternalLink,
   Plus,
   Clock,
