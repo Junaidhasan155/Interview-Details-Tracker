@@ -438,7 +438,7 @@ export function GeminiSearch() {
                 handleSearch();
               }}
               disabled={isLoading || !query.trim()}
-              className="bg-gradient-primary"
+              className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white"
             >
               {isLoading ? (
                 <Loader className="h-4 w-4 animate-spin" />
