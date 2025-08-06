@@ -245,6 +245,10 @@ export function MainApp() {
         return <QuestionBankPage />
       case '/calendar':
         return <StudyCalendarPage />
+      case '/flashcards':
+        return <FlashcardsPage />
+      case '/achievements':
+        return <AchievementsPage />
       case '/groups':
         return (
           <Groups
