@@ -393,7 +393,7 @@ export function GoogleCalendarIntegration() {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center gap-2">
-                <Sync className="h-4 w-4 text-green-600" />
+                <RotateCcw className="h-4 w-4 text-green-600" />
                 <div>
                   <div className="text-2xl font-bold">{syncStats.syncedEvents}</div>
                   <div className="text-xs text-muted-foreground">Synced Sessions</div>
