@@ -226,9 +226,16 @@ export function GeminiSearch() {
 
   // Load search history from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('gemini-search-history');
-    if (saved) {
-      setSearchHistory(JSON.parse(saved));
+    try {
+      const saved = localStorage.getItem('gemini-search-history');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        setSearchHistory(Array.isArray(parsed) ? parsed : []);
+        console.log('Loaded search history:', parsed.length, 'items');
+      }
+    } catch (error) {
+      console.error('Failed to load search history:', error);
+      localStorage.removeItem('gemini-search-history'); // Clear corrupted data
     }
   }, []);
 
