@@ -225,12 +225,12 @@ export function GeminiSearch() {
   const [showHistory, setShowHistory] = useState(false);
 
   // Load search history from localStorage
-  useState(() => {
+  useEffect(() => {
     const saved = localStorage.getItem('gemini-search-history');
     if (saved) {
       setSearchHistory(JSON.parse(saved));
     }
-  });
+  }, []);
 
   // Save search history to localStorage
   const saveToHistory = (result: SearchResult) => {
