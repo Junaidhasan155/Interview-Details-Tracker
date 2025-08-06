@@ -43,6 +43,8 @@ const mainItems = [
   { title: "Code Repository", url: "/code", icon: Code2 },
   { title: "Company Research", url: "/companies", icon: Building2 },
   { title: "Mock Interviews", url: "/mock-interview", icon: Video },
+  { title: "Interview Journal", url: "/journal", icon: FileText },
+  { title: "Advanced Analytics", url: "/advanced-analytics", icon: Activity },
   { title: "Achievements", url: "/achievements", icon: Trophy },
   { title: "Groups", url: "/groups", icon: FolderOpen },
   { title: "AI Hub", url: "/ai", icon: TrendingUp },
