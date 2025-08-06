@@ -415,7 +415,12 @@ export function GeminiSearch() {
               placeholder="e.g., How to prepare for system design interviews at Google?"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !isLoading && query.trim()) {
+                  e.preventDefault();
+                  handleSearch();
+                }
+              }}
               className="flex-1"
               disabled={isLoading}
             />
