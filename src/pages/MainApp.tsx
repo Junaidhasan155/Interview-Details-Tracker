@@ -250,6 +250,12 @@ export function MainApp() {
         return <StudyCalendarPage />
       case '/flashcards':
         return <FlashcardsPage />
+      case '/code':
+        return <CodeRepositoryPage />
+      case '/companies':
+        return <CompanyResearchPage />
+      case '/mock-interview':
+        return <MockInterviewPage />
       case '/achievements':
         return <AchievementsPage />
       case '/groups':
