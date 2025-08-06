@@ -81,6 +81,11 @@ const App = () => (
                   <MainApp />
                 </ProtectedRoute>
               } />
+              <Route path="/gemini-search" element={
+                <ProtectedRoute>
+                  <MainApp />
+                </ProtectedRoute>
+              } />
               <Route path="/questions" element={
                 <ProtectedRoute>
                   <MainApp />
