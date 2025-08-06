@@ -34,6 +34,8 @@ const mainItems = [
   { title: "Dashboard", url: "/", icon: Home },
   { title: "Question Bank", url: "/questions", icon: Brain },
   { title: "Study Calendar", url: "/calendar", icon: Calendar },
+  { title: "Flashcards", url: "/flashcards", icon: Layers },
+  { title: "Achievements", url: "/achievements", icon: Trophy },
   { title: "Groups", url: "/groups", icon: FolderOpen },
   { title: "AI Hub", url: "/ai", icon: TrendingUp },
   { title: "Interview Sim", url: "/interview", icon: Mic },
