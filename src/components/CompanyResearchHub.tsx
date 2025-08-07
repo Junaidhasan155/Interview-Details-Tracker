@@ -35,6 +35,7 @@ import {
   Download,
   Filter
 } from 'lucide-react';
+import { CompanyDataImporter } from './CompanyDataImporter';
 
 export interface Company {
   id: string;
@@ -800,6 +801,27 @@ export function CompanyResearchHub() {
             <SelectItem value="applied">Applied</SelectItem>
           </SelectContent>
         </Select>
+
+        <Select value={selectedRegion} onValueChange={setSelectedRegion}>
+          <SelectTrigger className="w-full sm:w-48">
+            <SelectValue placeholder="Region" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Regions</SelectItem>
+            <SelectItem value="indian">
+              <div className="flex items-center gap-2">
+                <Flag className="h-3 w-3 text-orange-600" />
+                Indian
+              </div>
+            </SelectItem>
+            <SelectItem value="foreign">
+              <div className="flex items-center gap-2">
+                <Globe className="h-3 w-3 text-blue-600" />
+                Foreign
+              </div>
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Companies Grid/List */}
@@ -846,6 +868,17 @@ export function CompanyResearchHub() {
                           <span>•</span>
                           <Star className="h-3 w-3 fill-current text-yellow-500" />
                           {company.glassdoorRating}
+                        </>
+                      )}
+                      {company.region && (
+                        <>
+                          <span>•</span>
+                          {company.region === 'indian' ? (
+                            <Flag className="h-3 w-3 text-orange-600" />
+                          ) : (
+                            <Globe className="h-3 w-3 text-blue-600" />
+                          )}
+                          {company.region === 'indian' ? 'Indian' : 'Global'}
                         </>
                       )}
                     </div>
@@ -1117,6 +1150,25 @@ export function CompanyResearchHub() {
               </div>
             </form>
           </Form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Import Dialog */}
+      <Dialog open={isImportOpen} onOpenChange={setIsImportOpen}>
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Import Company Data</DialogTitle>
+            <DialogDescription>
+              Import comprehensive company interview data with Indian and Foreign segregation
+            </DialogDescription>
+          </DialogHeader>
+          <CompanyDataImporter
+            onImportComplete={(newCompanies) => {
+              setCompanies(prev => [...newCompanies, ...prev]);
+              setIsImportOpen(false);
+            }}
+            existingCompanies={companies}
+          />
         </DialogContent>
       </Dialog>
     </div>
