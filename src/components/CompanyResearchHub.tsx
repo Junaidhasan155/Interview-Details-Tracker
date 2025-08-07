@@ -282,14 +282,16 @@ export function CompanyResearchHub() {
     if (saved) {
       setCompanies(JSON.parse(saved));
     } else {
-      const initialCompanies = SAMPLE_COMPANIES.map(company => ({
-        ...company,
-        id: Math.random().toString(36).substr(2, 9),
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      }));
-      setCompanies(initialCompanies);
-      localStorage.setItem('companies', JSON.stringify(initialCompanies));
+      // Auto-import comprehensive company data on first load
+      import('../data/companyInterviewData').then(({ COMPANY_INTERVIEW_DATA }) => {
+        const comprehensiveCompanies = COMPANY_INTERVIEW_DATA.map(data => {
+          const region = categorizeCompany(data.Company);
+          return convertInterviewDataToCompany(data, region);
+        });
+        setCompanies(comprehensiveCompanies);
+        localStorage.setItem('companies', JSON.stringify(comprehensiveCompanies));
+        toast.success(`Loaded ${comprehensiveCompanies.length} companies with interview data!`);
+      });
     }
   }, []);
 
