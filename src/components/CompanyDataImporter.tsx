@@ -18,22 +18,7 @@ import {
   Briefcase
 } from 'lucide-react';
 import { Company, InterviewStage } from './CompanyResearchHub';
-
-interface CompanyInterviewData {
-  Company: string;
-  HiringForFrontEnd: string;
-  JobDescriptionLink: string;
-  NoOfInterviewRounds: number;
-  RoundBreakdown: Array<{
-    Round: number;
-    Type: string;
-    Description: string;
-  }>;
-  FrameworksOrTools: string[];
-  DSA: string;
-  SpecialFocusAreas: string[];
-  Notes: string;
-}
+import { COMPANY_INTERVIEW_DATA, type CompanyInterviewData } from '../data/companyInterviewData';
 
 interface CompanyDataImporterProps {
   onImportComplete: (companies: Company[]) => void;
