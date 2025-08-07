@@ -233,8 +233,8 @@ const SAMPLE_COMPANIES: Omit<Company, 'id' | 'createdAt' | 'updatedAt'>[] = [
 const INDIAN_COMPANIES = [
   'Flipkart', 'Swiggy', 'Zomato', 'Paytm', 'Ola', "BYJU'S", 'Zoho', 'Freshworks',
   'TCS', 'Wipro', 'Infosys', 'Cognizant', 'HCL Technologies', 'Tech Mahindra',
-  'Oracle', 'IBM', 'Accenture', 'Deloitte', 'Capgemini', 'Mindtree', 'Mphasis',
-  'Virtusa', 'LTI (Larsen & Toubro Infotech)', 'Mindvalley', 'Razorpay', 'Delhivery',
+  'Accenture', 'Deloitte', 'Capgemini', 'Mindtree', 'Mphasis', 'Virtusa',
+  'LTI (Larsen & Toubro Infotech)', 'Mindvalley', 'Razorpay', 'Delhivery',
   'Swiggy Genie', 'Dream11', 'CRED', 'Meesho', 'Myntra', 'Pharmeasy', 'PolicyBazaar',
   'Urban Company', 'MakeMyTrip', 'Nykaa', 'Cleartrip', 'OYO', 'Grofers (Blinkit)',
   'BigBasket', 'Swiggy Instamart', 'Cure.fit', 'Lenskart', 'PolicyBazaar Health'
