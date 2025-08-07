@@ -229,6 +229,17 @@ const SAMPLE_COMPANIES: Omit<Company, 'id' | 'createdAt' | 'updatedAt'>[] = [
   }
 ];
 
+// Indian companies list for categorization
+const INDIAN_COMPANIES = [
+  'Flipkart', 'Swiggy', 'Zomato', 'Paytm', 'Ola', "BYJU'S", 'Zoho', 'Freshworks',
+  'TCS', 'Wipro', 'Infosys', 'Cognizant', 'HCL Technologies', 'Tech Mahindra',
+  'Oracle', 'IBM', 'Accenture', 'Deloitte', 'Capgemini', 'Mindtree', 'Mphasis',
+  'Virtusa', 'LTI (Larsen & Toubro Infotech)', 'Mindvalley', 'Razorpay', 'Delhivery',
+  'Swiggy Genie', 'Dream11', 'CRED', 'Meesho', 'Myntra', 'Pharmeasy', 'PolicyBazaar',
+  'Urban Company', 'MakeMyTrip', 'Nykaa', 'Cleartrip', 'OYO', 'Grofers (Blinkit)',
+  'BigBasket', 'Swiggy Instamart', 'Cure.fit', 'Lenskart', 'PolicyBazaar Health'
+];
+
 export function CompanyResearchHub() {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [filteredCompanies, setFilteredCompanies] = useState<Company[]>([]);
@@ -243,6 +254,162 @@ export function CompanyResearchHub() {
   const [isAddApplicationOpen, setIsAddApplicationOpen] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+
+  // Helper function to categorize companies by region
+  const categorizeCompany = (companyName: string): 'indian' | 'foreign' => {
+    return INDIAN_COMPANIES.includes(companyName) ? 'indian' : 'foreign';
+  };
+
+  // Helper function to convert interview data to company format
+  const convertInterviewDataToCompany = (data: any, region: 'indian' | 'foreign'): Company => {
+    const interviewProcess: InterviewStage[] = data.RoundBreakdown.map((round: any) => ({
+      id: `${data.Company.toLowerCase().replace(/\s+/g, '-')}-round-${round.Round}`,
+      name: round.Type,
+      type: mapRoundTypeToStageType(round.Type),
+      duration: estimateDuration(round.Type),
+      description: round.Description,
+      tips: generateTipsForRound(round.Type, data.SpecialFocusAreas)
+    }));
+
+    return {
+      id: Math.random().toString(36).substr(2, 9),
+      name: data.Company,
+      description: `Frontend engineering opportunities with focus on ${data.SpecialFocusAreas.join(', ')}`,
+      industry: getCompanyIndustry(data.Company, region),
+      size: getCompanySize(data.Company),
+      location: getCompanyLocation(data.Company, region),
+      region,
+      website: generateWebsiteUrl(data.Company),
+      linkedinUrl: generateLinkedInUrl(data.Company),
+      glassdoorRating: Math.round((Math.random() * 1.5 + 3.5) * 10) / 10,
+      culture: generateCultureValues(region, data.Company),
+      techStack: data.FrameworksOrTools,
+      benefits: generateBenefits(region),
+      interviewProcess,
+      applications: [],
+      contacts: [],
+      notes: data.Notes || `DSA Required: ${data.DSA}. Special focus: ${data.SpecialFocusAreas.join(', ')}`,
+      isWishlist: false,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+  };
+
+  const mapRoundTypeToStageType = (roundType: string): InterviewStage['type'] => {
+    const type = roundType.toLowerCase();
+    if (type.includes('phone') || type.includes('recruiter')) return 'phone';
+    if (type.includes('technical') || type.includes('coding')) return 'technical';
+    if (type.includes('behavioral') || type.includes('culture')) return 'behavioral';
+    if (type.includes('system') || type.includes('design')) return 'system-design';
+    if (type.includes('onsite') || type.includes('final')) return 'onsite';
+    return 'technical';
+  };
+
+  const estimateDuration = (roundType: string): number => {
+    const type = roundType.toLowerCase();
+    if (type.includes('phone') || type.includes('recruiter')) return 30;
+    if (type.includes('technical') || type.includes('coding')) return 60;
+    if (type.includes('behavioral')) return 45;
+    if (type.includes('system') || type.includes('design')) return 90;
+    if (type.includes('onsite')) return 240;
+    return 60;
+  };
+
+  const generateTipsForRound = (roundType: string, focusAreas: string[]): string[] => {
+    const type = roundType.toLowerCase();
+    const baseTips: string[] = [];
+
+    if (type.includes('phone') || type.includes('recruiter')) {
+      baseTips.push('Prepare your elevator pitch', 'Research the company culture', 'Ask thoughtful questions');
+    } else if (type.includes('technical') || type.includes('coding')) {
+      baseTips.push('Practice data structures and algorithms', 'Think out loud while coding', 'Ask clarifying questions');
+      if (focusAreas.includes('Performance')) baseTips.push('Discuss performance optimizations');
+      if (focusAreas.includes('Security')) baseTips.push('Consider security implications');
+    } else if (type.includes('system') || type.includes('design')) {
+      baseTips.push('Start with requirements gathering', 'Consider scalability', 'Discuss trade-offs');
+    } else if (type.includes('behavioral')) {
+      baseTips.push('Use STAR method', 'Prepare specific examples', 'Show leadership qualities');
+    }
+
+    return baseTips;
+  };
+
+  const getCompanyIndustry = (companyName: string, region: 'indian' | 'foreign'): string => {
+    if (region === 'indian') {
+      const industryMap: Record<string, string> = {
+        'Flipkart': 'E-commerce', 'Swiggy': 'Food Delivery', 'Zomato': 'Food Tech',
+        'Paytm': 'Fintech', 'Ola': 'Transportation', "BYJU'S": 'EdTech',
+        'Zoho': 'Enterprise Software', 'Freshworks': 'Customer Experience',
+        'TCS': 'IT Services', 'Wipro': 'IT Services', 'Infosys': 'IT Services'
+      };
+      return industryMap[companyName] || 'Technology';
+    } else {
+      const industryMap: Record<string, string> = {
+        'Google': 'Search & Cloud', 'Meta (Facebook)': 'Social Media',
+        'Amazon': 'E-commerce & Cloud', 'Microsoft': 'Software & Cloud',
+        'Apple': 'Consumer Electronics', 'Netflix': 'Streaming Media',
+        'Vercel': 'Developer Tools', 'Netlify': 'JAMstack Platform',
+        'Supabase': 'Backend-as-a-Service', 'Linear': 'Project Management',
+        'Figma': 'Design Tools', 'Framer': 'Design Tools'
+      };
+      return industryMap[companyName] || 'Technology';
+    }
+  };
+
+  const getCompanySize = (companyName: string): Company['size'] => {
+    if (['TCS', 'Wipro', 'Infosys', 'Google', 'Meta (Facebook)', 'Amazon', 'Microsoft'].includes(companyName)) {
+      return 'enterprise';
+    }
+    if (['Flipkart', 'Swiggy', 'Paytm', 'Netflix', 'Uber', 'Airbnb'].includes(companyName)) {
+      return 'large';
+    }
+    return 'medium';
+  };
+
+  const getCompanyLocation = (companyName: string, region: 'indian' | 'foreign'): string => {
+    if (region === 'indian') {
+      const locationMap: Record<string, string> = {
+        'Flipkart': 'Bangalore, India', 'Swiggy': 'Bangalore, India', 'Zomato': 'Gurgaon, India',
+        'Paytm': 'Noida, India', 'Ola': 'Bangalore, India', "BYJU'S": 'Bangalore, India',
+        'Zoho': 'Chennai, India', 'Freshworks': 'Chennai, India', 'TCS': 'Mumbai, India'
+      };
+      return locationMap[companyName] || 'India';
+    } else {
+      const locationMap: Record<string, string> = {
+        'Google': 'Mountain View, CA', 'Meta (Facebook)': 'Menlo Park, CA',
+        'Amazon': 'Seattle, WA', 'Microsoft': 'Redmond, WA',
+        'Vercel': 'San Francisco, CA', 'Netlify': 'San Francisco, CA',
+        'Linear': 'San Francisco, CA', 'Figma': 'San Francisco, CA'
+      };
+      return locationMap[companyName] || 'Remote-First';
+    }
+  };
+
+  const generateWebsiteUrl = (companyName: string): string => {
+    const domain = companyName.toLowerCase().replace(/\s+/g, '').replace(/[()]/g, '');
+    return `https://${domain}.com`;
+  };
+
+  const generateLinkedInUrl = (companyName: string): string => {
+    const slug = companyName.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '');
+    return `https://linkedin.com/company/${slug}`;
+  };
+
+  const generateCultureValues = (region: 'indian' | 'foreign', companyName: string): string[] => {
+    const commonValues = ['Innovation', 'Collaboration', 'Growth'];
+    const indianValues = ['Diversity', 'Jugaad', 'Family-first'];
+    const foreignValues = ['Transparency', 'Remote-first', 'Work-life balance'];
+
+    return [...commonValues, ...(region === 'indian' ? indianValues : foreignValues)];
+  };
+
+  const generateBenefits = (region: 'indian' | 'foreign'): string[] => {
+    const commonBenefits = ['Health insurance', 'Learning budget', 'Flexible hours'];
+    const indianBenefits = ['Food allowance', 'Transportation', 'Festival bonuses'];
+    const foreignBenefits = ['401k matching', 'Unlimited PTO', 'Stock options'];
+
+    return [...commonBenefits, ...(region === 'indian' ? indianBenefits : foreignBenefits)];
+  };
 
   const companyForm = useForm<CompanyFormData>({
     resolver: zodResolver(companySchema),
