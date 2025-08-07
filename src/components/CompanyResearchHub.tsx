@@ -457,7 +457,7 @@ export function CompanyResearchHub() {
         });
         setCompanies(comprehensiveCompanies);
         localStorage.setItem('companies', JSON.stringify(comprehensiveCompanies));
-        toast.success(`Loaded ${comprehensiveCompanies.length} companies with interview data!`);
+        toast.success(`🎉 Loaded ${comprehensiveCompanies.length} companies with comprehensive interview data!`);
       });
     }
   }, []);
