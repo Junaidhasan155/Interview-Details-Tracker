@@ -11,13 +11,13 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { toast } from 'sonner';
-import { 
-  Plus, 
-  Building2, 
-  MapPin, 
-  DollarSign, 
-  Calendar, 
-  Users, 
+import {
+  Plus,
+  Building2,
+  MapPin,
+  DollarSign,
+  Calendar,
+  Users,
   Star,
   ExternalLink,
   Edit,
@@ -30,7 +30,10 @@ import {
   Phone,
   Mail,
   Linkedin,
-  Globe
+  Globe,
+  Flag,
+  Download,
+  Filter
 } from 'lucide-react';
 
 export interface Company {
@@ -40,6 +43,7 @@ export interface Company {
   industry: string;
   size: 'startup' | 'small' | 'medium' | 'large' | 'enterprise';
   location: string;
+  region?: 'indian' | 'foreign';
   website?: string;
   linkedinUrl?: string;
   glassdoorRating?: number;
@@ -174,7 +178,8 @@ const SAMPLE_COMPANIES: Omit<Company, 'id' | 'createdAt' | 'updatedAt'>[] = [
     applications: [],
     contacts: [],
     notes: 'Highly competitive but great growth opportunities. Focus on algorithmic thinking.',
-    isWishlist: true
+    isWishlist: true,
+    region: 'foreign'
   },
   {
     name: 'Stripe',
@@ -216,7 +221,8 @@ const SAMPLE_COMPANIES: Omit<Company, 'id' | 'createdAt' | 'updatedAt'>[] = [
     applications: [],
     contacts: [],
     notes: 'Values code quality and user experience. Great for payments/fintech experience.',
-    isWishlist: false
+    isWishlist: false,
+    region: 'foreign'
   }
 ];
 
@@ -227,7 +233,9 @@ export function CompanyResearchHub() {
   const [selectedIndustry, setSelectedIndustry] = useState<string>('all');
   const [selectedSize, setSelectedSize] = useState<string>('all');
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
+  const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [isAddCompanyOpen, setIsAddCompanyOpen] = useState(false);
+  const [isImportOpen, setIsImportOpen] = useState(false);
   const [isAddApplicationOpen, setIsAddApplicationOpen] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -316,8 +324,12 @@ export function CompanyResearchHub() {
       }
     }
 
+    if (selectedRegion !== 'all') {
+      filtered = filtered.filter(company => company.region === selectedRegion);
+    }
+
     setFilteredCompanies(filtered);
-  }, [companies, searchQuery, selectedIndustry, selectedSize, selectedStatus]);
+  }, [companies, searchQuery, selectedIndustry, selectedSize, selectedStatus, selectedRegion]);
 
   const handleAddCompany = (data: CompanyFormData) => {
     const newCompany: Company = {
@@ -338,6 +350,7 @@ export function CompanyResearchHub() {
       contacts: [],
       notes: data.notes || '',
       isWishlist: false,
+      region: undefined,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
@@ -447,6 +460,15 @@ export function CompanyResearchHub() {
             onClick={() => setViewMode('list')}
           >
             List
+          </Button>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsImportOpen(true)}
+          >
+            <Download className="h-4 w-4 mr-2" />
+            Import
           </Button>
 
           <Dialog open={isAddCompanyOpen} onOpenChange={setIsAddCompanyOpen}>
