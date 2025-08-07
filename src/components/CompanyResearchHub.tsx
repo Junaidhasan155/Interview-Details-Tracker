@@ -33,9 +33,11 @@ import {
   Globe,
   Flag,
   Download,
-  Filter
+  Filter,
+  BarChart3
 } from 'lucide-react';
 import { CompanyDataImporter } from './CompanyDataImporter';
+import { CompanyComparisonView } from './CompanyComparisonView';
 
 export interface Company {
   id: string;
@@ -237,6 +239,7 @@ export function CompanyResearchHub() {
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [isAddCompanyOpen, setIsAddCompanyOpen] = useState(false);
   const [isImportOpen, setIsImportOpen] = useState(false);
+  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isAddApplicationOpen, setIsAddApplicationOpen] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -470,6 +473,16 @@ export function CompanyResearchHub() {
           >
             <Download className="h-4 w-4 mr-2" />
             Import
+          </Button>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsComparisonOpen(true)}
+            disabled={companies.length === 0}
+          >
+            <BarChart3 className="h-4 w-4 mr-2" />
+            Compare
           </Button>
 
           <Dialog open={isAddCompanyOpen} onOpenChange={setIsAddCompanyOpen}>
@@ -1169,6 +1182,19 @@ export function CompanyResearchHub() {
             }}
             existingCompanies={companies}
           />
+        </DialogContent>
+      </Dialog>
+
+      {/* Comparison Dialog */}
+      <Dialog open={isComparisonOpen} onOpenChange={setIsComparisonOpen}>
+        <DialogContent className="max-w-7xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Company Regional Comparison</DialogTitle>
+            <DialogDescription>
+              Analyze and compare companies by region, technologies, and interview processes
+            </DialogDescription>
+          </DialogHeader>
+          <CompanyComparisonView companies={companies} />
         </DialogContent>
       </Dialog>
     </div>
