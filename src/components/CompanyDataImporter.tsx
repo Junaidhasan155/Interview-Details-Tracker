@@ -57,7 +57,12 @@ const FOREIGN_COMPANIES = [
   'eBay', 'Dropbox', 'Slack', 'Zoom', 'Pinterest', 'Trello', 'GitHub', 'Bitbucket',
   'Stripe', 'Mailchimp', 'Canva', 'Dropbox Paper', 'Asana', 'DigitalOcean', 'Heroku',
   'MongoDB', 'Elastic', 'Figma', 'Notion', 'Calendly', 'Twilio', 'Automattic', 'GitLab',
-  'InVision', 'Zapier', 'Toptal', 'Basecamp', 'Buffer', 'Remote', 'DuckDuckGo', 'Hotjar', 'Toggl'
+  'InVision', 'Zapier', 'Toptal', 'Basecamp', 'Buffer', 'Remote', 'DuckDuckGo', 'Hotjar', 'Toggl',
+  // Remote-first and Global companies
+  'Deel', 'Arc.dev', 'Turing', 'Remote.com', 'X-Team', 'Crossover', '10up', 'Webflow',
+  'Vercel', 'Netlify', 'ConvertKit', 'Help Scout', 'Auth0', 'Miro', 'Loom', 'Doist (Todoist)',
+  'Typeform', 'Linear', 'Clerk', 'Railway', 'Supabase', 'PlanetScale', 'Replicate', 'Replit',
+  'CodeSandbox', 'Luma', 'Circle', 'Framer', 'Gamma'
 ];
 
 // Sample company data to import (from your JSON)
