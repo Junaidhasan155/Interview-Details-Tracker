@@ -654,6 +654,19 @@ export function CompanyResearchHub() {
             Compare
           </Button>
 
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              localStorage.removeItem('companies');
+              window.location.reload();
+            }}
+            title="Reload all company data"
+          >
+            <TrendingUp className="h-4 w-4 mr-2" />
+            Reload
+          </Button>
+
           <Dialog open={isAddCompanyOpen} onOpenChange={setIsAddCompanyOpen}>
             <DialogTrigger asChild>
               <Button className="bg-gradient-primary">
