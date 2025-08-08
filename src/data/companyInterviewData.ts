@@ -1273,5 +1273,867 @@ export const COMPANY_INTERVIEW_DATA: CompanyInterviewData[] = [
     DSA: "Yes",
     SpecialFocusAreas: ["WebSockets", "Performance"],
     Notes: ""
+  },
+  {
+    Company: "GitLab",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://about.gitlab.com/jobs/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter Screen", Description: "Remote work experience and Vue.js knowledge" },
+      { Round: 2, Type: "Technical interview", Description: "Live coding with Vue.js and GitLab workflows" },
+      { Round: 3, Type: "System design", Description: "Design CI/CD pipeline visualization" },
+      { Round: 4, Type: "Behavioral", Description: "Remote collaboration and async communication" }
+    ],
+    FrameworksOrTools: ["Vue.js", "TypeScript", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Remote collaboration", "DevOps UI", "Performance"],
+    Notes: "100% remote company, pays in USD globally"
+  },
+  {
+    Company: "Toptal",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://toptal.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 5,
+    RoundBreakdown: [
+      { Round: 1, Type: "Screening", Description: "English proficiency and freelance experience" },
+      { Round: 2, Type: "Technical assessment", Description: "Algorithm and logic problems" },
+      { Round: 3, Type: "Live coding", Description: "React/Angular live project" },
+      { Round: 4, Type: "Project submission", Description: "Build complete frontend application" },
+      { Round: 5, Type: "Final interview", Description: "Technical discussion and culture fit" }
+    ],
+    FrameworksOrTools: ["React", "Angular", "Vue.js", "TypeScript"],
+    DSA: "Yes",
+    SpecialFocusAreas: ["Independent work", "Client communication", "Full-stack awareness"],
+    Notes: "Top 3% talent network, USD payments worldwide"
+  },
+  {
+    Company: "Zapier",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://zapier.com/jobs/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter Screen", Description: "Remote work experience and automation interest" },
+      { Round: 2, Type: "Technical interview", Description: "React component building and API integration" },
+      { Round: 3, Type: "System design", Description: "Design workflow automation UI" },
+      { Round: 4, Type: "Team interview", Description: "Async communication and collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Node.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["API integrations", "Workflow design", "User experience"],
+    Notes: "Fully distributed team, competitive USD salaries"
+  },
+  {
+    Company: "Buffer",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://buffer.com/journey/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Culture interview", Description: "Values alignment and remote work style" },
+      { Round: 2, Type: "Technical challenge", Description: "Take-home React project with social media features" },
+      { Round: 3, Type: "Technical discussion", Description: "Code review and architecture discussion" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Social media APIs", "Analytics dashboards", "User engagement"],
+    Notes: "Remote-first culture, transparent salaries in USD"
+  },
+  {
+    Company: "Automattic",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://automattic.com/work-with-us/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Application review", Description: "Portfolio and WordPress experience assessment" },
+      { Round: 2, Type: "Technical trial", Description: "Paid trial project on WordPress.com" },
+      { Round: 3, Type: "Code review", Description: "Review trial work with team" },
+      { Round: 4, Type: "Culture interview", Description: "Distributed work and company values" }
+    ],
+    FrameworksOrTools: ["React", "WordPress", "JavaScript", "PHP"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Content management", "Performance", "Accessibility"],
+    Notes: "Distributed workforce across 90+ countries, USD salaries"
+  },
+  {
+    Company: "InVision",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://invisionapp.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter Screen", Description: "Design tool experience and remote work" },
+      { Round: 2, Type: "Technical interview", Description: "Build design tool UI components" },
+      { Round: 3, Type: "Design challenge", Description: "Create interactive prototyping interface" },
+      { Round: 4, Type: "Team interview", Description: "Collaboration with designers and PMs" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Canvas API", "WebGL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Design tools", "Real-time collaboration", "Canvas rendering"],
+    Notes: "Design-focused remote company, competitive USD compensation"
+  },
+  {
+    Company: "Doist (Todoist)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://doist.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial interview", Description: "Remote work experience and productivity tools interest" },
+      { Round: 2, Type: "Technical assignment", Description: "Build task management component with React" },
+      { Round: 3, Type: "Final interview", Description: "Code discussion and culture fit" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Redux"],
+    DSA: "Low",
+    SpecialFocusAreas: ["User experience", "Cross-platform consistency", "Performance"],
+    Notes: "Async-first remote company, location-independent salaries in USD"
+  },
+  {
+    Company: "Hotjar",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://careers.hotjar.com/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "Remote work experience and analytics interest" },
+      { Round: 2, Type: "Technical interview", Description: "JavaScript and React live coding" },
+      { Round: 3, Type: "System design", Description: "Design heatmap visualization system" },
+      { Round: 4, Type: "Cultural interview", Description: "Remote team collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "D3.js", "Canvas"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Data visualization", "Performance optimization", "User analytics"],
+    Notes: "Fully remote since 2014, competitive USD salaries globally"
+  },
+  {
+    Company: "Toggl",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://toggl.com/jobs/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Remote work setup and time tracking domain" },
+      { Round: 2, Type: "Technical test", Description: "React time tracker component development" },
+      { Round: 3, Type: "Team interview", Description: "Code review and async communication" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "GraphQL"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Time tracking interfaces", "Data visualization", "Mobile responsiveness"],
+    Notes: "Estonia-based remote company, USD salary options"
+  },
+  {
+    Company: "Ghost",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://ghost.org/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Application review", Description: "Portfolio review and publishing platform interest" },
+      { Round: 2, Type: "Technical challenge", Description: "Build blog editor interface with React" },
+      { Round: 3, Type: "Culture interview", Description: "Open source contribution and remote work" }
+    ],
+    FrameworksOrTools: ["React", "Node.js", "Ember.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Content creation tools", "Performance", "SEO optimization"],
+    Notes: "Non-profit remote team, transparent USD salaries"
+  },
+  {
+    Company: "ConvertKit",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://convertkit.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial interview", Description: "Email marketing interest and remote experience" },
+      { Round: 2, Type: "Technical assignment", Description: "Email template builder with React" },
+      { Round: 3, Type: "Code review", Description: "Discuss assignment and improvements" },
+      { Round: 4, Type: "Team fit", Description: "Culture and working style assessment" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Tailwind CSS"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Email tools", "Drag-and-drop interfaces", "Marketing automation"],
+    Notes: "Boise-based remote company, competitive USD compensation"
+  },
+  {
+    Company: "Help Scout",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://helpscout.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Customer service software interest and remote work" },
+      { Round: 2, Type: "Technical interview", Description: "React component development and testing" },
+      { Round: 3, Type: "Design challenge", Description: "Customer support interface design" },
+      { Round: 4, Type: "Cultural interview", Description: "Customer-centric mindset and team collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "SCSS"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Customer support tools", "Real-time messaging", "Accessibility"],
+    Notes: "Boston-based remote company, strong USD benefits"
+  },
+  {
+    Company: "Basecamp",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://basecamp.com/about/jobs/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Application review", Description: "Portfolio assessment and project management interest" },
+      { Round: 2, Type: "Technical exercise", Description: "Build project management interface" },
+      { Round: 3, Type: "Final interview", Description: "Culture fit and work philosophy alignment" }
+    ],
+    FrameworksOrTools: ["Stimulus", "Turbo", "CSS", "JavaScript"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Simplicity", "Performance", "Progressive enhancement"],
+    Notes: "Chicago-based with remote options, stable USD compensation"
+  },
+  {
+    Company: "Gatsby",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://gatsby.dev/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "JAMstack and static site generator experience" },
+      { Round: 2, Type: "Technical interview", Description: "React and GraphQL live coding" },
+      { Round: 3, Type: "System design", Description: "Design static site generation pipeline" },
+      { Round: 4, Type: "Team interview", Description: "Open source contribution and collaboration" }
+    ],
+    FrameworksOrTools: ["React", "Gatsby", "GraphQL", "TypeScript"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Static site generation", "Performance optimization", "Developer tools"],
+    Notes: "SF-based remote-friendly, strong USD salaries for remote roles"
+  },
+  {
+    Company: "Netlify",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://netlify.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial screen", Description: "JAMstack architecture and deployment platforms" },
+      { Round: 2, Type: "Technical coding", Description: "React dashboard and deployment interface" },
+      { Round: 3, Type: "System design", Description: "Design CI/CD dashboard architecture" },
+      { Round: 4, Type: "Culture interview", Description: "Remote collaboration and developer advocacy" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Node.js", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Developer tools", "Deployment automation", "Performance"],
+    Notes: "SF-based with global remote team, competitive USD compensation"
+  },
+  {
+    Company: "Vercel",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://vercel.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Next.js and deployment platform experience" },
+      { Round: 2, Type: "Technical interview", Description: "React/Next.js live coding session" },
+      { Round: 3, Type: "System design", Description: "Design serverless deployment dashboard" },
+      { Round: 4, Type: "Team interview", Description: "Developer experience and collaboration" }
+    ],
+    FrameworksOrTools: ["React", "Next.js", "TypeScript", "Vercel"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Developer experience", "Performance optimization", "Serverless"],
+    Notes: "Global remote team, excellent USD compensation packages"
+  },
+  {
+    Company: "Planetscale",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://planetscale.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Database tooling and developer tools interest" },
+      { Round: 2, Type: "Technical interview", Description: "React dashboard development for database management" },
+      { Round: 3, Type: "System design", Description: "Design database branching visualization" },
+      { Round: 4, Type: "Cultural interview", Description: "Remote work and database domain knowledge" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Next.js", "Tailwind"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Database tooling", "Developer experience", "Data visualization"],
+    Notes: "SF-based remote-first company, strong USD compensation"
+  },
+  {
+    Company: "Supabase",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://supabase.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial interview", Description: "Open source contribution and backend-as-a-service" },
+      { Round: 2, Type: "Technical challenge", Description: "Build database management interface" },
+      { Round: 3, Type: "Team interview", Description: "Remote collaboration and product thinking" }
+    ],
+    FrameworksOrTools: ["React", "Next.js", "TypeScript", "Tailwind"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Developer tools", "Database interfaces", "Open source"],
+    Notes: "Singapore-based remote team, competitive USD salaries globally"
+  },
+  {
+    Company: "Linear",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://linear.app/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "Project management tools and design sensibility" },
+      { Round: 2, Type: "Technical interview", Description: "React performance optimization and animations" },
+      { Round: 3, Type: "Design challenge", Description: "Build issue tracking interface with smooth UX" },
+      { Round: 4, Type: "Team interview", Description: "Product sense and attention to detail" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Framer Motion", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Performance", "Animations", "Keyboard shortcuts", "Design systems"],
+    Notes: "SF-based remote-friendly, premium USD compensation"
+  },
+  {
+    Company: "Clerk",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://clerk.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial screen", Description: "Authentication systems and developer tools" },
+      { Round: 2, Type: "Technical coding", Description: "Build auth components with React" },
+      { Round: 3, Type: "System design", Description: "Design user management dashboard" },
+      { Round: 4, Type: "Culture interview", Description: "Developer advocacy and product focus" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Next.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Authentication flows", "Security", "Developer experience"],
+    Notes: "SF-based with remote team, competitive USD packages"
+  },
+  {
+    Company: "Loom",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://loom.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Video communication tools and remote work" },
+      { Round: 2, Type: "Technical interview", Description: "React and video player interface development" },
+      { Round: 3, Type: "System design", Description: "Design video recording and sharing platform" },
+      { Round: 4, Type: "Team interview", Description: "Async communication and product thinking" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "WebRTC", "Video.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Video technology", "Real-time communication", "Performance"],
+    Notes: "SF-based remote-friendly, strong USD benefits"
+  },
+  {
+    Company: "Retool",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://retool.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Low-code platforms and internal tools" },
+      { Round: 2, Type: "Technical interview", Description: "Build drag-and-drop interface with React" },
+      { Round: 3, Type: "System design", Description: "Design visual application builder" },
+      { Round: 4, Type: "Cultural interview", Description: "Product thinking and user empathy" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Drag-and-drop", "Canvas"],
+    DSA: "High",
+    SpecialFocusAreas: ["Visual builders", "Performance", "Complex state management"],
+    Notes: "SF-based with remote options, excellent USD compensation"
+  },
+  {
+    Company: "Miro",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://miro.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 5,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Collaboration tools and canvas applications" },
+      { Round: 2, Type: "Technical interview", Description: "JavaScript and React performance optimization" },
+      { Round: 3, Type: "System design", Description: "Design real-time collaborative canvas" },
+      { Round: 4, Type: "Coding challenge", Description: "Build whiteboard functionality" },
+      { Round: 5, Type: "Team interview", Description: "Remote collaboration and product vision" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Canvas API", "WebGL"],
+    DSA: "High",
+    SpecialFocusAreas: ["Real-time collaboration", "Canvas rendering", "Performance optimization"],
+    Notes: "Amsterdam-based remote-friendly, competitive USD salaries"
+  },
+  {
+    Company: "Figma",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://figma.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 5,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "Design tools and collaboration platforms" },
+      { Round: 2, Type: "Technical phone", Description: "JavaScript fundamentals and performance" },
+      { Round: 3, Type: "Coding challenge", Description: "Build design tool interface components" },
+      { Round: 4, Type: "System design", Description: "Design real-time design collaboration system" },
+      { Round: 5, Type: "Team interview", Description: "Design sensibility and product thinking" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "WebGL", "Canvas API"],
+    DSA: "High",
+    SpecialFocusAreas: ["Real-time collaboration", "Graphics rendering", "Performance"],
+    Notes: "SF-based with remote roles, top-tier USD compensation"
+  },
+  {
+    Company: "Framer",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://framer.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial screen", Description: "Design tools and prototyping experience" },
+      { Round: 2, Type: "Technical interview", Description: "React animations and interaction development" },
+      { Round: 3, Type: "Design challenge", Description: "Build interactive prototype interface" },
+      { Round: 4, Type: "Culture interview", Description: "Design-developer collaboration" }
+    ],
+    FrameworksOrTools: ["React", "Framer Motion", "TypeScript", "WebGL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Animations", "Design tools", "Performance", "User interactions"],
+    Notes: "Amsterdam-based remote team, strong USD compensation"
+  },
+  {
+    Company: "Canva",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://canva.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Design platforms and creative tools" },
+      { Round: 2, Type: "Technical interview", Description: "React and canvas-based editor development" },
+      { Round: 3, Type: "System design", Description: "Design scalable design editor architecture" },
+      { Round: 4, Type: "Behavioral interview", Description: "Creativity and team collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Canvas API", "WebGL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Canvas rendering", "Performance", "Design tools", "User experience"],
+    Notes: "Sydney-based with global remote options, competitive USD rates"
+  },
+  {
+    Company: "Webflow",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://webflow.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "Visual web development and no-code tools" },
+      { Round: 2, Type: "Technical interview", Description: "React and visual editor component development" },
+      { Round: 3, Type: "System design", Description: "Design visual website builder interface" },
+      { Round: 4, Type: "Team interview", Description: "Product thinking and user empathy" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "CSS-in-JS", "Drag-and-drop"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Visual editors", "CSS generation", "Responsive design"],
+    Notes: "SF-based remote-friendly, excellent USD compensation"
+  },
+  {
+    Company: "Notion",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://notion.so/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Productivity tools and block-based editors" },
+      { Round: 2, Type: "Technical interview", Description: "React rich text editor development" },
+      { Round: 3, Type: "System design", Description: "Design real-time collaborative document editor" },
+      { Round: 4, Type: "Cultural interview", Description: "Product sense and user-centric thinking" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "ProseMirror", "Real-time sync"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Rich text editing", "Real-time collaboration", "Performance"],
+    Notes: "SF-based remote-friendly, competitive USD packages"
+  },
+  {
+    Company: "Airtable",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://airtable.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Database interfaces and spreadsheet applications" },
+      { Round: 2, Type: "Technical interview", Description: "React data grid and virtualization" },
+      { Round: 3, Type: "System design", Description: "Design scalable data visualization interface" },
+      { Round: 4, Type: "Behavioral interview", Description: "Product thinking and user workflows" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Virtualization", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Data visualization", "Performance optimization", "Complex UIs"],
+    Notes: "SF-based with remote roles, strong USD compensation"
+  },
+  {
+    Company: "Plaid",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://plaid.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Fintech and financial data platforms" },
+      { Round: 2, Type: "Technical interview", Description: "React dashboard development for financial data" },
+      { Round: 3, Type: "System design", Description: "Design bank account linking flow" },
+      { Round: 4, Type: "Team interview", Description: "Security-conscious development and collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Next.js", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Financial interfaces", "Security", "Data visualization"],
+    Notes: "SF-based remote-friendly, excellent USD fintech compensation"
+  },
+  {
+    Company: "Stripe",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://stripe.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 5,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Payment systems and developer tools" },
+      { Round: 2, Type: "Technical phone", Description: "JavaScript fundamentals and API integration" },
+      { Round: 3, Type: "Coding challenge", Description: "Build payment form components" },
+      { Round: 4, Type: "System design", Description: "Design payment dashboard architecture" },
+      { Round: 5, Type: "Team interview", Description: "Developer experience and product focus" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Node.js", "GraphQL"],
+    DSA: "High",
+    SpecialFocusAreas: ["Payment flows", "Security", "Developer experience", "APIs"],
+    Notes: "SF/Dublin with global remote, top-tier USD compensation"
+  },
+  {
+    Company: "Coinbase",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://coinbase.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Cryptocurrency and trading platform experience" },
+      { Round: 2, Type: "Technical interview", Description: "React trading interface development" },
+      { Round: 3, Type: "System design", Description: "Design crypto trading dashboard" },
+      { Round: 4, Type: "Behavioral interview", Description: "Risk management and compliance awareness" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Redux", "D3.js"],
+    DSA: "High",
+    SpecialFocusAreas: ["Financial data visualization", "Real-time updates", "Security"],
+    Notes: "SF-based remote-friendly, crypto compensation + USD"
+  },
+  {
+    Company: "Binance",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://binance.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial screen", Description: "Crypto trading and high-frequency interfaces" },
+      { Round: 2, Type: "Technical test", Description: "React trading terminal with real-time data" },
+      { Round: 3, Type: "System design", Description: "Design high-performance trading interface" },
+      { Round: 4, Type: "Final interview", Description: "Global team collaboration and crypto knowledge" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "WebSocket", "Canvas"],
+    DSA: "High",
+    SpecialFocusAreas: ["High-frequency updates", "Performance", "Financial charts"],
+    Notes: "Global remote positions, competitive USD + crypto compensation"
+  },
+  {
+    Company: "Polygon",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://polygon.technology/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "Web3 and blockchain interface development" },
+      { Round: 2, Type: "Coding challenge", Description: "Build DeFi dashboard with Web3 integration" },
+      { Round: 3, Type: "Culture interview", Description: "Decentralized future and remote collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "Ethers.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Web3 integration", "Blockchain data", "DeFi interfaces"],
+    Notes: "Global distributed team, USD + token compensation"
+  },
+  {
+    Company: "Chainlink",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://chainlink.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "Oracle networks and blockchain infrastructure" },
+      { Round: 2, Type: "Technical interview", Description: "React dashboard for blockchain data feeds" },
+      { Round: 3, Type: "System design", Description: "Design oracle data visualization platform" },
+      { Round: 4, Type: "Team interview", Description: "Decentralized systems and remote work" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "GraphQL", "Web3.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Blockchain data", "Real-time feeds", "Data visualization"],
+    Notes: "Global remote team, excellent USD + token packages"
+  },
+  {
+    Company: "Uniswap",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://uniswap.org/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Portfolio review", Description: "DeFi experience and Web3 development" },
+      { Round: 2, Type: "Technical challenge", Description: "Build DEX interface with wallet integration" },
+      { Round: 3, Type: "Culture interview", Description: "DeFi passion and distributed team fit" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "GraphQL"],
+    DSA: "Low",
+    SpecialFocusAreas: ["DeFi protocols", "Wallet integration", "Trading interfaces"],
+    Notes: "Fully remote, competitive USD + UNI token compensation"
+  },
+  {
+    Company: "OpenSea",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://opensea.io/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "NFT marketplace and Web3 experience" },
+      { Round: 2, Type: "Technical interview", Description: "React NFT gallery and marketplace features" },
+      { Round: 3, Type: "System design", Description: "Design scalable NFT marketplace interface" },
+      { Round: 4, Type: "Cultural interview", Description: "NFT ecosystem and creator economy" }
+    ],
+    FrameworksOrTools: ["React", "Next.js", "TypeScript", "Web3.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["NFT interfaces", "Marketplace features", "Wallet integration"],
+    Notes: "NY-based remote-friendly, strong USD compensation"
+  },
+  {
+    Company: "Magic Eden",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://magiceden.io/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Solana NFTs and marketplace development" },
+      { Round: 2, Type: "Technical test", Description: "Build NFT minting interface with Solana Web3" },
+      { Round: 3, Type: "Team interview", Description: "Fast-paced startup and Web3 passion" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Solana Web3.js", "Next.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Solana integration", "NFT marketplaces", "Crypto wallets"],
+    Notes: "Remote-first Solana NFT marketplace, competitive USD packages"
+  },
+  {
+    Company: "ConsenSys",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://consensys.net/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Ethereum ecosystem and MetaMask experience" },
+      { Round: 2, Type: "Technical interview", Description: "React Web3 application development" },
+      { Round: 3, Type: "System design", Description: "Design Ethereum-based application interface" },
+      { Round: 4, Type: "Culture interview", Description: "Decentralized future and blockchain advocacy" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "MetaMask"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Ethereum development", "MetaMask integration", "DApp interfaces"],
+    Notes: "Global distributed team, USD + ETH compensation options"
+  },
+  {
+    Company: "The Graph",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://thegraph.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "GraphQL and blockchain data indexing" },
+      { Round: 2, Type: "Coding challenge", Description: "Build subgraph explorer interface" },
+      { Round: 3, Type: "Team interview", Description: "Web3 infrastructure and remote collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "GraphQL", "Apollo"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["GraphQL interfaces", "Blockchain data", "Developer tools"],
+    Notes: "Distributed team, strong USD + GRT token compensation"
+  },
+  {
+    Company: "Alchemy",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://alchemy.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "Blockchain infrastructure and developer tools" },
+      { Round: 2, Type: "Technical interview", Description: "React dashboard for blockchain analytics" },
+      { Round: 3, Type: "System design", Description: "Design blockchain developer console" },
+      { Round: 4, Type: "Cultural interview", Description: "Developer experience and Web3 growth" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Next.js", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Developer tools", "Blockchain analytics", "API interfaces"],
+    Notes: "SF-based remote-friendly, excellent USD developer tool compensation"
+  },
+  {
+    Company: "Infura",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://infura.io/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Blockchain infrastructure and API services" },
+      { Round: 2, Type: "Technical interview", Description: "React interface for blockchain node management" },
+      { Round: 3, Type: "System design", Description: "Design API management dashboard" },
+      { Round: 4, Type: "Team interview", Description: "Infrastructure reliability and developer focus" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Next.js", "Node.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["API interfaces", "Infrastructure monitoring", "Developer experience"],
+    Notes: "ConsenSys company, global remote with USD compensation"
+  },
+  {
+    Company: "Moralis",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://moralis.io/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial interview", Description: "Web3 backend services and API development" },
+      { Round: 2, Type: "Technical challenge", Description: "Build Web3 dashboard using Moralis APIs" },
+      { Round: 3, Type: "Culture interview", Description: "Web3 education and developer community" }
+    ],
+    FrameworksOrTools: ["React", "Next.js", "TypeScript", "Web3.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Web3 APIs", "Developer tools", "Blockchain integration"],
+    Notes: "Remote-first Web3 infrastructure, competitive USD rates"
+  },
+  {
+    Company: "QuickNode",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://quicknode.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Blockchain node infrastructure and API services" },
+      { Round: 2, Type: "Technical interview", Description: "React dashboard for node management" },
+      { Round: 3, Type: "System design", Description: "Design blockchain node monitoring interface" },
+      { Round: 4, Type: "Team interview", Description: "Infrastructure scaling and developer experience" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "GraphQL", "Next.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Infrastructure interfaces", "Real-time monitoring", "API management"],
+    Notes: "Remote-friendly blockchain infrastructure, strong USD compensation"
+  },
+  {
+    Company: "Ankr",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://ankr.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "Multi-chain infrastructure and Web3 APIs" },
+      { Round: 2, Type: "Coding test", Description: "Build multi-chain explorer interface" },
+      { Round: 3, Type: "Culture interview", Description: "Decentralized infrastructure and global team" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "Multi-chain"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Multi-chain interfaces", "Infrastructure tools", "Blockchain data"],
+    Notes: "Global distributed team, USD + ANKR token compensation"
+  },
+  {
+    Company: "1inch",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://1inch.io/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Portfolio review", Description: "DeFi aggregation and trading experience" },
+      { Round: 2, Type: "Technical challenge", Description: "Build DEX aggregator interface" },
+      { Round: 3, Type: "Team interview", Description: "DeFi protocols and high-performance interfaces" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "Redux"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["DeFi aggregation", "Trading interfaces", "Performance optimization"],
+    Notes: "Global remote team, competitive USD + 1INCH compensation"
+  },
+  {
+    Company: "Yearn Finance",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://yearn.finance/careers/frontend-engineer",
+    NoOfInterviewRounds: 2,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical assessment", Description: "Build yield farming interface with Web3" },
+      { Round: 2, Type: "Community interview", Description: "DeFi passion and DAO contribution mindset" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "Ethers.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Yield farming interfaces", "DeFi protocols", "DAO tools"],
+    Notes: "DAO-based remote work, USD + YFI token rewards"
+  },
+  {
+    Company: "Compound",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://compound.finance/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "DeFi lending protocols and financial interfaces" },
+      { Round: 2, Type: "Coding challenge", Description: "Build lending/borrowing interface" },
+      { Round: 3, Type: "Culture interview", Description: "DeFi innovation and protocol development" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Financial interfaces", "DeFi protocols", "Interest rate visualization"],
+    Notes: "SF-based remote options, competitive USD + COMP tokens"
+  },
+  {
+    Company: "Aave",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://aave.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "DeFi lending and liquidity protocols" },
+      { Round: 2, Type: "Technical interview", Description: "React DeFi dashboard development" },
+      { Round: 3, Type: "System design", Description: "Design multi-asset lending interface" },
+      { Round: 4, Type: "Team interview", Description: "DeFi innovation and protocol safety" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["DeFi protocols", "Financial dashboards", "Risk management interfaces"],
+    Notes: "London-based remote-friendly, excellent USD + AAVE compensation"
+  },
+  {
+    Company: "MakerDAO",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://makerdao.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical assessment", Description: "Stablecoin protocols and DAO governance" },
+      { Round: 2, Type: "Coding challenge", Description: "Build DAO voting interface" },
+      { Round: 3, Type: "DAO interview", Description: "Decentralized governance and community contribution" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "IPFS"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["DAO interfaces", "Governance tools", "Stablecoin management"],
+    Notes: "Fully decentralized DAO, USD + MKR token compensation"
+  },
+  {
+    Company: "Synthetix",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://synthetix.io/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Portfolio review", Description: "Synthetic assets and derivatives trading" },
+      { Round: 2, Type: "Technical test", Description: "Build derivatives trading interface" },
+      { Round: 3, Type: "Team interview", Description: "DeFi derivatives and protocol understanding" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "Chart.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Trading interfaces", "Financial derivatives", "Complex financial data"],
+    Notes: "Australia-based remote team, USD + SNX token packages"
+  },
+  {
+    Company: "Curve Finance",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://curve.fi/careers/frontend-engineer",
+    NoOfInterviewRounds: 2,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical challenge", Description: "Build AMM trading interface with Vyper integration" },
+      { Round: 2, Type: "Protocol interview", Description: "AMM understanding and DeFi ecosystem knowledge" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "Python"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["AMM interfaces", "Liquidity pool management", "Yield optimization"],
+    Notes: "Switzerland-based remote, competitive USD + CRV rewards"
+  },
+  {
+    Company: "Balancer",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://balancer.fi/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "Automated market making and portfolio management" },
+      { Round: 2, Type: "Coding challenge", Description: "Build liquidity pool interface" },
+      { Round: 3, Type: "Culture interview", Description: "DeFi innovation and protocol development" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "D3.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Portfolio interfaces", "AMM visualization", "Liquidity management"],
+    Notes: "Global remote team, USD + BAL token compensation"
+  },
+  {
+    Company: "SushiSwap",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://sushi.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Portfolio assessment", Description: "DEX development and DeFi experience" },
+      { Round: 2, Type: "Technical test", Description: "Build DEX interface with yield farming" },
+      { Round: 3, Type: "Community interview", Description: "DAO participation and DeFi passion" }
+    ],
+    FrameworksOrTools: ["React", "Next.js", "TypeScript", "Web3.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["DEX interfaces", "Yield farming", "Community features"],
+    Notes: "Community-driven DAO, competitive USD + SUSHI compensation"
+  },
+  {
+    Company: "dYdX",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://dydx.careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Derivatives trading and institutional DeFi" },
+      { Round: 2, Type: "Technical interview", Description: "React high-performance trading interface" },
+      { Round: 3, Type: "System design", Description: "Design institutional-grade trading platform" },
+      { Round: 4, Type: "Team interview", Description: "Financial markets and trading experience" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "WebSocket", "Trading APIs"],
+    DSA: "High",
+    SpecialFocusAreas: ["High-frequency trading", "Financial derivatives", "Real-time data"],
+    Notes: "SF-based remote options, top-tier USD + DYDX compensation"
   }
 ];
