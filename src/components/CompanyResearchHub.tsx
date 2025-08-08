@@ -445,21 +445,16 @@ export function CompanyResearchHub() {
 
   // Load companies on mount
   useEffect(() => {
-    const saved = localStorage.getItem('companies');
-    if (saved) {
-      setCompanies(JSON.parse(saved));
-    } else {
-      // Auto-import comprehensive company data on first load
-      import('../data/companyInterviewData').then(({ COMPANY_INTERVIEW_DATA }) => {
-        const comprehensiveCompanies = COMPANY_INTERVIEW_DATA.map(data => {
-          const region = categorizeCompany(data.Company);
-          return convertInterviewDataToCompany(data, region);
-        });
-        setCompanies(comprehensiveCompanies);
-        localStorage.setItem('companies', JSON.stringify(comprehensiveCompanies));
-        toast.success(`🎉 Loaded ${comprehensiveCompanies.length} companies with comprehensive interview data!`);
+    // Always load the latest comprehensive data
+    import('../data/companyInterviewData').then(({ COMPANY_INTERVIEW_DATA }) => {
+      const comprehensiveCompanies = COMPANY_INTERVIEW_DATA.map(data => {
+        const region = categorizeCompany(data.Company);
+        return convertInterviewDataToCompany(data, region);
       });
-    }
+      setCompanies(comprehensiveCompanies);
+      localStorage.setItem('companies', JSON.stringify(comprehensiveCompanies));
+      toast.success(`🎉 Loaded ${comprehensiveCompanies.length} companies with comprehensive interview data!`);
+    });
   }, []);
 
   // Save companies to localStorage
