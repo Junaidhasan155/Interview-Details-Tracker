@@ -328,7 +328,48 @@ export function CompanyResearchHub() {
     return INDIAN_COMPANIES.includes(companyName) ? 'indian' : 'foreign';
   };
 
-  // Helper function to convert interview data to company format
+  // Helper function to convert enhanced interview data to company format
+  const convertEnhancedDataToCompany = (data: any, region: 'indian' | 'foreign'): Company => {
+    const interviewProcess: InterviewStage[] = data.RoundBreakdown.map((round: any) => ({
+      id: `${data.Company.toLowerCase().replace(/\s+/g, '-')}-round-${round.Round}`,
+      name: round.Type,
+      type: mapRoundTypeToStageType(round.Type),
+      duration: estimateDuration(round.Type),
+      description: round.Description,
+      tips: generateTipsForRound(round.Type, data.SpecialFocusAreas)
+    }));
+
+    return {
+      id: Math.random().toString(36).substr(2, 9),
+      name: data.Company,
+      description: `Frontend engineering opportunities with focus on ${data.SpecialFocusAreas.join(', ')}`,
+      industry: getCompanyIndustry(data.Company, region),
+      size: getCompanySize(data.Company),
+      location: getCompanyLocation(data.Company, region),
+      region,
+      website: generateWebsiteUrl(data.Company),
+      linkedinUrl: generateLinkedInUrl(data.Company),
+      glassdoorRating: Math.round((Math.random() * 1.5 + 3.5) * 10) / 10,
+      culture: generateCultureValues(region, data.Company),
+      techStack: data.FrameworksOrTools,
+      benefits: data.salaryInsights?.benefits || generateBenefits(region),
+      interviewProcess,
+      applications: [],
+      contacts: [],
+      notes: data.Notes || `DSA Required: ${data.DSA}. Special focus: ${data.SpecialFocusAreas.join(', ')}`,
+      isWishlist: false,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      // Enhanced data
+      interviewDetails: data.interviewDetails,
+      hrContacts: data.hrContacts,
+      candidateExperiences: data.candidateExperiences,
+      salaryInsights: data.salaryInsights,
+      cultureInsights: data.cultureInsights
+    };
+  };
+
+  // Helper function to convert interview data to company format (legacy support)
   const convertInterviewDataToCompany = (data: any, region: 'indian' | 'foreign'): Company => {
     const interviewProcess: InterviewStage[] = data.RoundBreakdown.map((round: any) => ({
       id: `${data.Company.toLowerCase().replace(/\s+/g, '-')}-round-${round.Round}`,
