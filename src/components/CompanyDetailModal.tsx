@@ -376,7 +376,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                 <div>
                   <h4 className="text-sm font-medium mb-2">Frameworks & Libraries</h4>
                   <div className="flex flex-wrap gap-1">
-                    {company.interviewDetails.frontendFocus.frameworks.map((framework, index) => (
+                    {(company.interviewDetails?.frontendFocus?.frameworks || company.techStack || ['React', 'JavaScript']).map((framework, index) => (
                       <Badge key={index} variant="default" className="text-xs">
                         {framework}
                       </Badge>
@@ -386,7 +386,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                 <div>
                   <h4 className="text-sm font-medium mb-2">Core Concepts</h4>
                   <div className="flex flex-wrap gap-1">
-                    {company.interviewDetails.frontendFocus.concepts.map((concept, index) => (
+                    {(company.interviewDetails?.frontendFocus?.concepts || ['DOM Manipulation', 'Event Handling', 'Async Programming']).map((concept, index) => (
                       <Badge key={index} variant="outline" className="text-xs">
                         {concept}
                       </Badge>
@@ -396,7 +396,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                 <div>
                   <h4 className="text-sm font-medium mb-2">Practical Tasks</h4>
                   <div className="flex flex-wrap gap-1">
-                    {company.interviewDetails.frontendFocus.practicalTasks.map((task, index) => (
+                    {(company.interviewDetails?.frontendFocus?.practicalTasks || ['Component Building', 'API Integration', 'UI Implementation']).map((task, index) => (
                       <Badge key={index} variant="secondary" className="text-xs">
                         {task}
                       </Badge>
