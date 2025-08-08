@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import { CompanyDataImporter } from './CompanyDataImporter';
 import { CompanyComparisonView } from './CompanyComparisonView';
+import { CompanyDetailModal } from './CompanyDetailModal';
 
 export interface Company {
   id: string;
