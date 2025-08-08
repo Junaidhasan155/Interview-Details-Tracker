@@ -253,10 +253,10 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
           </div>
         </DialogHeader>
 
-        <Separator />
+        <Separator className="mx-6" />
 
         {/* Enhanced Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6 px-6 pb-6">
           <TabsList className="grid w-full grid-cols-6 h-12 bg-muted/50">
             <TabsTrigger value="overview" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
               <Target className="h-4 w-4 mr-2" />
