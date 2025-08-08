@@ -1377,7 +1377,7 @@ export function CompanyResearchHub() {
                 )}
 
                 {/* Actions */}
-                <div className="flex gap-2 pt-2">
+                <div className="flex gap-2 pt-3 border-t border-gray-100">
                   <Button
                     variant="default"
                     size="sm"
@@ -1385,9 +1385,9 @@ export function CompanyResearchHub() {
                       setDetailCompany(company);
                       setIsDetailModalOpen(true);
                     }}
-                    className="flex-1"
+                    className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-md transition-all duration-200 hover:shadow-lg"
                   >
-                    <ExternalLink className="h-3 w-3 mr-1" />
+                    <ExternalLink className="h-3 w-3 mr-2" />
                     View Details
                   </Button>
                   <Button
@@ -1397,6 +1397,8 @@ export function CompanyResearchHub() {
                       setSelectedCompany(company);
                       setIsAddApplicationOpen(true);
                     }}
+                    className="border-purple-200 text-purple-700 hover:bg-purple-50 hover:border-purple-300 transition-all duration-200"
+                    title="Track Application"
                   >
                     <Briefcase className="h-3 w-3" />
                   </Button>
@@ -1405,8 +1407,10 @@ export function CompanyResearchHub() {
                       variant="outline"
                       size="sm"
                       onClick={() => window.open(company.website, '_blank')}
+                      className="border-green-200 text-green-700 hover:bg-green-50 hover:border-green-300 transition-all duration-200"
+                      title="Visit Website"
                     >
-                      <ExternalLink className="h-3 w-3" />
+                      <Globe className="h-3 w-3" />
                     </Button>
                   )}
                   {company.linkedinUrl && (
@@ -1414,6 +1418,8 @@ export function CompanyResearchHub() {
                       variant="outline"
                       size="sm"
                       onClick={() => window.open(company.linkedinUrl, '_blank')}
+                      className="border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 transition-all duration-200"
+                      title="LinkedIn Page"
                     >
                       <Linkedin className="h-3 w-3" />
                     </Button>
