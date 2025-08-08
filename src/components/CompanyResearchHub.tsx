@@ -1146,19 +1146,23 @@ export function CompanyResearchHub() {
           </div>
         ) : (
           filteredCompanies.map((company) => (
-            <Card key={company.id} className="transition-all duration-200 hover:shadow-md">
-              <CardHeader>
+            <Card key={company.id} className="group transition-all duration-300 hover:shadow-lg hover:shadow-blue-100 hover:-translate-y-1 border hover:border-blue-200 bg-gradient-to-br from-white to-gray-50/50">
+              <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <CardTitle className="text-lg">{company.name}</CardTitle>
+                      <CardTitle className="text-lg group-hover:text-blue-700 transition-colors">{company.name}</CardTitle>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleWishlist(company.id)}
-                        className={company.isWishlist ? 'text-yellow-600' : 'text-muted-foreground'}
+                        className={`transition-all duration-200 ${
+                          company.isWishlist
+                            ? 'text-yellow-600 hover:text-yellow-700 hover:bg-yellow-50'
+                            : 'text-muted-foreground hover:text-yellow-500 hover:bg-yellow-50'
+                        }`}
                       >
-                        <Star className={`h-4 w-4 ${company.isWishlist ? 'fill-current' : ''}`} />
+                        <Star className={`h-4 w-4 transition-transform hover:scale-110 ${company.isWishlist ? 'fill-current' : ''}`} />
                       </Button>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
