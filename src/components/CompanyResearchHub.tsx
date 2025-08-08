@@ -1202,96 +1202,10 @@ export function CompanyResearchHub() {
                   </p>
                 )}
 
-                {/* Quick Insights */}
-                {company.interviewDetails && (
-                  <div className="mb-4 p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-2">
-                        <TrendingUp className="h-4 w-4 text-blue-600" />
-                        <span className="text-sm font-medium text-blue-900">Interview Insights</span>
-                      </div>
-                      <Badge
-                        variant="outline"
-                        className={`text-xs ${
-                          company.interviewDetails.difficultyLevel === 'Very Hard' ? 'border-red-200 text-red-700 bg-red-50' :
-                          company.interviewDetails.difficultyLevel === 'Hard' ? 'border-orange-200 text-orange-700 bg-orange-50' :
-                          company.interviewDetails.difficultyLevel === 'Medium' ? 'border-yellow-200 text-yellow-700 bg-yellow-50' :
-                          'border-green-200 text-green-700 bg-green-50'
-                        }`}
-                      >
-                        {company.interviewDetails.difficultyLevel}
-                      </Badge>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-3 w-3 text-muted-foreground" />
-                        <span className="text-muted-foreground">Duration:</span>
-                        <span className="font-medium">{company.interviewDetails.averageDuration}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <CheckCircle className="h-3 w-3 text-green-600" />
-                        <span className="text-muted-foreground">Success:</span>
-                        <span className="font-medium text-green-600">{company.interviewDetails.successRate}%</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Brain className="h-3 w-3 text-purple-600" />
-                        <span className="text-muted-foreground">DSA:</span>
-                        <span className={`font-medium ${company.interviewDetails.dsaFocus.required ? 'text-purple-600' : 'text-gray-500'}`}>
-                          {company.interviewDetails.dsaFocus.required ? company.interviewDetails.dsaFocus.difficulty : 'Not Required'}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <BookOpen className="h-3 w-3 text-blue-600" />
-                        <span className="text-muted-foreground">Prep:</span>
-                        <span className="font-medium">{company.interviewDetails.preparationTime}</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Salary Insights */}
-                {company.salaryInsights && (
-                  <div className="mb-4 p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-100">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Banknote className="h-4 w-4 text-green-600" />
-                      <span className="text-sm font-medium text-green-900">Salary Range</span>
-                      {company.salaryInsights.stockOptions && (
-                        <Badge variant="outline" className="text-xs border-green-200 text-green-700 bg-green-50">
-                          <Star className="h-2 w-2 mr-1" />
-                          Stock Options
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-muted-foreground">Range:</span>
-                      <span className="font-medium text-green-700">{company.salaryInsights.range}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs mt-1">
-                      <span className="text-muted-foreground">Work-Life Balance:</span>
-                      <div className="flex items-center gap-1">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star
-                            key={star}
-                            className={`h-2 w-2 ${
-                              star <= company.salaryInsights!.workLifeBalance
-                                ? 'fill-yellow-400 text-yellow-400'
-                                : 'text-gray-300'
-                            }`}
-                          />
-                        ))}
-                        <span className="text-xs font-medium ml-1">{company.salaryInsights.workLifeBalance}/5</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
                 {/* Applications Summary */}
                 {company.applications.length > 0 && (
-                  <div className="mb-4 p-3 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border border-purple-100">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Briefcase className="h-4 w-4 text-purple-600" />
-                      <span className="text-sm font-medium text-purple-900">Applications ({company.applications.length})</span>
-                    </div>
+                  <div className="mb-4">
+                    <h4 className="text-sm font-medium mb-2">Applications ({company.applications.length})</h4>
                     <div className="space-y-1">
                       {company.applications.slice(0, 2).map((app) => (
                         <div key={app.id} className="flex items-center justify-between text-xs">
@@ -1316,61 +1230,18 @@ export function CompanyResearchHub() {
                 {/* Tech Stack */}
                 {company.techStack.length > 0 && (
                   <div className="mb-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Code className="h-4 w-4 text-blue-600" />
-                      <span className="text-sm font-medium">Tech Stack</span>
-                    </div>
+                    <h4 className="text-sm font-medium mb-2">Tech Stack</h4>
                     <div className="flex flex-wrap gap-1">
                       {company.techStack.slice(0, 4).map((tech, index) => (
-                        <Badge key={index} variant="outline" className="text-xs bg-blue-50 border-blue-200 text-blue-700">
+                        <Badge key={index} variant="outline" className="text-xs">
                           {tech}
                         </Badge>
                       ))}
                       {company.techStack.length > 4 && (
-                        <Badge variant="outline" className="text-xs bg-gray-50 border-gray-200 text-gray-700">
+                        <Badge variant="outline" className="text-xs">
                           +{company.techStack.length - 4}
                         </Badge>
                       )}
-                    </div>
-                  </div>
-                )}
-
-                {/* Candidate Reviews Preview */}
-                {company.candidateExperiences && company.candidateExperiences.length > 0 && (
-                  <div className="mb-4 p-3 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg border border-amber-100">
-                    <div className="flex items-center gap-2 mb-2">
-                      <MessageSquare className="h-4 w-4 text-amber-600" />
-                      <span className="text-sm font-medium text-amber-900">Recent Reviews</span>
-                      <Badge variant="outline" className="text-xs border-amber-200 text-amber-700 bg-amber-50">
-                        {company.candidateExperiences.length} review{company.candidateExperiences.length > 1 ? 's' : ''}
-                      </Badge>
-                    </div>
-                    <div className="space-y-1">
-                      {company.candidateExperiences.slice(0, 2).map((exp) => (
-                        <div key={exp.id} className="flex items-center justify-between text-xs">
-                          <div className="flex items-center gap-2">
-                            <span className="truncate">{exp.candidateName}</span>
-                            <span className="text-muted-foreground">•</span>
-                            <span className="text-muted-foreground">{exp.experience}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Badge
-                              variant="outline"
-                              className={`text-xs ${
-                                exp.result === 'Passed' ? 'border-green-200 text-green-700 bg-green-50' :
-                                exp.result === 'Failed' ? 'border-red-200 text-red-700 bg-red-50' :
-                                'border-blue-200 text-blue-700 bg-blue-50'
-                              }`}
-                            >
-                              {exp.result}
-                            </Badge>
-                            <div className="flex items-center gap-0.5">
-                              <Star className="h-2 w-2 fill-yellow-400 text-yellow-400" />
-                              <span className="font-medium">{exp.rating}</span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
                     </div>
                   </div>
                 )}
