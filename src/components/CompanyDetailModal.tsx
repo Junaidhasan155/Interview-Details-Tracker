@@ -671,11 +671,11 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                   {company.techStack.map((tech, index) => (
-                    <div key={index} className="flex items-center gap-2 p-3 bg-muted/20 rounded-lg hover:bg-muted/40 transition-colors">
-                      <Code className="h-4 w-4 text-primary" />
-                      <span className="font-medium">{tech}</span>
+                    <div key={index} className="flex items-center gap-3 p-4 bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg hover:from-primary/10 hover:to-primary/15 transition-all duration-200 border border-primary/10">
+                      <Code className="h-5 w-5 text-primary flex-shrink-0" />
+                      <span className="font-medium text-sm">{tech}</span>
                     </div>
                   ))}
                 </div>
