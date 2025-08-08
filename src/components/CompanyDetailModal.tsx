@@ -360,9 +360,9 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-muted-foreground">Work-Life Balance</span>
                       <div className="flex items-center gap-2">
-                        <Progress 
-                          value={(company.salaryInsights?.workLifeBalance ?? 4) * 20} 
-                          className="w-16 h-2" 
+                        <Progress
+                          value={(company.salaryInsights?.workLifeBalance ?? 4) * 20}
+                          className="w-24 h-2"
                         />
                         <span className="text-sm font-semibold">
                           {company.salaryInsights?.workLifeBalance ?? 4}/5
