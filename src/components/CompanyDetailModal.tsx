@@ -160,7 +160,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-7xl w-[95vw] max-h-[95vh] overflow-y-auto p-0">
         {/* Enhanced Header */}
-        <DialogHeader className="space-y-6 pb-6">
+        <DialogHeader className="space-y-6 pb-6 px-6 pt-6">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-3">
