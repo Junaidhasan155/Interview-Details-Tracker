@@ -492,7 +492,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                     <div>
                       <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
                         <Code className="h-4 w-4" />
