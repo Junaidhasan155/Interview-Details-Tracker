@@ -445,92 +445,101 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
           </TabsContent>
 
           <TabsContent value="experiences" className="space-y-6">
-            {company.candidateExperiences.map((experience) => (
-              <Card key={experience.id}>
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <CardTitle className="text-lg flex items-center gap-2">
-                        <User className="h-5 w-5" />
-                        {experience.candidateName}
-                      </CardTitle>
-                      <CardDescription>
-                        {experience.role} • {experience.experience} • {experience.interviewDate}
-                      </CardDescription>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Badge className={getResultColor(experience.result)}>
-                        {experience.result === 'Passed' && <CheckCircle className="h-3 w-3 mr-1" />}
-                        {experience.result === 'Failed' && <XCircle className="h-3 w-3 mr-1" />}
-                        {experience.result === 'Ongoing' && <Clock className="h-3 w-3 mr-1" />}
-                        {experience.result}
-                      </Badge>
-                      <div className="flex items-center gap-1">
-                        <Star className="h-4 w-4 fill-current text-yellow-500" />
-                        <span className="text-sm font-medium">{experience.rating}/5</span>
+            {(company.candidateExperiences || []).length > 0 ? (
+              company.candidateExperiences.map((experience) => (
+                <Card key={experience.id}>
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <CardTitle className="text-lg flex items-center gap-2">
+                          <User className="h-5 w-5" />
+                          {experience.candidateName}
+                        </CardTitle>
+                        <CardDescription>
+                          {experience.role} • {experience.experience} • {experience.interviewDate}
+                        </CardDescription>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge className={getResultColor(experience.result)}>
+                          {experience.result === 'Passed' && <CheckCircle className="h-3 w-3 mr-1" />}
+                          {experience.result === 'Failed' && <XCircle className="h-3 w-3 mr-1" />}
+                          {experience.result === 'Ongoing' && <Clock className="h-3 w-3 mr-1" />}
+                          {experience.result}
+                        </Badge>
+                        <div className="flex items-center gap-1">
+                          <Star className="h-4 w-4 fill-current text-yellow-500" />
+                          <span className="text-sm font-medium">{experience.rating}/5</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {/* Rounds */}
-                  <div>
-                    <h4 className="font-medium mb-3">Interview Rounds</h4>
-                    <div className="space-y-3">
-                      {experience.rounds.map((round, index) => (
-                        <div key={index} className="border rounded-lg p-3">
-                          <div className="flex items-center justify-between mb-2">
-                            <h5 className="font-medium">{round.roundName}</h5>
-                            <div className="flex items-center gap-2">
-                              <Badge variant="outline">{round.duration} min</Badge>
-                              <Badge className={getDifficultyColor(round.difficulty)}>
-                                {round.difficulty}
-                              </Badge>
-                              <Badge variant={round.passed ? 'default' : 'destructive'}>
-                                {round.passed ? <ThumbsUp className="h-3 w-3" /> : <ThumbsDown className="h-3 w-3" />}
-                              </Badge>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {/* Rounds */}
+                    <div>
+                      <h4 className="font-medium mb-3">Interview Rounds</h4>
+                      <div className="space-y-3">
+                        {experience.rounds.map((round, index) => (
+                          <div key={index} className="border rounded-lg p-3">
+                            <div className="flex items-center justify-between mb-2">
+                              <h5 className="font-medium">{round.roundName}</h5>
+                              <div className="flex items-center gap-2">
+                                <Badge variant="outline">{round.duration} min</Badge>
+                                <Badge className={getDifficultyColor(round.difficulty)}>
+                                  {round.difficulty}
+                                </Badge>
+                                <Badge variant={round.passed ? 'default' : 'destructive'}>
+                                  {round.passed ? <ThumbsUp className="h-3 w-3" /> : <ThumbsDown className="h-3 w-3" />}
+                                </Badge>
+                              </div>
+                            </div>
+                            <div className="space-y-2">
+                              <div>
+                                <h6 className="text-sm font-medium">Questions Asked:</h6>
+                                <ul className="text-sm text-muted-foreground ml-4">
+                                  {round.questions.map((question, qIndex) => (
+                                    <li key={qIndex} className="list-disc">{question}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div>
+                                <h6 className="text-sm font-medium">Feedback:</h6>
+                                <p className="text-sm text-muted-foreground">{round.feedback}</p>
+                              </div>
                             </div>
                           </div>
-                          <div className="space-y-2">
-                            <div>
-                              <h6 className="text-sm font-medium">Questions Asked:</h6>
-                              <ul className="text-sm text-muted-foreground ml-4">
-                                {round.questions.map((question, qIndex) => (
-                                  <li key={qIndex} className="list-disc">{question}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div>
-                              <h6 className="text-sm font-medium">Feedback:</h6>
-                              <p className="text-sm text-muted-foreground">{round.feedback}</p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Overall Feedback */}
-                  <div>
-                    <h4 className="font-medium mb-2">Overall Feedback</h4>
-                    <p className="text-sm text-muted-foreground">{experience.overallFeedback}</p>
-                  </div>
+                    {/* Overall Feedback */}
+                    <div>
+                      <h4 className="font-medium mb-2">Overall Feedback</h4>
+                      <p className="text-sm text-muted-foreground">{experience.overallFeedback}</p>
+                    </div>
 
-                  {/* Tips */}
-                  <div>
-                    <h4 className="font-medium mb-2">Tips for Future Candidates</h4>
-                    <ul className="space-y-1">
-                      {experience.tips.map((tip, index) => (
-                        <li key={index} className="flex items-start gap-2 text-sm">
-                          <Zap className="h-3 w-3 mt-0.5 text-yellow-500" />
-                          {tip}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    {/* Tips */}
+                    <div>
+                      <h4 className="font-medium mb-2">Tips for Future Candidates</h4>
+                      <ul className="space-y-1">
+                        {experience.tips.map((tip, index) => (
+                          <li key={index} className="flex items-start gap-2 text-sm">
+                            <Zap className="h-3 w-3 mt-0.5 text-yellow-500" />
+                            {tip}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              <Card>
+                <CardContent className="text-center py-8">
+                  <MessageSquare className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                  <p className="text-muted-foreground">No candidate experiences available yet.</p>
                 </CardContent>
               </Card>
-            ))}
+            )}
           </TabsContent>
 
           <TabsContent value="tech" className="space-y-6">
