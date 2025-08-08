@@ -428,7 +428,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
           </TabsContent>
 
           {/* Interviews Tab */}
-          <TabsContent value="interviews" className="space-y-6 mt-6">
+          <TabsContent value="interviews" className="space-y-6 mt-6 max-h-[60vh] overflow-y-auto pr-2">
             <div className="grid gap-6">
               {/* DSA Requirements */}
               <Card className="border-0 shadow-lg">
