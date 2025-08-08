@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { Avatar, AvatarFallback, AvatarInitials } from '@/components/ui/avatar';
+import { Separator } from '@/components/ui/separator';
 import {
   Building2,
   MapPin,
@@ -40,12 +41,17 @@ import {
   Rocket,
   Coffee,
   Home,
-  Banknote
+  Banknote,
+  ChevronRight,
+  Lightbulb,
+  GraduationCap,
+  HeartHandshake,
+  Sparkles
 } from 'lucide-react';
 import { Company } from './CompanyResearchHub';
 
 interface EnhancedCompany extends Company {
-  interviewDetails: {
+  interviewDetails?: {
     averageDuration: string;
     successRate: number;
     difficultyLevel: 'Easy' | 'Medium' | 'Hard' | 'Very Hard';
@@ -64,7 +70,7 @@ interface EnhancedCompany extends Company {
       designPatterns: string[];
     };
   };
-  hrContacts: {
+  hrContacts?: {
     name: string;
     role: string;
     email?: string;
@@ -72,7 +78,7 @@ interface EnhancedCompany extends Company {
     responsiveness: 'Fast' | 'Medium' | 'Slow';
     notes: string;
   }[];
-  candidateExperiences: {
+  candidateExperiences?: {
     id: string;
     candidateName: string;
     role: string;
@@ -91,7 +97,7 @@ interface EnhancedCompany extends Company {
     tips: string[];
     rating: number;
   }[];
-  salaryInsights: {
+  salaryInsights?: {
     range: string;
     average: string;
     currency: string;
@@ -100,7 +106,7 @@ interface EnhancedCompany extends Company {
     bonus: string;
     workLifeBalance: number;
   };
-  cultureInsights: {
+  cultureInsights?: {
     workEnvironment: string;
     teamSize: string;
     remotePolicy: string;
@@ -112,7 +118,7 @@ interface EnhancedCompany extends Company {
 }
 
 interface CompanyDetailModalProps {
-  company: EnhancedCompany | null;
+  company: Company | null;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -124,319 +130,296 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'Easy': return 'text-green-600 bg-green-50';
-      case 'Medium': return 'text-yellow-600 bg-yellow-50';
-      case 'Hard': return 'text-red-600 bg-red-50';
-      case 'Very Hard': return 'text-purple-600 bg-purple-50';
-      default: return 'text-gray-600 bg-gray-50';
+      case 'Easy': return 'bg-green-100 text-green-800 border-green-200';
+      case 'Medium': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'Hard': return 'bg-orange-100 text-orange-800 border-orange-200';
+      case 'Very Hard': return 'bg-red-100 text-red-800 border-red-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
   const getResultColor = (result: string) => {
     switch (result) {
-      case 'Passed': return 'text-green-600 bg-green-50';
-      case 'Failed': return 'text-red-600 bg-red-50';
-      case 'Ongoing': return 'text-blue-600 bg-blue-50';
-      default: return 'text-gray-600 bg-gray-50';
+      case 'Passed': return 'bg-green-100 text-green-800 border-green-200';
+      case 'Failed': return 'bg-red-100 text-red-800 border-red-200';
+      case 'Ongoing': return 'bg-blue-100 text-blue-800 border-blue-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+    }
+  };
+
+  const getResponsivenessColor = (responsiveness: string) => {
+    switch (responsiveness) {
+      case 'Fast': return 'bg-green-100 text-green-800';
+      case 'Medium': return 'bg-yellow-100 text-yellow-800';
+      case 'Slow': return 'bg-red-100 text-red-800';
+      default: return 'bg-gray-100 text-gray-800';
     }
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto">
-        <DialogHeader>
+      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+        {/* Enhanced Header */}
+        <DialogHeader className="space-y-6 pb-6">
           <div className="flex items-start justify-between">
-            <div>
-              <DialogTitle className="text-2xl font-bold flex items-center gap-3">
-                <Building2 className="h-6 w-6" />
-                {company.name}
-                {company.region && (
-                  <Badge variant="outline" className={company.region === 'indian' ? 'border-orange-200 text-orange-700' : 'border-blue-200 text-blue-700'}>
-                    {company.region === 'indian' ? (
-                      <><Flag className="h-3 w-3 mr-1" /> Indian</>
-                    ) : (
-                      <><Globe className="h-3 w-3 mr-1" /> Global</>
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="relative">
+                  <Avatar className="h-12 w-12 border-2 border-primary/20">
+                    <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-semibold">
+                      {company.name.substring(0, 2).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                  {company.region === 'foreign' && (
+                    <div className="absolute -top-1 -right-1 h-5 w-5 bg-blue-500 rounded-full flex items-center justify-center">
+                      <Globe className="h-3 w-3 text-white" />
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <DialogTitle className="text-2xl font-bold text-foreground flex items-center gap-3">
+                    {company.name}
+                    {company.region && (
+                      <Badge 
+                        variant="outline" 
+                        className={`${
+                          company.region === 'indian' 
+                            ? 'border-orange-200 text-orange-700 bg-orange-50' 
+                            : 'border-blue-200 text-blue-700 bg-blue-50'
+                        } font-medium`}
+                      >
+                        {company.region === 'indian' ? (
+                          <><Flag className="h-3 w-3 mr-1" /> Indian</>
+                        ) : (
+                          <><Globe className="h-3 w-3 mr-1" /> Global</>
+                        )}
+                      </Badge>
                     )}
-                  </Badge>
-                )}
-              </DialogTitle>
-              <DialogDescription className="text-lg mt-2">
-                {company.description}
-              </DialogDescription>
-              <div className="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  {company.location}
+                  </DialogTitle>
+                  <DialogDescription className="text-base text-muted-foreground mt-1 leading-relaxed">
+                    {company.description || "A leading technology company focused on innovation and growth."}
+                  </DialogDescription>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Users className="h-4 w-4" />
-                  {company.size} company
+              </div>
+              
+              {/* Company Quick Info */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-muted/30 rounded-lg">
+                <div className="flex items-center gap-2 text-sm">
+                  <MapPin className="h-4 w-4 text-muted-foreground" />
+                  <span className="font-medium">{company.location}</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Badge variant="secondary">{company.industry}</Badge>
+                <div className="flex items-center gap-2 text-sm">
+                  <Users className="h-4 w-4 text-muted-foreground" />
+                  <span className="font-medium capitalize">{company.size}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <Briefcase className="h-4 w-4 text-muted-foreground" />
+                  <Badge variant="secondary" className="font-medium">{company.industry}</Badge>
                 </div>
                 {company.glassdoorRating && (
-                  <div className="flex items-center gap-1">
-                    <Star className="h-4 w-4 fill-current text-yellow-500" />
-                    {company.glassdoorRating}/5
+                  <div className="flex items-center gap-2 text-sm">
+                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <span className="font-medium">{company.glassdoorRating}/5</span>
                   </div>
                 )}
               </div>
             </div>
-            <div className="flex gap-2">
+            
+            {/* Action Buttons */}
+            <div className="flex gap-2 ml-4">
               {company.website && (
-                <Button variant="outline" size="sm" onClick={() => window.open(company.website, '_blank')}>
-                  <ExternalLink className="h-4 w-4" />
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => window.open(company.website, '_blank')}
+                  className="hover:bg-primary/10"
+                >
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  Website
                 </Button>
               )}
               {company.linkedinUrl && (
-                <Button variant="outline" size="sm" onClick={() => window.open(company.linkedinUrl, '_blank')}>
-                  <Linkedin className="h-4 w-4" />
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => window.open(company.linkedinUrl, '_blank')}
+                  className="hover:bg-primary/10"
+                >
+                  <Linkedin className="h-4 w-4 mr-2" />
+                  LinkedIn
                 </Button>
               )}
             </div>
           </div>
         </DialogHeader>
 
+        <Separator />
+
+        {/* Enhanced Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
-          <TabsList className="grid w-full grid-cols-6">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="interviews">Interviews</TabsTrigger>
-            <TabsTrigger value="experiences">Experiences</TabsTrigger>
-            <TabsTrigger value="tech">Tech Stack</TabsTrigger>
-            <TabsTrigger value="culture">Culture</TabsTrigger>
-            <TabsTrigger value="contacts">Contacts</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-6 h-12 bg-muted/50">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <Target className="h-4 w-4 mr-2" />
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="interviews" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <MessageSquare className="h-4 w-4 mr-2" />
+              Process
+            </TabsTrigger>
+            <TabsTrigger value="experiences" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <User className="h-4 w-4 mr-2" />
+              Reviews
+            </TabsTrigger>
+            <TabsTrigger value="tech" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <Code className="h-4 w-4 mr-2" />
+              Tech
+            </TabsTrigger>
+            <TabsTrigger value="culture" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <Coffee className="h-4 w-4 mr-2" />
+              Culture
+            </TabsTrigger>
+            <TabsTrigger value="contacts" className="data-[state=active]:bg-white data-[state=active]:shadow-sm">
+              <Phone className="h-4 w-4 mr-2" />
+              Contacts
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="overview" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Overview Tab */}
+          <TabsContent value="overview" className="space-y-6 mt-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Quick Stats */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-primary/5 to-primary/10">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg flex items-center gap-2 text-primary">
                     <Target className="h-5 w-5" />
-                    Quick Stats
+                    Interview Stats
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Success Rate</span>
-                    <div className="flex items-center gap-2">
-                      <Progress value={company.interviewDetails?.successRate ?? 50} className="w-20" />
-                      <span className="text-sm font-medium">{company.interviewDetails?.successRate ?? 50}%</span>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-muted-foreground">Success Rate</span>
+                      <div className="flex items-center gap-2">
+                        <Progress 
+                          value={company.interviewDetails?.successRate ?? 50} 
+                          className="w-20 h-2" 
+                        />
+                        <span className="text-sm font-bold text-primary">
+                          {company.interviewDetails?.successRate ?? 50}%
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Difficulty</span>
-                    <Badge className={getDifficultyColor(company.interviewDetails?.difficultyLevel ?? 'Medium')}>
-                      {company.interviewDetails?.difficultyLevel ?? 'Medium'}
-                    </Badge>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Avg Duration</span>
-                    <span className="text-sm font-medium">{company.interviewDetails?.averageDuration ?? '3-4 hours'}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Prep Time</span>
-                    <span className="text-sm font-medium">{company.interviewDetails?.preparationTime ?? '2-3 weeks'}</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-muted-foreground">Difficulty</span>
+                      <Badge className={getDifficultyColor(company.interviewDetails?.difficultyLevel ?? 'Medium')}>
+                        {company.interviewDetails?.difficultyLevel ?? 'Medium'}
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-muted-foreground">Duration</span>
+                      <span className="text-sm font-semibold">
+                        {company.interviewDetails?.averageDuration ?? '3-4 hours'}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-muted-foreground">Prep Time</span>
+                      <span className="text-sm font-semibold">
+                        {company.interviewDetails?.preparationTime ?? '2-3 weeks'}
+                      </span>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Salary Insights */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-green-50 to-emerald-50">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg flex items-center gap-2 text-green-700">
                     <Banknote className="h-5 w-5" />
-                    Salary Insights
+                    Compensation
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Range</span>
-                    <span className="text-sm font-medium">{company.salaryInsights?.range ?? '$80K - $150K'}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Average</span>
-                    <span className="text-sm font-medium text-green-600">{company.salaryInsights?.average ?? '$115K'}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Stock Options</span>
-                    <Badge variant={company.salaryInsights?.stockOptions ? 'default' : 'secondary'}>
-                      {company.salaryInsights?.stockOptions ? 'Yes' : 'No'}
-                    </Badge>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Work-Life Balance</span>
-                    <div className="flex items-center gap-2">
-                      <Progress value={(company.salaryInsights?.workLifeBalance ?? 4) * 20} className="w-20" />
-                      <span className="text-sm font-medium">{company.salaryInsights?.workLifeBalance ?? 4}/5</span>
+                  <div className="space-y-3">
+                    <div className="text-center py-2">
+                      <div className="text-2xl font-bold text-green-600">
+                        {company.salaryInsights?.average ?? '$115K'}
+                      </div>
+                      <div className="text-sm text-muted-foreground">Average Salary</div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        Range: {company.salaryInsights?.range ?? '$80K - $150K'}
+                      </div>
                     </div>
+                    <Separator />
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-muted-foreground">Stock Options</span>
+                      <Badge variant={company.salaryInsights?.stockOptions ? 'default' : 'secondary'}>
+                        {company.salaryInsights?.stockOptions ? 'Yes' : 'No'}
+                      </Badge>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-muted-foreground">Work-Life Balance</span>
+                      <div className="flex items-center gap-2">
+                        <Progress 
+                          value={(company.salaryInsights?.workLifeBalance ?? 4) * 20} 
+                          className="w-16 h-2" 
+                        />
+                        <span className="text-sm font-semibold">
+                          {company.salaryInsights?.workLifeBalance ?? 4}/5
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Benefits */}
+              <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg flex items-center gap-2 text-blue-700">
+                    <Award className="h-5 w-5" />
+                    Benefits & Perks
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {(company.benefits || ['Health Insurance', 'Remote Work', 'Learning Budget', 'Flexible Hours']).map((benefit, index) => (
+                      <div key={index} className="flex items-center gap-2 text-sm">
+                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        {benefit}
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Benefits */}
-            <Card>
+            {/* Interview Process Overview */}
+            <Card className="border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Award className="h-5 w-5" />
-                  Benefits & Perks
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  Interview Process Overview
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                  {company.benefits.map((benefit, index) => (
-                    <Badge key={index} variant="outline" className="justify-center">
-                      {benefit}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Culture Values */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Users className="h-5 w-5" />
-                  Culture & Values
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                  {company.culture.map((value, index) => (
-                    <Badge key={index} variant="secondary" className="justify-center">
-                      {value}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="interviews" className="space-y-6">
-            {/* DSA Focus */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Brain className="h-5 w-5" />
-                  DSA Requirements
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-muted-foreground">Required:</span>
-                  <Badge variant={company.interviewDetails?.dsaFocus?.required ? 'default' : 'secondary'}>
-                    {company.interviewDetails?.dsaFocus?.required ? 'Yes' : 'No'}
-                  </Badge>
-                  {company.interviewDetails?.dsaFocus?.required && (
-                    <Badge className={getDifficultyColor(company.interviewDetails.dsaFocus.difficulty)}>
-                      {company.interviewDetails.dsaFocus.difficulty}
-                    </Badge>
-                  )}
-                </div>
-                {company.interviewDetails?.dsaFocus?.required && (
-                  <>
-                    <div>
-                      <h4 className="text-sm font-medium mb-2">Topics</h4>
-                      <div className="flex flex-wrap gap-1">
-                        {(company.interviewDetails.dsaFocus.topics || []).map((topic, index) => (
-                          <Badge key={index} variant="outline" className="text-xs">
-                            {topic}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium mb-2">Platforms</h4>
-                      <div className="flex flex-wrap gap-1">
-                        {(company.interviewDetails.dsaFocus.platforms || []).map((platform, index) => (
-                          <Badge key={index} variant="secondary" className="text-xs">
-                            {platform}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Frontend Focus */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Code className="h-5 w-5" />
-                  Frontend Focus
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h4 className="text-sm font-medium mb-2">Frameworks & Libraries</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {(company.interviewDetails?.frontendFocus?.frameworks || company.techStack || ['React', 'JavaScript']).map((framework, index) => (
-                      <Badge key={index} variant="default" className="text-xs">
-                        {framework}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium mb-2">Core Concepts</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {(company.interviewDetails?.frontendFocus?.concepts || ['DOM Manipulation', 'Event Handling', 'Async Programming']).map((concept, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
-                        {concept}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium mb-2">Practical Tasks</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {(company.interviewDetails?.frontendFocus?.practicalTasks || ['Component Building', 'API Integration', 'UI Implementation']).map((task, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs">
-                        {task}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Interview Process */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Timer className="h-5 w-5" />
-                  Interview Process
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
+                <div className="grid gap-4">
                   {company.interviewProcess.map((stage, index) => (
-                    <div key={stage.id} className="border rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-medium">Round {index + 1}: {stage.name}</h4>
-                        <div className="flex items-center gap-2">
-                          <Badge variant="outline">{stage.type}</Badge>
-                          <Badge variant="secondary">{stage.duration} min</Badge>
+                    <div key={stage.id} className="flex items-center gap-4 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
+                      <div className="flex-shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+                          {index + 1}
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">{stage.description}</p>
-                      <div>
-                        <h5 className="text-sm font-medium mb-1">Tips:</h5>
-                        <ul className="text-sm text-muted-foreground space-y-1">
-                          {stage.tips.map((tip, tipIndex) => (
-                            <li key={tipIndex} className="flex items-start gap-2">
-                              <CheckCircle className="h-3 w-3 mt-0.5 text-green-600" />
-                              {tip}
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="flex-grow">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-semibold">{stage.name}</h4>
+                          <Badge variant="outline" className="capitalize">{stage.type}</Badge>
+                          <Badge variant="secondary">{stage.duration} min</Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{stage.description}</p>
                       </div>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground" />
                     </div>
                   ))}
                 </div>
@@ -444,66 +427,191 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
             </Card>
           </TabsContent>
 
-          <TabsContent value="experiences" className="space-y-6">
+          {/* Interviews Tab */}
+          <TabsContent value="interviews" className="space-y-6 mt-6">
+            <div className="grid gap-6">
+              {/* DSA Requirements */}
+              <Card className="border-0 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-xl flex items-center gap-2">
+                    <Brain className="h-5 w-5 text-primary" />
+                    DSA & Problem Solving
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg">
+                    <span className="text-sm font-medium text-muted-foreground">Required:</span>
+                    <Badge variant={company.interviewDetails?.dsaFocus?.required ? 'default' : 'secondary'}>
+                      {company.interviewDetails?.dsaFocus?.required ? 'Yes' : 'No'}
+                    </Badge>
+                    {company.interviewDetails?.dsaFocus?.required && (
+                      <Badge className={getDifficultyColor(company.interviewDetails.dsaFocus.difficulty)}>
+                        {company.interviewDetails.dsaFocus.difficulty}
+                      </Badge>
+                    )}
+                  </div>
+                  {company.interviewDetails?.dsaFocus?.required && (
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                          <BookOpen className="h-4 w-4" />
+                          Common Topics
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {(company.interviewDetails.dsaFocus.topics || ['Arrays', 'Strings', 'Trees']).map((topic, index) => (
+                            <Badge key={index} variant="outline" className="text-xs">
+                              {topic}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                          <Code className="h-4 w-4" />
+                          Practice Platforms
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {(company.interviewDetails.dsaFocus.platforms || ['LeetCode', 'HackerRank']).map((platform, index) => (
+                            <Badge key={index} variant="secondary" className="text-xs">
+                              {platform}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Frontend Focus */}
+              <Card className="border-0 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-xl flex items-center gap-2">
+                    <Rocket className="h-5 w-5 text-primary" />
+                    Frontend Expertise
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div>
+                      <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                        <Code className="h-4 w-4" />
+                        Frameworks & Libraries
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {(company.interviewDetails?.frontendFocus?.frameworks || company.techStack || ['React', 'JavaScript']).map((framework, index) => (
+                          <Badge key={index} variant="default" className="text-xs">
+                            {framework}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                        <Lightbulb className="h-4 w-4" />
+                        Core Concepts
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {(company.interviewDetails?.frontendFocus?.concepts || ['DOM Manipulation', 'Event Handling', 'Async Programming']).map((concept, index) => (
+                          <Badge key={index} variant="outline" className="text-xs">
+                            {concept}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+                        <GraduationCap className="h-4 w-4" />
+                        Practical Tasks
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {(company.interviewDetails?.frontendFocus?.practicalTasks || ['Component Building', 'API Integration', 'UI Implementation']).map((task, index) => (
+                          <Badge key={index} variant="secondary" className="text-xs">
+                            {task}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+
+          {/* Experiences Tab */}
+          <TabsContent value="experiences" className="space-y-6 mt-6">
             {(company.candidateExperiences || []).length > 0 ? (
               company.candidateExperiences.map((experience) => (
-                <Card key={experience.id}>
+                <Card key={experience.id} className="border-0 shadow-lg">
                   <CardHeader>
                     <div className="flex items-start justify-between">
-                      <div>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <User className="h-5 w-5" />
-                          {experience.candidateName}
-                        </CardTitle>
-                        <CardDescription>
-                          {experience.role} • {experience.experience} • {experience.interviewDate}
-                        </CardDescription>
+                      <div className="flex items-start gap-3">
+                        <Avatar className="h-10 w-10">
+                          <AvatarFallback className="bg-primary/10 text-primary">
+                            {experience.candidateName.split(' ').map(n => n[0]).join('')}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <CardTitle className="text-lg">{experience.candidateName}</CardTitle>
+                          <CardDescription className="flex items-center gap-2 mt-1">
+                            {experience.role} • {experience.experience} • {experience.interviewDate}
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Badge className={getResultColor(experience.result)}>
+                      <div className="flex items-center gap-3">
+                        <Badge className={getResultColor(experience.result)} variant="outline">
                           {experience.result === 'Passed' && <CheckCircle className="h-3 w-3 mr-1" />}
                           {experience.result === 'Failed' && <XCircle className="h-3 w-3 mr-1" />}
                           {experience.result === 'Ongoing' && <Clock className="h-3 w-3 mr-1" />}
                           {experience.result}
                         </Badge>
-                        <div className="flex items-center gap-1">
-                          <Star className="h-4 w-4 fill-current text-yellow-500" />
-                          <span className="text-sm font-medium">{experience.rating}/5</span>
+                        <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded">
+                          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                          <span className="text-sm font-semibold">{experience.rating}/5</span>
                         </div>
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    {/* Rounds */}
+                  <CardContent className="space-y-6">
+                    {/* Interview Rounds */}
                     <div>
-                      <h4 className="font-medium mb-3">Interview Rounds</h4>
-                      <div className="space-y-3">
+                      <h4 className="font-semibold mb-4 flex items-center gap-2">
+                        <MessageSquare className="h-4 w-4" />
+                        Interview Rounds
+                      </h4>
+                      <div className="space-y-4">
                         {experience.rounds.map((round, index) => (
-                          <div key={index} className="border rounded-lg p-3">
-                            <div className="flex items-center justify-between mb-2">
-                              <h5 className="font-medium">{round.roundName}</h5>
+                          <div key={index} className="border rounded-lg p-4 bg-muted/20">
+                            <div className="flex items-center justify-between mb-3">
+                              <h5 className="font-semibold">{round.roundName}</h5>
                               <div className="flex items-center gap-2">
                                 <Badge variant="outline">{round.duration} min</Badge>
                                 <Badge className={getDifficultyColor(round.difficulty)}>
                                   {round.difficulty}
                                 </Badge>
                                 <Badge variant={round.passed ? 'default' : 'destructive'}>
-                                  {round.passed ? <ThumbsUp className="h-3 w-3" /> : <ThumbsDown className="h-3 w-3" />}
+                                  {round.passed ? <ThumbsUp className="h-3 w-3 mr-1" /> : <ThumbsDown className="h-3 w-3 mr-1" />}
+                                  {round.passed ? 'Passed' : 'Failed'}
                                 </Badge>
                               </div>
                             </div>
-                            <div className="space-y-2">
+                            <div className="space-y-3">
                               <div>
-                                <h6 className="text-sm font-medium">Questions Asked:</h6>
-                                <ul className="text-sm text-muted-foreground ml-4">
+                                <h6 className="text-sm font-semibold mb-2">Questions Asked:</h6>
+                                <ul className="text-sm text-muted-foreground space-y-1">
                                   {round.questions.map((question, qIndex) => (
-                                    <li key={qIndex} className="list-disc">{question}</li>
+                                    <li key={qIndex} className="flex items-start gap-2">
+                                      <span className="w-1 h-1 bg-muted-foreground rounded-full mt-2 flex-shrink-0"></span>
+                                      {question}
+                                    </li>
                                   ))}
                                 </ul>
                               </div>
                               <div>
-                                <h6 className="text-sm font-medium">Feedback:</h6>
-                                <p className="text-sm text-muted-foreground">{round.feedback}</p>
+                                <h6 className="text-sm font-semibold mb-2">Feedback:</h6>
+                                <p className="text-sm text-muted-foreground bg-muted/30 p-3 rounded">
+                                  {round.feedback}
+                                </p>
                               </div>
                             </div>
                           </div>
@@ -513,104 +621,133 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
 
                     {/* Overall Feedback */}
                     <div>
-                      <h4 className="font-medium mb-2">Overall Feedback</h4>
-                      <p className="text-sm text-muted-foreground">{experience.overallFeedback}</p>
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <MessageSquare className="h-4 w-4" />
+                        Overall Feedback
+                      </h4>
+                      <p className="text-sm text-muted-foreground bg-muted/20 p-4 rounded-lg">
+                        {experience.overallFeedback}
+                      </p>
                     </div>
 
                     {/* Tips */}
                     <div>
-                      <h4 className="font-medium mb-2">Tips for Future Candidates</h4>
-                      <ul className="space-y-1">
+                      <h4 className="font-semibold mb-3 flex items-center gap-2">
+                        <Zap className="h-4 w-4 text-yellow-500" />
+                        Tips for Future Candidates
+                      </h4>
+                      <div className="space-y-2">
                         {experience.tips.map((tip, index) => (
-                          <li key={index} className="flex items-start gap-2 text-sm">
-                            <Zap className="h-3 w-3 mt-0.5 text-yellow-500" />
+                          <div key={index} className="flex items-start gap-3 text-sm bg-yellow-50 p-3 rounded-lg">
+                            <Lightbulb className="h-4 w-4 text-yellow-500 mt-0.5 flex-shrink-0" />
                             {tip}
-                          </li>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
               ))
             ) : (
-              <Card>
-                <CardContent className="text-center py-8">
-                  <MessageSquare className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground">No candidate experiences available yet.</p>
+              <Card className="border-0 shadow-lg">
+                <CardContent className="text-center py-12">
+                  <MessageSquare className="h-16 w-16 mx-auto text-muted-foreground mb-4 opacity-50" />
+                  <h3 className="text-lg font-semibold text-muted-foreground mb-2">No Experiences Yet</h3>
+                  <p className="text-muted-foreground">
+                    Candidate experiences and reviews will appear here once available.
+                  </p>
                 </CardContent>
               </Card>
             )}
           </TabsContent>
 
-          <TabsContent value="tech" className="space-y-6">
-            <Card>
+          {/* Tech Stack Tab */}
+          <TabsContent value="tech" className="space-y-6 mt-6">
+            <Card className="border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Rocket className="h-5 w-5" />
-                  Tech Stack
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <Code className="h-5 w-5 text-primary" />
+                  Technology Stack
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {company.techStack.map((tech, index) => (
-                    <Badge key={index} variant="default" className="justify-center">
-                      {tech}
-                    </Badge>
+                    <div key={index} className="flex items-center gap-2 p-3 bg-muted/20 rounded-lg hover:bg-muted/40 transition-colors">
+                      <Code className="h-4 w-4 text-primary" />
+                      <span className="font-medium">{tech}</span>
+                    </div>
                   ))}
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          <TabsContent value="culture" className="space-y-6">
-            <Card>
+          {/* Culture Tab */}
+          <TabsContent value="culture" className="space-y-6 mt-6">
+            <Card className="border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Coffee className="h-5 w-5" />
-                  Culture Insights
+                <CardTitle className="text-xl flex items-center gap-2">
+                  <Coffee className="h-5 w-5 text-primary" />
+                  Company Culture
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="font-medium mb-2">Work Environment</h4>
-                    <p className="text-sm text-muted-foreground">{company.cultureInsights?.workEnvironment ?? 'Collaborative and innovative workspace'}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium mb-2">Remote Policy</h4>
-                    <p className="text-sm text-muted-foreground">{company.cultureInsights?.remotePolicy ?? 'Remote-friendly with flexible work arrangements'}</p>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Diversity Score</span>
-                    <div className="flex items-center gap-2">
-                      <Progress value={(company.cultureInsights?.diversity ?? 4) * 20} className="w-20" />
-                      <span className="text-sm font-medium">{company.cultureInsights?.diversity ?? 4}/5</span>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2 flex items-center gap-2">
+                        <Building2 className="h-4 w-4" />
+                        Work Environment
+                      </h4>
+                      <p className="text-sm text-muted-foreground bg-muted/20 p-3 rounded">
+                        {company.cultureInsights?.workEnvironment ?? 'Collaborative and innovative workspace with modern facilities.'}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2 flex items-center gap-2">
+                        <Home className="h-4 w-4" />
+                        Remote Policy
+                      </h4>
+                      <p className="text-sm text-muted-foreground bg-muted/20 p-3 rounded">
+                        {company.cultureInsights?.remotePolicy ?? 'Remote-friendly with flexible work arrangements and hybrid options.'}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Innovation</span>
-                    <div className="flex items-center gap-2">
-                      <Progress value={(company.cultureInsights?.innovation ?? 4) * 20} className="w-20" />
-                      <span className="text-sm font-medium">{company.cultureInsights?.innovation ?? 4}/5</span>
+                  
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-muted/20 rounded">
+                      <span className="text-sm font-medium">Diversity & Inclusion</span>
+                      <div className="flex items-center gap-2">
+                        <Progress value={(company.cultureInsights?.diversity ?? 4) * 20} className="w-20 h-2" />
+                        <span className="text-sm font-semibold">{company.cultureInsights?.diversity ?? 4}/5</span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Work Pressure</span>
-                    <div className="flex items-center gap-2">
-                      <Progress value={(company.cultureInsights?.workPressure ?? 3) * 20} className="w-20" />
-                      <span className="text-sm font-medium">{company.cultureInsights?.workPressure ?? 3}/5</span>
+                    <div className="flex justify-between items-center p-3 bg-muted/20 rounded">
+                      <span className="text-sm font-medium">Innovation Culture</span>
+                      <div className="flex items-center gap-2">
+                        <Progress value={(company.cultureInsights?.innovation ?? 4) * 20} className="w-20 h-2" />
+                        <span className="text-sm font-semibold">{company.cultureInsights?.innovation ?? 4}/5</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-muted/20 rounded">
+                      <span className="text-sm font-medium">Work Pressure</span>
+                      <div className="flex items-center gap-2">
+                        <Progress value={(company.cultureInsights?.workPressure ?? 3) * 20} className="w-20 h-2" />
+                        <span className="text-sm font-semibold">{company.cultureInsights?.workPressure ?? 3}/5</span>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-2">Learning Opportunities</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {(company.cultureInsights?.learningOpportunities || ['Professional Development', 'Tech Conferences', 'Online Courses']).map((opportunity, index) => (
-                      <Badge key={index} variant="outline" className="text-xs">
+                  <h4 className="font-semibold mb-3 flex items-center gap-2">
+                    <GraduationCap className="h-4 w-4" />
+                    Learning & Development
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {(company.cultureInsights?.learningOpportunities || ['Professional Development', 'Tech Conferences', 'Online Courses', 'Mentorship Programs']).map((opportunity, index) => (
+                      <Badge key={index} variant="outline" className="text-xs bg-blue-50 border-blue-200 text-blue-700">
                         {opportunity}
                       </Badge>
                     ))}
@@ -620,52 +757,65 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
             </Card>
           </TabsContent>
 
-          <TabsContent value="contacts" className="space-y-6">
+          {/* Contacts Tab */}
+          <TabsContent value="contacts" className="space-y-6 mt-6">
             {(company.hrContacts || []).length > 0 ? (
               company.hrContacts.map((contact, index) => (
-                <Card key={index}>
+                <Card key={index} className="border-0 shadow-lg">
                   <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <Phone className="h-5 w-5" />
-                      {contact.name}
-                    </CardTitle>
-                    <CardDescription>{contact.role}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-muted-foreground">Responsiveness:</span>
-                      <Badge variant={contact.responsiveness === 'Fast' ? 'default' : contact.responsiveness === 'Medium' ? 'secondary' : 'outline'}>
-                        {contact.responsiveness}
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <Avatar className="h-12 w-12">
+                          <AvatarFallback className="bg-primary/10 text-primary">
+                            {contact.name.split(' ').map(n => n[0]).join('')}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <CardTitle className="text-lg">{contact.name}</CardTitle>
+                          <CardDescription>{contact.role}</CardDescription>
+                        </div>
+                      </div>
+                      <Badge className={getResponsivenessColor(contact.responsiveness)} variant="outline">
+                        {contact.responsiveness} Response
                       </Badge>
                     </div>
-                    {contact.email && (
-                      <div className="flex items-center gap-2">
-                        <Mail className="h-4 w-4 text-muted-foreground" />
-                        <a href={`mailto:${contact.email}`} className="text-sm text-blue-600 hover:underline">
-                          {contact.email}
-                        </a>
-                      </div>
-                    )}
-                    {contact.linkedin && (
-                      <div className="flex items-center gap-2">
-                        <Linkedin className="h-4 w-4 text-muted-foreground" />
-                        <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
-                          LinkedIn Profile
-                        </a>
-                      </div>
-                    )}
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex flex-wrap gap-4">
+                      {contact.email && (
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={`mailto:${contact.email}`} className="flex items-center gap-2">
+                            <Mail className="h-4 w-4" />
+                            Send Email
+                          </a>
+                        </Button>
+                      )}
+                      {contact.linkedin && (
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                            <Linkedin className="h-4 w-4" />
+                            LinkedIn
+                          </a>
+                        </Button>
+                      )}
+                    </div>
                     <div>
-                      <h4 className="text-sm font-medium mb-1">Notes:</h4>
-                      <p className="text-sm text-muted-foreground">{contact.notes}</p>
+                      <h4 className="text-sm font-semibold mb-2">Notes:</h4>
+                      <p className="text-sm text-muted-foreground bg-muted/20 p-3 rounded">
+                        {contact.notes}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
               ))
             ) : (
-              <Card>
-                <CardContent className="text-center py-8">
-                  <Phone className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground">No HR contact information available.</p>
+              <Card className="border-0 shadow-lg">
+                <CardContent className="text-center py-12">
+                  <Phone className="h-16 w-16 mx-auto text-muted-foreground mb-4 opacity-50" />
+                  <h3 className="text-lg font-semibold text-muted-foreground mb-2">No Contact Information</h3>
+                  <p className="text-muted-foreground">
+                    HR contact details will be available here when provided.
+                  </p>
                 </CardContent>
               </Card>
             )}
