@@ -285,7 +285,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
           </TabsList>
 
           {/* Overview Tab */}
-          <TabsContent value="overview" className="space-y-6 mt-6">
+          <TabsContent value="overview" className="space-y-6 mt-6 max-h-[60vh] overflow-y-auto pr-2">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {/* Quick Stats */}
               <Card className="border-0 shadow-lg bg-gradient-to-br from-primary/5 to-primary/10">
