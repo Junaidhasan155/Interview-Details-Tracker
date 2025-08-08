@@ -319,6 +319,8 @@ export function CompanyResearchHub() {
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [isAddApplicationOpen, setIsAddApplicationOpen] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const [detailCompany, setDetailCompany] = useState<Company | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   // Helper function to categorize companies by region
