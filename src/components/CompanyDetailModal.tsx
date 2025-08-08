@@ -328,21 +328,21 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-muted-foreground">Required:</span>
-                  <Badge variant={company.interviewDetails.dsaFocus.required ? 'default' : 'secondary'}>
-                    {company.interviewDetails.dsaFocus.required ? 'Yes' : 'No'}
+                  <Badge variant={company.interviewDetails?.dsaFocus?.required ? 'default' : 'secondary'}>
+                    {company.interviewDetails?.dsaFocus?.required ? 'Yes' : 'No'}
                   </Badge>
-                  {company.interviewDetails.dsaFocus.required && (
+                  {company.interviewDetails?.dsaFocus?.required && (
                     <Badge className={getDifficultyColor(company.interviewDetails.dsaFocus.difficulty)}>
                       {company.interviewDetails.dsaFocus.difficulty}
                     </Badge>
                   )}
                 </div>
-                {company.interviewDetails.dsaFocus.required && (
+                {company.interviewDetails?.dsaFocus?.required && (
                   <>
                     <div>
                       <h4 className="text-sm font-medium mb-2">Topics</h4>
                       <div className="flex flex-wrap gap-1">
-                        {company.interviewDetails.dsaFocus.topics.map((topic, index) => (
+                        {(company.interviewDetails.dsaFocus.topics || []).map((topic, index) => (
                           <Badge key={index} variant="outline" className="text-xs">
                             {topic}
                           </Badge>
@@ -352,7 +352,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                     <div>
                       <h4 className="text-sm font-medium mb-2">Platforms</h4>
                       <div className="flex flex-wrap gap-1">
-                        {company.interviewDetails.dsaFocus.platforms.map((platform, index) => (
+                        {(company.interviewDetails.dsaFocus.platforms || []).map((platform, index) => (
                           <Badge key={index} variant="secondary" className="text-xs">
                             {platform}
                           </Badge>
