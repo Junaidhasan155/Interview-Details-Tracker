@@ -222,23 +222,23 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Success Rate</span>
                     <div className="flex items-center gap-2">
-                      <Progress value={company.interviewDetails.successRate} className="w-20" />
-                      <span className="text-sm font-medium">{company.interviewDetails.successRate}%</span>
+                      <Progress value={company.interviewDetails?.successRate ?? 50} className="w-20" />
+                      <span className="text-sm font-medium">{company.interviewDetails?.successRate ?? 50}%</span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Difficulty</span>
-                    <Badge className={getDifficultyColor(company.interviewDetails.difficultyLevel)}>
-                      {company.interviewDetails.difficultyLevel}
+                    <Badge className={getDifficultyColor(company.interviewDetails?.difficultyLevel ?? 'Medium')}>
+                      {company.interviewDetails?.difficultyLevel ?? 'Medium'}
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Avg Duration</span>
-                    <span className="text-sm font-medium">{company.interviewDetails.averageDuration}</span>
+                    <span className="text-sm font-medium">{company.interviewDetails?.averageDuration ?? '3-4 hours'}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Prep Time</span>
-                    <span className="text-sm font-medium">{company.interviewDetails.preparationTime}</span>
+                    <span className="text-sm font-medium">{company.interviewDetails?.preparationTime ?? '2-3 weeks'}</span>
                   </div>
                 </CardContent>
               </Card>
