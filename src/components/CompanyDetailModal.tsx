@@ -621,45 +621,54 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
           </TabsContent>
 
           <TabsContent value="contacts" className="space-y-6">
-            {company.hrContacts.map((contact, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Phone className="h-5 w-5" />
-                    {contact.name}
-                  </CardTitle>
-                  <CardDescription>{contact.role}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-muted-foreground">Responsiveness:</span>
-                    <Badge variant={contact.responsiveness === 'Fast' ? 'default' : contact.responsiveness === 'Medium' ? 'secondary' : 'outline'}>
-                      {contact.responsiveness}
-                    </Badge>
-                  </div>
-                  {contact.email && (
+            {(company.hrContacts || []).length > 0 ? (
+              company.hrContacts.map((contact, index) => (
+                <Card key={index}>
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Phone className="h-5 w-5" />
+                      {contact.name}
+                    </CardTitle>
+                    <CardDescription>{contact.role}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <Mail className="h-4 w-4 text-muted-foreground" />
-                      <a href={`mailto:${contact.email}`} className="text-sm text-blue-600 hover:underline">
-                        {contact.email}
-                      </a>
+                      <span className="text-sm text-muted-foreground">Responsiveness:</span>
+                      <Badge variant={contact.responsiveness === 'Fast' ? 'default' : contact.responsiveness === 'Medium' ? 'secondary' : 'outline'}>
+                        {contact.responsiveness}
+                      </Badge>
                     </div>
-                  )}
-                  {contact.linkedin && (
-                    <div className="flex items-center gap-2">
-                      <Linkedin className="h-4 w-4 text-muted-foreground" />
-                      <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
-                        LinkedIn Profile
-                      </a>
+                    {contact.email && (
+                      <div className="flex items-center gap-2">
+                        <Mail className="h-4 w-4 text-muted-foreground" />
+                        <a href={`mailto:${contact.email}`} className="text-sm text-blue-600 hover:underline">
+                          {contact.email}
+                        </a>
+                      </div>
+                    )}
+                    {contact.linkedin && (
+                      <div className="flex items-center gap-2">
+                        <Linkedin className="h-4 w-4 text-muted-foreground" />
+                        <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
+                          LinkedIn Profile
+                        </a>
+                      </div>
+                    )}
+                    <div>
+                      <h4 className="text-sm font-medium mb-1">Notes:</h4>
+                      <p className="text-sm text-muted-foreground">{contact.notes}</p>
                     </div>
-                  )}
-                  <div>
-                    <h4 className="text-sm font-medium mb-1">Notes:</h4>
-                    <p className="text-sm text-muted-foreground">{contact.notes}</p>
-                  </div>
+                  </CardContent>
+                </Card>
+              ))
+            ) : (
+              <Card>
+                <CardContent className="text-center py-8">
+                  <Phone className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                  <p className="text-muted-foreground">No HR contact information available.</p>
                 </CardContent>
               </Card>
-            ))}
+            )}
           </TabsContent>
         </Tabs>
       </DialogContent>
