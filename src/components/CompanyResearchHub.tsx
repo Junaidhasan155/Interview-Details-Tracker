@@ -61,6 +61,71 @@ export interface Company {
   isWishlist: boolean;
   createdAt: string;
   updatedAt: string;
+  // Enhanced data
+  interviewDetails?: {
+    averageDuration: string;
+    successRate: number;
+    difficultyLevel: 'Easy' | 'Medium' | 'Hard' | 'Very Hard';
+    preparationTime: string;
+    commonTopics: string[];
+    dsaFocus: {
+      required: boolean;
+      difficulty: 'Easy' | 'Medium' | 'Hard';
+      topics: string[];
+      platforms: string[];
+    };
+    frontendFocus: {
+      frameworks: string[];
+      concepts: string[];
+      practicalTasks: string[];
+      designPatterns: string[];
+    };
+  };
+  hrContacts?: {
+    name: string;
+    role: string;
+    email?: string;
+    linkedin?: string;
+    responsiveness: 'Fast' | 'Medium' | 'Slow';
+    notes: string;
+  }[];
+  candidateExperiences?: {
+    id: string;
+    candidateName: string;
+    role: string;
+    experience: string;
+    result: 'Passed' | 'Failed' | 'Ongoing';
+    interviewDate: string;
+    rounds: {
+      roundName: string;
+      duration: number;
+      difficulty: 'Easy' | 'Medium' | 'Hard';
+      questions: string[];
+      feedback: string;
+      passed: boolean;
+    }[];
+    overallFeedback: string;
+    tips: string[];
+    rating: number;
+  }[];
+  salaryInsights?: {
+    range: string;
+    average: string;
+    currency: string;
+    benefits: string[];
+    stockOptions: boolean;
+    bonus: string;
+    workLifeBalance: number;
+  };
+  cultureInsights?: {
+    workEnvironment: string;
+    teamSize: string;
+    remotePolicy: string;
+    learningOpportunities: string[];
+    diversity: number;
+    innovation: number;
+    workPressure: number;
+  };
 }
 
 export interface InterviewStage {
