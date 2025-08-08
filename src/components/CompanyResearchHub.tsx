@@ -34,7 +34,9 @@ import {
   Flag,
   Download,
   Filter,
-  BarChart3
+  BarChart3,
+  Banknote,
+  MessageSquare
 } from 'lucide-react';
 import { CompanyDataImporter } from './CompanyDataImporter';
 import { CompanyComparisonView } from './CompanyComparisonView';
