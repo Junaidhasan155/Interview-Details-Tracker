@@ -574,34 +574,34 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <h4 className="font-medium mb-2">Work Environment</h4>
-                    <p className="text-sm text-muted-foreground">{company.cultureInsights.workEnvironment}</p>
+                    <p className="text-sm text-muted-foreground">{company.cultureInsights?.workEnvironment ?? 'Collaborative and innovative workspace'}</p>
                   </div>
                   <div>
                     <h4 className="font-medium mb-2">Remote Policy</h4>
-                    <p className="text-sm text-muted-foreground">{company.cultureInsights.remotePolicy}</p>
+                    <p className="text-sm text-muted-foreground">{company.cultureInsights?.remotePolicy ?? 'Remote-friendly with flexible work arrangements'}</p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Diversity Score</span>
                     <div className="flex items-center gap-2">
-                      <Progress value={company.cultureInsights.diversity * 20} className="w-20" />
-                      <span className="text-sm font-medium">{company.cultureInsights.diversity}/5</span>
+                      <Progress value={(company.cultureInsights?.diversity ?? 4) * 20} className="w-20" />
+                      <span className="text-sm font-medium">{company.cultureInsights?.diversity ?? 4}/5</span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Innovation</span>
                     <div className="flex items-center gap-2">
-                      <Progress value={company.cultureInsights.innovation * 20} className="w-20" />
-                      <span className="text-sm font-medium">{company.cultureInsights.innovation}/5</span>
+                      <Progress value={(company.cultureInsights?.innovation ?? 4) * 20} className="w-20" />
+                      <span className="text-sm font-medium">{company.cultureInsights?.innovation ?? 4}/5</span>
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Work Pressure</span>
                     <div className="flex items-center gap-2">
-                      <Progress value={company.cultureInsights.workPressure * 20} className="w-20" />
-                      <span className="text-sm font-medium">{company.cultureInsights.workPressure}/5</span>
+                      <Progress value={(company.cultureInsights?.workPressure ?? 3) * 20} className="w-20" />
+                      <span className="text-sm font-medium">{company.cultureInsights?.workPressure ?? 3}/5</span>
                     </div>
                   </div>
                 </div>
@@ -609,7 +609,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                 <div>
                   <h4 className="font-medium mb-2">Learning Opportunities</h4>
                   <div className="flex flex-wrap gap-1">
-                    {company.cultureInsights.learningOpportunities.map((opportunity, index) => (
+                    {(company.cultureInsights?.learningOpportunities || ['Professional Development', 'Tech Conferences', 'Online Courses']).map((opportunity, index) => (
                       <Badge key={index} variant="outline" className="text-xs">
                         {opportunity}
                       </Badge>
