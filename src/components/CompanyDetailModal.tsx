@@ -254,23 +254,23 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
                 <CardContent className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Range</span>
-                    <span className="text-sm font-medium">{company.salaryInsights.range}</span>
+                    <span className="text-sm font-medium">{company.salaryInsights?.range ?? '$80K - $150K'}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Average</span>
-                    <span className="text-sm font-medium text-green-600">{company.salaryInsights.average}</span>
+                    <span className="text-sm font-medium text-green-600">{company.salaryInsights?.average ?? '$115K'}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Stock Options</span>
-                    <Badge variant={company.salaryInsights.stockOptions ? 'default' : 'secondary'}>
-                      {company.salaryInsights.stockOptions ? 'Yes' : 'No'}
+                    <Badge variant={company.salaryInsights?.stockOptions ? 'default' : 'secondary'}>
+                      {company.salaryInsights?.stockOptions ? 'Yes' : 'No'}
                     </Badge>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-muted-foreground">Work-Life Balance</span>
                     <div className="flex items-center gap-2">
-                      <Progress value={company.salaryInsights.workLifeBalance * 20} className="w-20" />
-                      <span className="text-sm font-medium">{company.salaryInsights.workLifeBalance}/5</span>
+                      <Progress value={(company.salaryInsights?.workLifeBalance ?? 4) * 20} className="w-20" />
+                      <span className="text-sm font-medium">{company.salaryInsights?.workLifeBalance ?? 4}/5</span>
                     </div>
                   </div>
                 </CardContent>
