@@ -405,21 +405,21 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
               <CardContent>
                 <div className="grid gap-4">
                   {company.interviewProcess.map((stage, index) => (
-                    <div key={stage.id} className="flex items-center gap-4 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
+                    <div key={stage.id} className="relative flex items-center gap-4 p-5 rounded-xl bg-gradient-to-r from-white to-muted/20 border border-muted/30 hover:border-primary/20 hover:shadow-md transition-all duration-200">
                       <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center text-sm font-bold shadow-sm">
                           {index + 1}
                         </div>
                       </div>
                       <div className="flex-grow">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-semibold">{stage.name}</h4>
-                          <Badge variant="outline" className="capitalize">{stage.type}</Badge>
-                          <Badge variant="secondary">{stage.duration} min</Badge>
+                        <div className="flex items-center gap-3 mb-2">
+                          <h4 className="font-bold text-base">{stage.name}</h4>
+                          <Badge variant="outline" className="capitalize font-medium">{stage.type}</Badge>
+                          <Badge variant="secondary" className="font-medium">{stage.duration} min</Badge>
                         </div>
-                        <p className="text-sm text-muted-foreground">{stage.description}</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{stage.description}</p>
                       </div>
-                      <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                      <ChevronRight className="h-5 w-5 text-muted-foreground" />
                     </div>
                   ))}
                 </div>
