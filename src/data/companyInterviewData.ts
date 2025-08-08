@@ -2135,5 +2135,623 @@ export const COMPANY_INTERVIEW_DATA: CompanyInterviewData[] = [
     DSA: "High",
     SpecialFocusAreas: ["High-frequency trading", "Financial derivatives", "Real-time data"],
     Notes: "SF-based remote options, top-tier USD + DYDX compensation"
+  },
+  {
+    Company: "Razorpay",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://razorpay.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Frontend experience and payment domain interest" },
+      { Round: 2, Type: "Technical interview", Description: "React component building and state management" },
+      { Round: 3, Type: "Machine coding", Description: "Build payment checkout flow UI" },
+      { Round: 4, Type: "Cultural interview", Description: "Team collaboration and fast-paced environment" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "Webpack"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Payment flows", "Security", "Performance optimization"],
+    Notes: "Fast-growing Indian fintech, aggressive hiring for growth"
+  },
+  {
+    Company: "Zerodha",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://zerodha.com/careers/frontend-developer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Portfolio review", Description: "Code review and trading platform interest" },
+      { Round: 2, Type: "Technical test", Description: "Build trading dashboard with real-time data" },
+      { Round: 3, Type: "Final interview", Description: "Technical discussion and culture fit" }
+    ],
+    FrameworksOrTools: ["Vue.js", "JavaScript", "Python", "Chart.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Real-time data", "Charts and graphs", "Performance"],
+    Notes: "Bangalore-based, strong engineering culture, competitive packages"
+  },
+  {
+    Company: "CRED",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://careers.cred.club/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "Experience review and CRED product discussion" },
+      { Round: 2, Type: "Technical interview", Description: "React Native and web development" },
+      { Round: 3, Type: "Design interview", Description: "UI/UX sensibility and implementation" },
+      { Round: 4, Type: "Culture interview", Description: "Product thinking and user obsession" }
+    ],
+    FrameworksOrTools: ["React", "React Native", "TypeScript", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Mobile-first design", "Animation", "User experience"],
+    Notes: "Premium product focus, design-heavy interviews, fast hiring"
+  },
+  {
+    Company: "Unacademy",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://unacademy.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Frontend experience and EdTech interest" },
+      { Round: 2, Type: "Technical assignment", Description: "Build learning platform component" },
+      { Round: 3, Type: "Final interview", Description: "Code review and cultural fit" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "Next.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Video streaming", "Real-time features", "Mobile optimization"],
+    Notes: "EdTech leader, rapid scaling, good learning opportunities"
+  },
+  {
+    Company: "Meesho",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://meesho.com/careers/frontend-developer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial screen", Description: "E-commerce and social commerce experience" },
+      { Round: 2, Type: "Technical coding", Description: "React e-commerce features development" },
+      { Round: 3, Type: "System design", Description: "Design product catalog interface" },
+      { Round: 4, Type: "Behavioral interview", Description: "Scale mindset and team collaboration" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "PWA"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["E-commerce flows", "Performance", "Progressive Web Apps"],
+    Notes: "Social commerce unicorn, aggressive expansion hiring"
+  },
+  {
+    Company: "PhonePe",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://phonepe.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical phone", Description: "Frontend and mobile payment app experience" },
+      { Round: 2, Type: "Machine coding", Description: "Build payment flow interface" },
+      { Round: 3, Type: "Architecture discussion", Description: "Scalable frontend architecture and team fit" }
+    ],
+    FrameworksOrTools: ["React", "React Native", "TypeScript", "Redux"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Mobile optimization", "Payment security", "Performance"],
+    Notes: "Walmart-backed fintech, rapid growth, excellent compensation"
+  },
+  {
+    Company: "Nykaa",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://nykaa.com/careers/frontend-developer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Portfolio review", Description: "E-commerce and beauty domain interest" },
+      { Round: 2, Type: "Technical challenge", Description: "Build beauty product catalog with filters" },
+      { Round: 3, Type: "Culture interview", Description: "Customer obsession and beauty product understanding" }
+    ],
+    FrameworksOrTools: ["React", "Next.js", "TypeScript", "Styled Components"],
+    DSA: "Low",
+    SpecialFocusAreas: ["E-commerce UI", "Search and filters", "Mobile responsiveness"],
+    Notes: "Beauty e-commerce leader, woman-focused workplace, growing tech team"
+  },
+  {
+    Company: "ShareChat",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://sharechat.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Social media and regional language platform experience" },
+      { Round: 2, Type: "Technical coding", Description: "React social feed development" },
+      { Round: 3, Type: "System design", Description: "Design social media feed architecture" },
+      { Round: 4, Type: "Culture interview", Description: "Diversity and regional market understanding" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "WebRTC"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Social media features", "Real-time chat", "Content feeds"],
+    Notes: "Social media unicorn, regional focus, high growth hiring"
+  },
+  {
+    Company: "Dream11",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://dream11.com/careers/frontend-developer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screening", Description: "Frontend and fantasy sports interest" },
+      { Round: 2, Type: "Coding challenge", Description: "Build fantasy team selection interface" },
+      { Round: 3, Type: "Final discussion", Description: "Sports knowledge and technical expertise" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "Socket.io"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Real-time updates", "Gaming UI", "Performance optimization"],
+    Notes: "Fantasy sports leader, gaming domain, fast-paced development"
+  },
+  {
+    Company: "Groww",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://groww.in/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Investment platform and fintech interest" },
+      { Round: 2, Type: "Technical test", Description: "Build investment tracking dashboard" },
+      { Round: 3, Type: "Culture interview", Description: "Simplicity focus and user-first thinking" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Redux", "Chart.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Financial dashboards", "Data visualization", "User experience"],
+    Notes: "Investment app unicorn, user-centric design, rapid scaling"
+  },
+  {
+    Company: "Licious",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://licious.com/careers/frontend-developer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "E-commerce and food delivery domain" },
+      { Round: 2, Type: "Technical assignment", Description: "Build meat ordering interface with complex filters" },
+      { Round: 3, Type: "Final interview", Description: "Code discussion and operational excellence" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "PWA"],
+    DSA: "Low",
+    SpecialFocusAreas: ["E-commerce flows", "Location services", "Mobile-first design"],
+    Notes: "D2C meat delivery, operational focus, expanding tech team"
+  },
+  {
+    Company: "Urban Company",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://urbancompany.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Service marketplace and on-demand economy" },
+      { Round: 2, Type: "Technical coding", Description: "React service booking flow development" },
+      { Round: 3, Type: "System design", Description: "Design service provider dashboard" },
+      { Round: 4, Type: "Leadership interview", Description: "Scaling mindset and operational thinking" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "React Native"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Marketplace UI", "Real-time tracking", "Multi-sided platforms"],
+    Notes: "Home services leader, international expansion, strong tech culture"
+  },
+  {
+    Company: "Dunzo",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://dunzo.com/careers/frontend-developer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical phone", Description: "On-demand delivery and hyperlocal experience" },
+      { Round: 2, Type: "Coding challenge", Description: "Build delivery tracking interface" },
+      { Round: 3, Type: "Culture interview", Description: "Speed and agility mindset" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "Maps API"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Real-time tracking", "Maps integration", "Performance"],
+    Notes: "Hyperlocal delivery, fast execution, startup culture"
+  },
+  {
+    Company: "Zeta",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://zeta.tech/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Banking technology and fintech interest" },
+      { Round: 2, Type: "Technical interview", Description: "React banking dashboard development" },
+      { Round: 3, Type: "System design", Description: "Design financial transaction interface" },
+      { Round: 4, Type: "Culture interview", Description: "Innovation and engineering excellence" }
+    ],
+    FrameworksOrTools: ["React", "Angular", "TypeScript", "Node.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Banking UI", "Security", "Compliance"],
+    Notes: "Banking tech unicorn, B2B focus, strong engineering practices"
+  },
+  {
+    Company: "Postman",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://postman.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "API development and developer tools experience" },
+      { Round: 2, Type: "Technical interview", Description: "React component development for developer tools" },
+      { Round: 3, Type: "System design", Description: "Design API testing interface" },
+      { Round: 4, Type: "Team interview", Description: "Developer empathy and product thinking" }
+    ],
+    FrameworksOrTools: ["React", "Electron", "TypeScript", "Node.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Developer tools", "Desktop apps", "API interfaces"],
+    Notes: "Developer tools unicorn, global remote team, strong engineering culture"
+  },
+  {
+    Company: "Freshworks",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://freshworks.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "SaaS and customer support software experience" },
+      { Round: 2, Type: "Technical assignment", Description: "Build customer support dashboard" },
+      { Round: 3, Type: "Final interview", Description: "Product thinking and customer obsession" }
+    ],
+    FrameworksOrTools: ["React", "Vue.js", "TypeScript", "Ruby on Rails"],
+    DSA: "Low",
+    SpecialFocusAreas: ["SaaS interfaces", "Customer experience", "Accessibility"],
+    Notes: "Global SaaS company, Chennai-based, strong product culture"
+  },
+  {
+    Company: "Chargebee",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://chargebee.com/careers/frontend-developer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Subscription billing and SaaS experience" },
+      { Round: 2, Type: "Technical test", Description: "Build billing dashboard with React" },
+      { Round: 3, Type: "Culture interview", Description: "Global mindset and remote collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Redux", "GraphQL"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Billing interfaces", "Data visualization", "SaaS UX"],
+    Notes: "Subscription management leader, global customers, remote-friendly"
+  },
+  {
+    Company: "Zoho",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://zoho.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Aptitude test", Description: "Programming logic and analytical thinking" },
+      { Round: 2, Type: "Technical interview", Description: "JavaScript and framework knowledge" },
+      { Round: 3, Type: "Practical coding", Description: "Build business application component" },
+      { Round: 4, Type: "HR interview", Description: "Cultural fit and long-term commitment" }
+    ],
+    FrameworksOrTools: ["JavaScript", "React", "Angular", "Custom Frameworks"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Business applications", "Enterprise UI", "Performance"],
+    Notes: "Large software suite, Chennai-based, stable long-term growth"
+  },
+  {
+    Company: "ClearTax",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://cleartax.in/careers/frontend-developer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Tax technology and fintech domain" },
+      { Round: 2, Type: "Technical challenge", Description: "Build tax filing interface" },
+      { Round: 3, Type: "Final interview", Description: "Compliance understanding and technical skills" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "Next.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Forms and validation", "Tax compliance", "User experience"],
+    Notes: "Tax tech leader, compliance-heavy domain, good growth opportunities"
+  },
+  {
+    Company: "Inshorts",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://inshorts.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "News app and content consumption platforms" },
+      { Round: 2, Type: "Coding test", Description: "Build news feed with infinite scroll" },
+      { Round: 3, Type: "Culture interview", Description: "Content understanding and user engagement" }
+    ],
+    FrameworksOrTools: ["React", "React Native", "Redux", "PWA"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Content feeds", "Mobile optimization", "Performance"],
+    Notes: "News aggregation app, content-focused, mobile-first approach"
+  },
+  {
+    Company: "Polygon (Matic)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://polygon.technology/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "Web3 and blockchain interface development" },
+      { Round: 2, Type: "Coding challenge", Description: "Build DeFi dashboard with Web3 integration" },
+      { Round: 3, Type: "Culture interview", Description: "Decentralized future and remote collaboration" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Web3.js", "Ethers.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Web3 integration", "Blockchain data", "DeFi interfaces"],
+    Notes: "Indian Web3 unicorn, global distributed team, competitive packages"
+  },
+  {
+    Company: "Paytm",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://paytm.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Digital payments and super app experience" },
+      { Round: 2, Type: "Technical coding", Description: "React payment and commerce features" },
+      { Round: 3, Type: "System design", Description: "Design super app architecture" },
+      { Round: 4, Type: "Leadership interview", Description: "Scale mindset and innovation thinking" }
+    ],
+    FrameworksOrTools: ["React", "React Native", "Redux", "TypeScript"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Payment flows", "Super app architecture", "Performance"],
+    Notes: "Digital payments leader, diverse product portfolio, large scale hiring"
+  },
+  {
+    Company: "Ola",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://ola.com/careers/frontend-developer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Mobility and ride-hailing platform experience" },
+      { Round: 2, Type: "Technical interview", Description: "React ride booking interface development" },
+      { Round: 3, Type: "System design", Description: "Design driver-passenger matching interface" },
+      { Round: 4, Type: "Behavioral interview", Description: "Fast-paced environment and problem solving" }
+    ],
+    FrameworksOrTools: ["React", "React Native", "Redux", "Maps API"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Real-time tracking", "Maps integration", "Mobile optimization"],
+    Notes: "Mobility unicorn, diverse mobility solutions, expanding globally"
+  },
+  {
+    Company: "Cars24",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://cars24.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Automotive marketplace and e-commerce experience" },
+      { Round: 2, Type: "Technical assignment", Description: "Build car listing and comparison interface" },
+      { Round: 3, Type: "Final interview", Description: "Product thinking and marketplace understanding" }
+    ],
+    FrameworksOrTools: ["React", "Next.js", "TypeScript", "Redux"],
+    DSA: "Low",
+    SpecialFocusAreas: ["E-commerce UI", "Search and filters", "Image optimization"],
+    Notes: "Used car marketplace unicorn, expanding internationally, rapid hiring"
+  },
+  {
+    Company: "Cred (Kunal Shah)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://cred.club/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Portfolio review", Description: "Design sensibility and premium product focus" },
+      { Round: 2, Type: "Technical interview", Description: "React animation and micro-interactions" },
+      { Round: 3, Type: "Design challenge", Description: "Build premium fintech interface" },
+      { Round: 4, Type: "Culture interview", Description: "Attention to detail and user obsession" }
+    ],
+    FrameworksOrTools: ["React", "React Native", "TypeScript", "Framer Motion"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Premium UI", "Animations", "Micro-interactions"],
+    Notes: "Premium credit card app, design-heavy, selective hiring for quality"
+  },
+  {
+    Company: "Vessel (Foreign - YC)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://vessel.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Creator economy and video platform interest" },
+      { Round: 2, Type: "Technical challenge", Description: "Build video streaming interface" },
+      { Round: 3, Type: "Team interview", Description: "Startup mindset and fast execution" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Video.js", "WebRTC"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Video streaming", "Creator tools", "Performance optimization"],
+    Notes: "YC-backed video platform, aggressive hiring for creator economy"
+  },
+  {
+    Company: "Faire (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://faire.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "B2B marketplace and wholesale experience" },
+      { Round: 2, Type: "Technical interview", Description: "React B2B dashboard development" },
+      { Round: 3, Type: "System design", Description: "Design wholesale ordering platform" },
+      { Round: 4, Type: "Culture interview", Description: "Small business empathy and growth mindset" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "GraphQL", "Next.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["B2B interfaces", "Marketplace features", "Data visualization"],
+    Notes: "Wholesale marketplace unicorn, rapid expansion, strong engineering culture"
+  },
+  {
+    Company: "Ramp (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://ramp.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Corporate card and expense management experience" },
+      { Round: 2, Type: "Technical coding", Description: "React financial dashboard development" },
+      { Round: 3, Type: "System design", Description: "Design expense tracking interface" },
+      { Round: 4, Type: "Team interview", Description: "B2B product thinking and execution speed" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Next.js", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Financial interfaces", "B2B UX", "Data visualization"],
+    Notes: "Corporate card unicorn, fast-growing, excellent compensation packages"
+  },
+  {
+    Company: "Mercury (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://mercury.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Banking for startups and fintech interest" },
+      { Round: 2, Type: "Technical test", Description: "Build banking dashboard interface" },
+      { Round: 3, Type: "Culture interview", Description: "Startup empathy and product focus" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "GraphQL", "Next.js"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Banking UI", "Startup-focused features", "Security"],
+    Notes: "Startup banking platform, strong product culture, competitive packages"
+  },
+  {
+    Company: "Brex (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://brex.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter call", Description: "Corporate finance and startup experience" },
+      { Round: 2, Type: "Technical interview", Description: "React financial product development" },
+      { Round: 3, Type: "System design", Description: "Design corporate expense platform" },
+      { Round: 4, Type: "Leadership interview", Description: "Scale thinking and innovation mindset" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "GraphQL", "Next.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Financial products", "B2B interfaces", "Compliance"],
+    Notes: "Corporate finance unicorn, strong engineering team, excellent benefits"
+  },
+  {
+    Company: "Lattice (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://lattice.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "HR tech and people management software" },
+      { Round: 2, Type: "Technical challenge", Description: "Build performance review interface" },
+      { Round: 3, Type: "Team interview", Description: "Product thinking and user empathy" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Redux", "GraphQL"],
+    DSA: "Low",
+    SpecialFocusAreas: ["HR interfaces", "Data visualization", "User experience"],
+    Notes: "HR tech leader, people-focused culture, strong growth trajectory"
+  },
+  {
+    Company: "Clubhouse (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://clubhouse.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "Audio social and real-time communication" },
+      { Round: 2, Type: "Coding challenge", Description: "Build audio room interface" },
+      { Round: 3, Type: "Culture interview", Description: "Audio-first thinking and community building" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "WebRTC", "Real-time"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Audio interfaces", "Real-time communication", "Social features"],
+    Notes: "Audio social pioneer, innovative product, rapid feature development"
+  },
+  {
+    Company: "Primer (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://primer.io/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "Payment infrastructure and fintech APIs" },
+      { Round: 2, Type: "Technical test", Description: "Build payment checkout flow" },
+      { Round: 3, Type: "Final interview", Description: "API-first thinking and developer experience" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Payment APIs", "Next.js"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Payment flows", "Developer tools", "API integration"],
+    Notes: "Payment infrastructure startup, developer-focused, strong technical team"
+  },
+  {
+    Company: "Secfi (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://secfi.com/careers/frontend-developer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Equity and startup employee finance" },
+      { Round: 2, Type: "Technical assignment", Description: "Build equity management dashboard" },
+      { Round: 3, Type: "Culture interview", Description: "Startup empathy and financial product understanding" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Chart.js", "Financial APIs"],
+    DSA: "Low",
+    SpecialFocusAreas: ["Financial dashboards", "Data visualization", "Equity management"],
+    Notes: "Startup equity financing, niche market, strong product-market fit"
+  },
+  {
+    Company: "AngelList (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://angel.co/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Recruiter screen", Description: "Startup ecosystem and investment platform" },
+      { Round: 2, Type: "Technical interview", Description: "React startup marketplace development" },
+      { Round: 3, Type: "Product interview", Description: "Startup founder and investor needs understanding" },
+      { Round: 4, Type: "Culture interview", Description: "Startup mindset and ecosystem thinking" }
+    ],
+    FrameworksOrTools: ["React", "Redux", "TypeScript", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Marketplace interfaces", "Investment tools", "Startup workflows"],
+    Notes: "Startup ecosystem platform, strong network effects, innovative hiring"
+  },
+  {
+    Company: "Calendly (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://calendly.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Phone screen", Description: "Scheduling software and productivity tools" },
+      { Round: 2, Type: "Technical interview", Description: "React calendar and scheduling interface" },
+      { Round: 3, Type: "System design", Description: "Design scheduling conflict resolution UI" },
+      { Round: 4, Type: "Behavioral interview", Description: "User empathy and product thinking" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Calendar APIs", "Real-time"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Calendar interfaces", "Scheduling logic", "Time zone handling"],
+    Notes: "Scheduling automation leader, strong product-market fit, rapid growth"
+  },
+  {
+    Company: "Superhuman (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://superhuman.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Product screen", Description: "Email productivity and power user tools" },
+      { Round: 2, Type: "Technical interview", Description: "React high-performance email interface" },
+      { Round: 3, Type: "System design", Description: "Design email client architecture" },
+      { Round: 4, Type: "Culture interview", Description: "Speed obsession and user delight" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Electron", "Performance"],
+    DSA: "High",
+    SpecialFocusAreas: ["Performance optimization", "Keyboard shortcuts", "Email interfaces"],
+    Notes: "Premium email client, performance-obsessed culture, selective hiring"
+  },
+  {
+    Company: "Linear (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://linear.app/careers/frontend-engineer",
+    NoOfInterviewRounds: 4,
+    RoundBreakdown: [
+      { Round: 1, Type: "Portfolio review", Description: "Design sensibility and tool-building experience" },
+      { Round: 2, Type: "Technical interview", Description: "React performance and animation implementation" },
+      { Round: 3, Type: "Design challenge", Description: "Build project management interface" },
+      { Round: 4, Type: "Culture interview", Description: "Attention to detail and craftsmanship" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "Framer Motion", "GraphQL"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["Performance", "Animations", "Keyboard shortcuts", "Design systems"],
+    Notes: "Project management tool with exceptional UX, design-focused hiring"
+  },
+  {
+    Company: "Clay (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://clay.com/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Initial call", Description: "CRM and relationship management tools" },
+      { Round: 2, Type: "Technical challenge", Description: "Build contact management interface" },
+      { Round: 3, Type: "Team interview", Description: "Product thinking and relationship-focused mindset" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "GraphQL", "Real-time"],
+    DSA: "Low",
+    SpecialFocusAreas: ["CRM interfaces", "Contact management", "Data visualization"],
+    Notes: "Modern CRM platform, relationship-focused product, growing team"
+  },
+  {
+    Company: "Gamma (Foreign)",
+    HiringForFrontEnd: "Yes",
+    JobDescriptionLink: "https://gamma.app/careers/frontend-engineer",
+    NoOfInterviewRounds: 3,
+    RoundBreakdown: [
+      { Round: 1, Type: "Technical screen", Description: "Presentation software and AI-powered tools" },
+      { Round: 2, Type: "Coding challenge", Description: "Build AI presentation interface" },
+      { Round: 3, Type: "Culture interview", Description: "AI-first thinking and design automation" }
+    ],
+    FrameworksOrTools: ["React", "TypeScript", "AI APIs", "Canvas"],
+    DSA: "Medium",
+    SpecialFocusAreas: ["AI interfaces", "Presentation tools", "Design automation"],
+    Notes: "AI-powered presentation tool, innovative product, rapid user growth"
   }
 ];
