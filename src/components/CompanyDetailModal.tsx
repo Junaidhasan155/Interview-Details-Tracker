@@ -662,7 +662,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
           </TabsContent>
 
           {/* Tech Stack Tab */}
-          <TabsContent value="tech" className="space-y-6 mt-6">
+          <TabsContent value="tech" className="space-y-6 mt-6 max-h-[60vh] overflow-y-auto pr-2">
             <Card className="border-0 shadow-lg">
               <CardHeader>
                 <CardTitle className="text-xl flex items-center gap-2">
