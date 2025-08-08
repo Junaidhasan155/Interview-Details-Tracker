@@ -758,7 +758,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
           </TabsContent>
 
           {/* Contacts Tab */}
-          <TabsContent value="contacts" className="space-y-6 mt-6">
+          <TabsContent value="contacts" className="space-y-6 mt-6 max-h-[60vh] overflow-y-auto pr-2">
             {(company.hrContacts || []).length > 0 ? (
               company.hrContacts.map((contact, index) => (
                 <Card key={index} className="border-0 shadow-lg">
