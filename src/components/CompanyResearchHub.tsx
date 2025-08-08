@@ -1493,6 +1493,16 @@ export function CompanyResearchHub() {
           <CompanyComparisonView companies={companies} />
         </DialogContent>
       </Dialog>
+
+      {/* Company Detail Modal */}
+      <CompanyDetailModal
+        company={detailCompany as any}
+        isOpen={isDetailModalOpen}
+        onClose={() => {
+          setIsDetailModalOpen(false);
+          setDetailCompany(null);
+        }}
+      />
     </div>
   );
 }
