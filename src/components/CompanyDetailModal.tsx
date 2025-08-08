@@ -539,7 +539,7 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
           </TabsContent>
 
           {/* Experiences Tab */}
-          <TabsContent value="experiences" className="space-y-6 mt-6">
+          <TabsContent value="experiences" className="space-y-6 mt-6 max-h-[60vh] overflow-y-auto pr-2">
             {(company.candidateExperiences || []).length > 0 ? (
               company.candidateExperiences.map((experience) => (
                 <Card key={experience.id} className="border-0 shadow-lg">
