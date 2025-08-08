@@ -36,7 +36,10 @@ import {
   Filter,
   BarChart3,
   Banknote,
-  MessageSquare
+  MessageSquare,
+  Brain,
+  Code,
+  BookOpen
 } from 'lucide-react';
 import { CompanyDataImporter } from './CompanyDataImporter';
 import { CompanyComparisonView } from './CompanyComparisonView';
