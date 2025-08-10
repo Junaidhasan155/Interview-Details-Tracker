@@ -40,6 +40,37 @@ interface CompanyDetailModalProps {
 export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailModalProps) {
   const [activeTab, setActiveTab] = useState('overview');
 
+  // Handle keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (isOpen) {
+        if (event.key === 'Escape') {
+          onClose();
+        }
+        // Tab navigation shortcuts
+        if (event.key >= '1' && event.key <= '4') {
+          event.preventDefault();
+          const tabs = ['overview', 'process', 'tech', 'culture'];
+          const tabIndex = parseInt(event.key) - 1;
+          if (tabs[tabIndex]) {
+            setActiveTab(tabs[tabIndex]);
+          }
+        }
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
   if (!company) return null;
 
   const getDifficultyColor = (difficulty: string) => {
