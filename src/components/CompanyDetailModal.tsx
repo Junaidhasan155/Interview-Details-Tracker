@@ -53,8 +53,16 @@ export function CompanyDetailModal({ company, isOpen, onClose }: CompanyDetailMo
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-screen h-screen max-w-none max-h-none m-0 p-0 rounded-none md:w-[95vw] md:h-[95vh] md:max-w-4xl md:rounded-lg md:m-auto">
+    <Dialog open={isOpen} onOpenChange={onClose} modal>
+      <DialogContent
+        className="w-screen h-screen max-w-none max-h-none m-0 p-0 rounded-none md:w-[95vw] md:h-[95vh] md:max-w-4xl md:rounded-lg md:m-auto"
+        onPointerDownOutside={(e) => {
+          onClose();
+        }}
+        onEscapeKeyDown={(e) => {
+          onClose();
+        }}
+      >
         {/* Fixed Header */}
         <div className="flex items-center justify-between p-4 border-b bg-white sticky top-0 z-10">
           <DialogHeader className="flex-1">
