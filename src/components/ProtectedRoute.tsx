@@ -11,8 +11,8 @@ interface ProtectedRouteProps {
 export function ProtectedRoute({ children }: ProtectedRouteProps) {
   const { user, loading } = useAuth();
 
-  // Temporary bypass for testing modal - remove in production
-  if (window.location.pathname === '/companies') {
+  // Temporary bypass for testing - remove in production
+  if (window.location.pathname === '/companies' || window.location.pathname === '/gemini-search') {
     return <>{children}</>;
   }
 
